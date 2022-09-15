@@ -11,6 +11,7 @@
 \usepackage{mathrsfs} % mathscr
 \usepackage{amsfonts} % mathbb
 \usepackage{calligra} % calligra (for sheaf hom)
+\usepackage{tikz} % tikzpicture diagrams
 \usepackage{tikz-cd} % tikzcd diagrams
 
 % variants / commands
@@ -4944,6 +4945,60 @@
 	\item From (A) we have that $\Supp(m)$ is the closure of some collection of
 	      associated points of $M$, so it is certainly the closure of all such
 	      points that it contains.
+
+	\item If $\q\subseteq\p$ and $A_\p$ is reduced, then
+	      $A_\q\cong(A_\p)_{\q_\p}$ is reduced. Hence reducedness is preserved
+	      under generization, so non-reducedness is preserved under
+	      specialization. It remains to show that any non-reduced point is the
+	      specialization of a non-reduced associated point. But if $A_\p$ is
+	      non-reduced, then there is some non-zero nilpotent $f/1\in A_\p$. Then
+	      $[\p]\in\Supp(f)$ is a specialization of some associated point
+	      $[\q]\in\Supp(f)$, and $f/1$ is nilpotent in $A_\q\cong(A_\p)_{\q_\p}$
+	      so $A_\q$ is non-reduced.
+
+	\item Since $\Supp(m)=V(\Ann(m))$, the associated primes of $M$ are those
+	      primes in $A$ minimal over some $\Ann(m)$. Now in $S^{-1}M$ we have
+	      $\Ann(m/s)=S^{-1}\Ann(m)$, so the associated primes of $S^{-1}M$ are
+	      those primes in $S^{-1}A$ minimal over some $S^{-1}\Ann(m)$. These
+	      correspond to the primes in $A$ minimal over $\Ann(m)$ that don't meet
+	      $S$, since a prime minimal among those not meeting $S$ is minimal
+	      generally.
+
+	\item If $U=\cup U_i$ where each $U_i=\Spec A_i$ is an affine open
+	      subscheme, then $\O_X(U)\to\prod\O_X(U_i)$ is an injection, so it
+	      suffices to consider affine $U$. But the affine case was shown in
+	      5.5.3, so we are done.
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item ~
+		            \begin{center}
+			            \begin{tikzpicture}
+				            \draw[double=gray, double distance=3pt, domain = -2:2, variable = \x]
+				            plot ({\x},{\x*\x})
+				            node[above=3pt] {$[(y-x^2)]$};
+
+				            \fill[gray!!80] (1,1) circle[radius=5pt];
+				            \draw (1,1)
+				            circle[radius=5pt]
+				            node[right=7pt] {$[(x-1,y-1)]$};
+
+				            \fill[gray!!80] (2,2) circle[radius=5pt];
+				            \draw (2,2)
+				            circle[radius=5pt]
+				            node[right=7pt] {$[(x-2,y-2)]$};
+			            \end{tikzpicture}
+		            \end{center}
+
+		      \item The associated point $[(x-1,y-1)]$ is embedded in
+		            $[(y-x^2)]$, so it is non-reduced. The non-embedded points
+		            $[(y-x^2)]$ and $[(x-2,y-2)]$ may or may not be reduced.
+
+		      \item The zerodivisors are precisely those functions that vanish
+		            at some associated point, i.e. those that vanish at either
+		            $(1,1)$ or $(2,2)$. Hence $x+y-2$ and $y-x^2$ are zerodivisors,
+		            but $x+y-3$ is not.
+	      \end{enumerate}
 \end{enumerate}
 
 \end{document}
