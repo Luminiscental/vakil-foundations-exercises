@@ -10,6 +10,7 @@
 \usepackage{enumitem} % enumeration label options
 \usepackage{mathrsfs} % mathscr
 \usepackage{amsfonts} % mathbb
+\usepackage{amssymb} % subsetneq, nmid, ...
 \usepackage{calligra} % calligra (for sheaf hom)
 \usepackage{tikz} % tikzpicture diagrams
 \usepackage{tikz-cd} % tikzcd diagrams
@@ -32,6 +33,7 @@
 \newcommand{\id}{{\mathrm{id}}} % identity map
 \newcommand{\res}{{\mathrm{res}}} % restriction map
 \newcommand{\divides}{\mathrel{\mid}}
+\newcommand{\ndivides}{\mathrel{\nmid}}
 \newcommand{\limit}{\varprojlim}
 \newcommand{\colimit}{\varinjlim}
 
@@ -72,6 +74,7 @@
 \DeclareMathOperator{\nilrad}{\mathfrak{N}}
 \DeclareMathOperator{\ch}{char}
 \DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Ass}{Ass}
 
 \begin{document}
 
@@ -4956,13 +4959,17 @@
 	      $[\q]\in\Supp(f)$, and $f/1$ is nilpotent in $A_\q\cong(A_\p)_{\q_\p}$
 	      so $A_\q$ is non-reduced.
 
-	\item Since $\Supp(m)=V(\Ann(m))$, the associated primes of $M$ are those
-	      primes in $A$ minimal over some $\Ann(m)$. Now in $S^{-1}M$ we have
-	      $\Ann(m/s)=S^{-1}\Ann(m)$, so the associated primes of $S^{-1}M$ are
-	      those primes in $S^{-1}A$ minimal over some $S^{-1}\Ann(m)$. These
-	      correspond to the primes in $A$ minimal over $\Ann(m)$ that don't meet
-	      $S$, since a prime minimal among those not meeting $S$ is minimal
-	      generally.
+	\item Note that for $m/s\in S^{-1}M$, we have
+	      $\Ann_{S^{-1}A}(m/s)=\Ann_{S^{-1}A}(m/1)$ since $1/s$ is a unit, and
+	      $\Ann_{S^{-1}A}(m/1)=S^{-1}\Ann_A(m)$ since localization is left-exact.
+
+	      Now $\Supp m=V(\Ann m)$, so the associated primes of $M$ are those primes
+	      in $A$ that are minimal over some $\Ann m$. Hence the associated primes of
+	      $S^{-1}M$ are those primes of $S^{-1}A$ that are minimal over some
+	      $S^{-1}\Ann m$. The corresponding primes in $A$ are minimal over $\Ann m$,
+	      since smaller primes remain disjoint from $S$, and so the associated
+	      primes of $S^{-1}M$ correspond precisely to the associated primes of $M$
+	      not meeting $S$.
 
 	\item If $U=\cup U_i$ where each $U_i=\Spec A_i$ is an affine open
 	      subscheme, then $\O_X(U)\to\prod\O_X(U_i)$ is an injection, so it
@@ -4999,6 +5006,137 @@
 		            $(1,1)$ or $(2,2)$. Hence $x+y-2$ and $y-x^2$ are zerodivisors,
 		            but $x+y-3$ is not.
 	      \end{enumerate}
+
+	\item If $g\in k[x_1,\ldots,x_n]$ gives a non-trivial zerodivisor in $A$,
+	      then we have $gh=rf$ for some $h,r\in k[x_1,\ldots,x_n]$, and
+	      $g,h\notin(f)$. Hence every prime factor of $f$ divides either $g$ or
+	      $h$, and not all of them divide $h$ (counting with multiplicity) so
+	      one of them divides $g$. Say this prime factor is $p$, so we have
+	      $f,g\in(p)$ and $(p)$ prime. Then $(p)$ is a minimal prime over $(f)$:
+	      if $\p\subsetneq(p)$ then $\p=(p)\cdot\p$, so $\p=0$ since nothing
+	      else is infinitely divisible by $p$. Hence $(p)$ is the generic point
+	      for an irreducible component of $\Spec A$, and since $g\in(p)$ we get
+	      that $g$ vanishes at a non-embedded point.
+
+	      Hence if $[\q]\in\Spec A$ is an associated point, any function
+	      vanishing at $[\q]$ also vanishes at some non-embedded associated
+	      point. In other words,
+	      \begin{equation*}
+		      \q \subseteq \bigcup_{\text{non-embedded $\p$}}\p.
+	      \end{equation*}
+	      This is a finite union because of (B), so by prime avoidance
+	      $\q\subseteq\p$ for some non-embedded $\p$. But $\p$ is minimal, so
+	      $\q=\p$ is non-embedded.
+
+	\item Suppose $I=\Ann(m)$ and $fg\in I$. Then $\Ann(gm)\supseteq I$, so
+	      either $gm=0$ or $\Ann(gm)=I$. In the first case $g\in I$, and in the
+	      second case $f\in\Ann(gm)=I$.
+
+	\item If $m\ne0$ then $\Ann(m)$ is proper, and there is a proper ideal
+	      containing $\Ann(m)$ maximal among those that are annhilators. By
+	      5.5.J this is an associated prime $\p\in\Ass M$, and $m_\p\ne0$ since
+	      $\p\supseteq\Ann(m)$.
+
+	\item Since $M'\subseteq M$, we have $\Ass M'\subseteq\Ass M$. Now suppose
+	      $m\in M$ has $\Ann(m)=\p\in\Ass M$, and let $m''$ be the image of $m$
+	      in $M''$. We have a short exact sequence
+	      \begin{equation*}
+		      0 \to (A\cdot m)\cap M' \to A\cdot m \to A\cdot m'' \to 0,
+	      \end{equation*}
+	      so if $(A\cdot m)\cap M'=0$ we get $\p=\Ann(m'')\in\Ass M''$. Otherwise
+	      there is some non-zero $x\in (A\cdot m)\cap M'$, and $\Ann(x)=\p$
+	      since $A\cdot m\cong A/\p$ is a domain, so $\p\in\Ass M'$.
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item If no such sequence exists, then $\Ass M$ is non-empty
+		            because $M\ne M_0$, so there is a suitable $M_1$, and
+		            $\Ass M/M_1$ is non-empty because $M\ne M_1$, so there is a
+		            suitable $M_2$, and by induction we get an ascending chain
+		            \begin{equation*}
+			            0 = M_0 \subsetneq M_1 \subsetneq M_2 \subsetneq \cdots,
+		            \end{equation*}
+		            contradicting the fact that $M$ is Noetherian.
+
+		      \item By 5.5.L we have
+		            \begin{align*}
+			            \Ass M & \subseteq \Ass M_{n-1} \cup \Ass A/\p_{n-1}                      \\
+			                   & \subseteq \Ass M_{n-2} \cup \Ass A/\p_{n-2} \cup \Ass A/\p_{n-1} \\
+			                   & \subseteq \cdots                                                 \\
+			                   & \subseteq \Ass A/\p_0 \cup \cdots \cup \Ass A/\p_{n-1}
+			            = \{\p_0,\ldots,\p_{n-1}\}.
+		            \end{align*}
+
+		      \item We have
+		            \begin{equation*}
+			            (M_{i+1})_{\p_i} / (M_i)_{\p_i}
+			            = (M_{i+1}/M_i)_{\p_i}
+			            = K(A/\p_i)
+			            \ne 0,
+		            \end{equation*}
+		            so $(M_{i+1})_{\p_i}\ne0$ and hence $[\p_i]\in\Supp M$. Now
+		            since $M$ has a finite generating set $m_1,\ldots,m_n$, we get
+		            that $\Supp M=\cup\Supp m_i$ is closed. Therefore
+		            $\Supp A/\p_i=\closure{\{[\p_i]\}}\subseteq\Supp M$.
+	      \end{enumerate}
+
+	\item As in 5.5.F we have $\Ann_{S^{-1}A}(m/s)=S^{-1}\Ann_A(m)$. Hence
+	      \begin{align*}
+		      \Ass_{S^{-1}A}S^{-1}M
+		       & = \{\text{primes of the form $S^{-1}\Ann_A(m)$}\}                         \\
+		       & \leftrightarrow \{\text{primes of the form $\Ann_A(m)$ not meeting $S$}\} \\
+		       & = \Ass_AM\cap\Spec S^{-1}A.
+	      \end{align*}
+
+	\item Given $[\p]\in\Supp m=V(\Ann m)$, by 5.5.J there is an associated
+	      prime of $M_\p$ containing $(\Ann m)_\p$, and by 5.5.N this gives an
+	      associated prime $\q\in\Ass M$ with $\Ann m\subseteq\q\subseteq\p$.
+	      Hence $\Supp m$ is the closure of $\Ass M\cap\Supp m$.
+
+	      Conversely, any closure of a subset of $\Ass M$ is a finite union
+	      $\cup_iV(\p_i)$ of $\p_i=\Ann m_i$, and we may assume
+	      $V(\p_i)\not\subseteq V(\p_j)$ for $i\ne j$. If $m=\sum_im_i$, then
+	      $\Supp m\subseteq\cup_i\Supp m_i=\cup_iV(\p_i)$, and since
+	      $[\p_i]\notin V(\p_j)=\Supp m_j$ we have $m_{\p_j}=(m_j)_{\p_j}\ne0$
+	      so $\p_j\in\Supp m$. Hence $\Supp m=\cup_iV(\p_i)$.
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item Every associated point $\p=\Ann m$ is the generic point of
+		            $\Supp m=V(\Ann m)$.
+
+		      \item This was the first paragraph in the solution to 5.5.O.
+	      \end{enumerate}
+
+	\item If $X$ is an integral scheme, and $\Spec A\subseteq X$ an affine
+	      open subscheme, then $A$ is an integral domain. Hence any $f\in A$ has
+	      $\Supp f=V(\Ann f)=V(0)$, so the only associated point of $A$ is the
+	      generic point $[(0)]$. Then the only associated point of $X$ is the
+	      generic point of $X$, so (B) is immediate. Also (C) follows, since the
+	      only zerodivisor is zero, which is the only function vanishing at the
+	      generic point.
+
+	\item The irreducible components of $X$ are $V(y-x^2)$ and $V(x-2,y-2)$,
+	      so these give the non-embedded associated points. Then the only
+	      possible embedded points are $[(x-a,y-a^2)]$ for $a\in\C$. Since $x-1$
+	      is a zerodivisor, and $[(x-1,y-1)]$ is the only possible associated
+	      point at which it vanishes, we see that $[(x-1,y-1)]$ is an embedded
+	      associated point. Now for $a\notin\{1,2\}$ suppose $(x-a)f(x,y)\in I$.
+	      Since $y-x^2\ndivides x-a$, we have $f\in(y-x^2)^3$, and since
+	      $(x-a)\notin(x-2,y-2)$, we have $f\in(x-2,y-2)$. Also since
+	      $(x-a)\notin(x-1,y-1)$, the vanishing order of $f$ at $(1,1)$ must be
+	      at least 15. Hence $f(x,y)\in I$, so $x-a$ is not a zerodivisor and
+	      $[(x-a,y-a^2)]$ is not an associated point. Finally, the same argument
+	      shows that $y-4$ is not a zerodivisor, so $[(x-1,y-1)]$ is the only
+	      embedded associated point.
+\end{enumerate}
+
+\part{Morphisms}
+
+\chapter{Morphisms of Ringed Spaces}
+
+\begin{enumerate}[label=\textbf{6.2.\Alph*.}]
+	\item
 \end{enumerate}
 
 \end{document}
