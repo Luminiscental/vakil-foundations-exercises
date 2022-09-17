@@ -5136,6 +5136,76 @@
 \chapter{Morphisms of Ringed Spaces}
 
 \begin{enumerate}[label=\textbf{6.2.\Alph*.}]
+	\item There is a unique morphism of topological spaces $\pi:X\to Y$ as
+	      described, by 2.2.F. Now $\pi_i^{-1}\O_Y=(\pi^{-1}\O_Y)|_{U_i}$, since
+	      if $V\subseteq U_i$ we have $\pi_i(V)=\pi(V)$ because
+	      $\pi_i=\pi|_{U_i}$. Hence the pullback map for $\pi_i$ is equivalent to
+	      a morphism of sheaves $(\pi^{-1}\O_Y)|_{U_i}\to\O_X|_{U_i}$. These
+	      morphisms agree when restricted to $U_i\cap U_j$ by assumption, and so
+	      since $\shHom(\pi^{-1}\O_Y,\O_X)$ is a sheaf there is a unique morphism
+	      of sheaves $\pi^{-1}\O_Y\to\O_X$ that restricts to the pullback
+	      $\pi_i^{-1}\O_Y\to\O_X|_{U_i}$ on $U_i$.
+
+	\item The pullback map makes $\O_X(\pi^{-1}(U))$ an $\O_Y(U)$-algebra, and
+	      hence $\O_X(\pi^{-1}(U))$-modules become $\O_Y(U)$-modules in a way that
+	      preserves morphisms, and this commutes with restriction since the
+	      pullback map is a sheaf morphism. In this way an $\O_X$-module
+	      $\shMod{M}$ gives an $\O_Y$-module $\pi_*\shMod M$ by
+	      $(\pi_*\shMod M)(U)=\shMod M(\pi^{-1}(U))$, and morphisms are preserved
+	      so this is a functor $\cat{Mod}_{\O_X}\to\cat{Mod}_{\O_Y}$.
+
+	\item From 2.2.I and 2.3.A we have maps $(\pi_*\O_X)_q\to(\O_X)_p$ and
+	      $(\O_Y)_q\to(\pi_*\O_X)_q$.
+
+	\item Firstly note that $\pi^{-1}D(g)=D(\pi^\sharp g)$ because
+	      $g\in(\pi^\sharp)^{-1}(\p)$ iff $\pi^\sharp g\in\p$. Now
+	      $B_g\to A_{\pi^\sharp g}$ is the localization of $\pi^\sharp$ at $g$ as
+	      a map of $B$-algebras, so $A_{\pi^\sharp g}\cong B_g\otimes_BA$. Hence
+	      if $D(g)=D(h)$, the unique $B$-algebra isomorphism $B_g\cong B_h$ gives
+	      an $A$-algebra isomorphism $A_{\pi^\sharp g}\cong A_{\pi^\sharp h}$ by
+	      tensoring with $A$.
+
+	      Moreover this gives a morphism of sheaves on the base, since if
+	      $D(f)\subseteq D(g)$ the following square commutes; the vertical map on
+	      the right is unique among $A$-algebra morphisms and $(\cdot)\otimes_BA$
+	      is functorial.
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &B_g \arrow{r} \arrow{d}
+			      &A_{\pi^\sharp g} \arrow{d} \\
+			      &B_f \arrow{r}
+			      &A_{\pi^\sharp f}
+		      \end{tikzcd}
+	      \end{equation*}
+
+	\item As described, we can take the continuous map
+	      $\pi:\Spec k(x)\to\Spec k[y]_{(y)}$ with image $[(y)]$, and define a
+	      pullback $\O_{\Spec k[y]_{(y)}}\to\pi_*\O_{\Spec k(x)}$ by the obvious
+	      map $k[y]_{(y)}\to k(x)$ on global sections, which determines a sheaf
+	      morphism since $\pi_*\O_{\Spec k(x)}$ has zero non-global sections,
+	      making $\pi$ a morphism of ringed spaces. If this were to come from a
+	      ring map $k[y]_{(y)}\to k(x)$ as in 6.2.D, then that ring map must be
+	      given by the map on global sections. But the obvious map
+	      $k[y]_{(y)}\to k(x)$ does not pull $(0)$ back to $(y)$, so $\pi$ cannot
+	      arise in this way.
+\end{enumerate}
+
+\begin{enumerate}[label=\textbf{6.3.\Alph*.}]
+	\item Using 6.2.A it suffices to show that a morphism of ringed spaces
+	      preserves vanishing iff its restrictions to an open cover all preserve
+	      vanishing. But this is clear, because restricting to an open
+	      neighbourhood doesn't affect the map on stalks.
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item See 4.3.F.
+
+		      \item An element $f/s\in B_\q$ vanishes at $[\q]$ iff $f\in\q$. If
+		            $[\q]=\pi([\p])=[(\pi^\sharp)^{-1}(\p)]$, then
+		            $\pi^\sharp(f)\in\p$, so the pullback
+		            $\pi^\sharp(f)/\pi^\sharp(s)\in A_\p$ vanishes at $[\p]$.
+	      \end{enumerate}
+
 	\item
 \end{enumerate}
 
