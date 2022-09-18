@@ -86,6 +86,8 @@
 
 % TODO: analytification exercises ('b)
 
+% TODO: Spec adjoint relation for general locally ringed spaces ('c)
+
 \maketitle
 
 \part{Preliminaries}
@@ -5205,6 +5207,195 @@
 		            $\pi^\sharp(f)\in\p$, so the pullback
 		            $\pi^\sharp(f)/\pi^\sharp(s)\in A_\p$ vanishes at $[\p]$.
 	      \end{enumerate}
+
+	\item Suppose $\pi:X\to Y$ is a morphism of schemes, and
+	      we have affine open subschemes $\Spec B\subseteq Y$,
+	      $\Spec A\subseteq \pi^{-1}(\Spec B)$.
+
+	      Note that if $f:Z\to W$ is a morphism of (locally) ringed spaces, and we
+	      have open sets $U\subseteq Z$, $f(Z)\subseteq V\subseteq W$, then
+	      \begin{itemize}
+		      \item There is an inclusion morphism $i:U\to Z$, with pullback
+		            given by the identity on $i^{-1}\O_Z=\O_Z|_U$.
+
+		      \item Since $f^{-1}\O_W=f^{-1}(\O_W|_V)$, $f$ is also a morphism
+		            $Z\to V$, and hence factors through $V\to W$.
+	      \end{itemize}
+
+	      Applying this to our situation, we can compose $\pi$ with the inclusion
+	      $\Spec A\to X$ to get $\pi|_{\Spec A}:\Spec A\to Y$, and this factors
+	      through $\Spec B\to Y$ so in fact we have a morphism
+	      $\pi|_{\Spec A}:\Spec A\to\Spec B$. From 6.3.2 this morphism of schemes
+	      must be induced by the map $B\to A$ of global sections, and hence $\pi$
+	      has the desired property.
+
+	      Conversely, if $\pi$ looks locally like morphisms of affine schemes,
+	      either on all affine open subschemes, or just on a fixed cover
+	      $X=\cup_i\Spec A_i$, $Y=\cup_i\Spec B_i$ with
+	      $\pi(\Spec A_i)\subseteq\Spec B_i$, then $\pi$ will be a morphism of
+	      locally ringed spaces by 6.3.B(b) and 6.3.A.
+
+	\item Clearly $\Spec$ gives a functor from the category of rings to the
+	      opposite category of affine schemes. Conversely, let $F$ denote the
+	      functor in the reverse direction given by taking global function rings,
+	      which sends a morphism $\pi:X\to Y$ to the pullback map
+	      $\pi^\sharp:\Gamma(Y,\O_Y)\to\Gamma(X,\O_X)$ coming from
+	      $\Gamma(Y,\O_Y)\to\Gamma(Y,\pi_*\O_X)=\Gamma(X,\O_X)$. Clearly we have
+	      a canonical isomorphism $F\circ\Spec\cong\id$. Conversely, suppose
+	      $\phi_X:X\xrightarrow\sim\Spec A_X$ for each affine scheme $X$. Then
+	      $\phi_X^{-1}\circ\Spec(\phi_X^\sharp):\Spec F(X)\xrightarrow\sim X$.
+	      Given a morphism $\pi:X\to Y$, the following diagram commutes
+	      \begin{equation*}
+		      \begin{tikzcd}[column sep=huge]
+			      &X \arrow{r}{\pi}
+			      &Y \\
+			      &\Spec(F(X))
+			      \arrow{r}{\Spec(\pi^\sharp)}
+			      \arrow{u}{\phi_X^{-1}\circ\Spec(\phi_X^\sharp)}
+			      &\Spec(F(Y))
+			      \arrow[swap]{u}{\phi_Y^{-1}\circ\Spec(\phi_Y^\sharp)}
+		      \end{tikzcd}
+	      \end{equation*}
+	      since
+	      \begin{equation*}
+		      \Spec(\phi_Y^\sharp)^{-1}\circ\phi_Y
+		      \circ\pi\circ
+		      \phi_X^{-1}\circ\Spec(\phi_X^\sharp) = \Spec(\pi^\sharp)
+	      \end{equation*}
+	      by 6.3.2, because the pullback map for the LHS is
+	      \begin{equation*}
+		      \phi_X^\sharp\circ(\phi_X^\sharp)^{-1}
+		      \circ\pi^\sharp\circ
+		      \phi_Y^\sharp\circ(\phi_Y^\sharp)^{-1} = \pi^\sharp.
+	      \end{equation*}
+	      Hence this gives a natural isomorphism $\Spec\circ F\cong\id$. See
+	      6.3.4 for a canonical version.
+
+	\item As well as the cover
+	      \begin{equation*}
+		      \P^n_k = D_{\P^n_k}(x_0)\cup\cdots\cup D_{\P^n_k}(x_n),
+	      \end{equation*}
+	      we also have
+	      \begin{equation*}
+		      \A^{n+1}_k\setminus\{\vec0\}
+		      = \A^{n+1}_k\setminus V(x_0,\ldots,x_n)
+		      = D_{\A^{n+1}_k}(x_0)\cup\cdots\cup D_{\A^{n+1}_k}(x_n).
+	      \end{equation*}
+	      These affine open subschemes are given by
+	      \begin{align*}
+		      D_{\A^{n+1}_k}(x_i) & = \Spec k[x_0,\ldots,x_n,1/x_i]    \\
+		      D_{\P^n_k}(x_i)     & = \Spec k[x_0/x_i,\ldots,x_n/x_i],
+	      \end{align*}
+	      so $k[x_0/x_i,\ldots,x_n/x_i]\subseteq k[x_0,\ldots,x_n,1/x_i]$ gives a
+	      morphism of schemes $D_{\A^{n+1}_k}(x_i)\to D_{\P^n_k}(x_i)$. On closed
+	      points we get
+	      $(a_0,\ldots,a_n)\mapsto[a_0/a_i,\ldots,a_n/a_i]=[a_0,\ldots,a_n]$ as
+	      expected.
+
+	      The intersections are
+	      \begin{align*}
+		      D_{\A^{n+1}_k}(x_i)\cap D_{\A^{n+1}_k}(x_j)
+		       & = D_{\A^{n+1}_k}(x_ix_j)
+		      = \Spec k[x_0,\ldots,x_n,1/x_i,1/x_j] \\
+		      D_{\P^n_k}(x_i)\cap D_{\P^n_k}(x_j)
+		       & = D_{\P^n_k}(x_ix_j)
+		      = \Spec k[x_0/x_i,\ldots,x_n/x_i,x_0/x_j,\ldots,x_n/x_j],
+	      \end{align*}
+	      which include into $D_{\A^{n+1}_k}(x_i)$ / $D_{\P^n_k}(x_i)$ by
+	      \begin{align*}
+		      k[x_0,\ldots,x_n,1/x_i]   & \subseteq
+		      k[x_0,\ldots,x_n,1/x_i,1/x_j]         \\
+		      k[x_0/x_i,\ldots,x_n/x_i] & \subseteq
+		      k[x_0/x_i,\ldots,x_n/x_i,x_0/x_j,\ldots,x_n/x_j].
+	      \end{align*}
+	      Hence the restriction of $D_{\A^{n+1}_k}(x_i)\to D_{\P^n_k}(x_i)$ to
+	      $D_{\A^{n+1}_k}(x_i)\cap D_{\A^{n+1}_k}(x_j)$ is given by
+	      \begin{equation*}
+		      k[x_0/x_i,\ldots,x_n/x_i] \subseteq k[x_0,\ldots,x_n,1/x_i,1/x_j],
+	      \end{equation*}
+	      which factors through the morphism
+	      $D_{\A^{n+1}_k}(x_i)\cap D_{\A^{n+1}_k}(x_j)\to D_{\P^n_k}(x_i)\cap D_{\P^n_k}(x_j)$
+	      given by
+	      \begin{equation*}
+		      k[x_0/x_i,\ldots,x_n/x_i,x_0/x_j,\ldots,x_n/x_j]
+		      \subseteq k[x_0,\ldots,x_n,1/x_i,1/x_j].
+	      \end{equation*}
+	      Since this final morphism is symmetric with respect to $i$ and $j$, we
+	      see that $D_{\A^{n+1}_k}(x_i)\to \P^n_k$ and
+	      $D_{\A^{n+1}_k}(x_j)\to \P^n_k$ restrict to the same morphism on
+	      $D_{\A^{n+1}_k}(x_i)\cap D_{\A^{n+1}_k}(x_j)$. By gluing, we then get a
+	      morphism $\A^{n+1}_k\setminus\{\vec0\}\to\P^n_k$.
+
+	\item Let $\phi_i:\Spec B_i\to U_i\subseteq X$ be open immersions covering
+	      $X$. We may assume the cover is closed under intersections, by using
+	      distinguished open sets.
+
+	      Given $f:A\to\Gamma(X,\O_X)$, we have morphisms
+	      $\Spec(\phi_i^\sharp\circ\res_{X,U_i}\circ f)\circ\phi_i^{-1}:U_i\to\Spec A$.
+	      If $U_j\subseteq U_i$, then
+	      \begin{equation*}
+		      \bigl(\Spec(\phi_i^\sharp\circ\res_{X,U_i}\circ f)
+		      \circ\phi_i^{-1}\bigr)|_{U_j}
+		      = \Spec(\phi_j^\sharp\circ\res_{X,U_j}\circ f)\circ\phi_j^{-1},
+	      \end{equation*}
+	      because
+	      \begin{equation*}
+		      \bigl(\Spec(\phi_i^\sharp\circ\res_{X,U_i}\circ f)
+		      \circ\phi_i^{-1}\bigr)|_{U_j}\circ\phi_j
+		      = \Spec(\phi_j^\sharp\circ\res_{X,U_j}\circ f)
+	      \end{equation*}
+	      by 6.3.2, since the pullback on global sections for the LHS is
+	      \begin{equation*}
+		      \phi_j^\sharp\circ\res_{U_i,U_j}\circ(\phi_i^\sharp)^{-1}\circ
+		      (\phi_i^\sharp\circ\res_{X,U_i}\circ f)
+		      = \phi_j^\sharp\circ\res_{X,U_j}\circ f.
+	      \end{equation*}
+	      Hence these morphisms agree on overlaps, and by gluing we get a morphism
+	      $\pi:X\to\Spec A$. By construction we have
+	      $\res_{X,U_i}\circ \pi^\sharp=(\pi|_{U_i})^\sharp=\res_{X,U_i}\circ f$,
+	      so $\pi^\sharp=f$. By 6.3.2, the restrictions $\pi|_{U_i}$ are uniquely
+	      determined by this property, and it follows that $\pi$ is unique.
+
+	      This shows that the functor $F$ composed with the obvious natural
+	      isomorphism $F\circ\Spec\cong\id$ gives a bijection
+	      $\Mor(X,\Spec A)\to\Mor(A,F(X))$, and this is natural in both arguments
+	      since $F$ is a functor and $F\circ\Spec\cong\id$ is natural. Hence $F$
+	      and $\Spec$, which were an equivalence of categories when restricted to
+	      affine schemes, are an adjoint pair on schemes in general.
+
+	      % This is claimed to hold for locally ringed spaces in general, with a
+	      % harder proof. See 6.3.6, which also poses the question: what's the
+	      % situation for general ringed spaces?
+
+	\item Note that having an $A$-algebra structure on $\Gamma(U,\O_X)$ for each
+	      $U$ in a way that commutes with restriction is equivalent to having an
+	      $A$-algebra structure on $\Gamma(X,\O_X)$, since $\res_{X,U}$ makes
+	      $\Gamma(U,\O_X)$ a $\Gamma(X,\O_X)$-algebra. Hence $A$-schemes in the
+	      old sense are equivalent to $A$-schemes in the new sense (as objects) by
+	      6.3.F.
+
+	      Now a morphism $X\to Y$ respects the $A$-algebra structure on all
+	      section rings iff it does on the global section rings, since both the
+	      morphism and the $A$-algebra structure commute with restriction. Hence
+	      $X\to Y$ is a morphism of $A$-schemes in the old sense iff
+	      $\Gamma(Y,\O_Y)\to\Gamma(X,\O_X)$ is a map of $A$-algebras, i.e. it
+	      factors $A\to\Gamma(X,\O_X)$ through $A\to\Gamma(X,\O_X)$. By 6.3.F,
+	      this is iff $X\to Y$ factors $X\to\Spec A$ through $Y\to\Spec A$, which
+	      is the definition of a morphism of $A$-schemes in the new sense.
+
+	\item The maps $A\to((S_\bullet)_f)_0$ for homogeneous $f\in S_+$ agree on
+	      intersections $((S_\bullet)_{fg})_0$, as they are just given by
+	      composing $A\to S_\bullet$ with the localization maps. Hence we can glue
+	      them to get a canonical morphism $\Proj S_\bullet\to\Spec A$.
+
+	\item Clearly $\Spec\Z$ is final in the category of affine schemes, by
+	      equivalence with rings. Hence there is a unique morphism
+	      $\Spec A\to\Spec\Z$ for any affine open subscheme $\Spec A\subseteq X$.
+	      By uniqueness these agree on overlaps, so by gluing we get a unique
+	      morphism $X\to\Spec\Z$.
+
+	      In the category of $A$-schemes $\Spec A$ is final essentially by
+	      definition. This applies when $A=k$.
 
 	\item
 \end{enumerate}
