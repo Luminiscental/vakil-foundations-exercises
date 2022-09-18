@@ -12,6 +12,7 @@
 \usepackage{amsfonts} % mathbb
 \usepackage{amssymb} % subsetneq, nmid, ...
 \usepackage{calligra} % calligra (for sheaf hom)
+\usepackage{xcolor} % text colors
 \usepackage{tikz} % tikzpicture diagrams
 \usepackage{tikz-cd} % tikzcd diagrams
 
@@ -85,8 +86,6 @@
 % TODO: before starting chapter 23, cover the exercise 2.7.G ('a)
 
 % TODO: analytification exercises ('b)
-
-% TODO: Spec adjoint relation for general locally ringed spaces ('c)
 
 \maketitle
 
@@ -2226,7 +2225,7 @@
 	      iff for each $x$ there is a basic open neighbourhood $x\in B_i$ such
 	      that the germs $(f_x)_{x\in B_i}$ are given by a section $f\in\Fscr(B_i)$.
 
-	      This shows that both stalks and compatbility of germs can be recovered
+	      This shows that both stalks and compatability of germs can be recovered
 	      from the given data. Since $\Fscr\cong\Fscr^\sh$, we are then able to recover
 	      the sheaf $\Fscr$ completely; simply take the sections on $U$ to be
 	      collections $(f_x)_{x\in U}$, where the
@@ -5236,23 +5235,23 @@
 	      locally ringed spaces by 6.3.B(b) and 6.3.A.
 
 	\item Clearly $\Spec$ gives a functor from the category of rings to the
-	      opposite category of affine schemes. Conversely, let $F$ denote the
-	      functor in the reverse direction given by taking global function rings,
-	      which sends a morphism $\pi:X\to Y$ to the pullback map
-	      $\pi^\sharp:\Gamma(Y,\O_Y)\to\Gamma(X,\O_X)$ coming from
-	      $\Gamma(Y,\O_Y)\to\Gamma(Y,\pi_*\O_X)=\Gamma(X,\O_X)$. Clearly we have
-	      a canonical isomorphism $F\circ\Spec\cong\id$. Conversely, suppose
-	      $\phi_X:X\xrightarrow\sim\Spec A_X$ for each affine scheme $X$. Then
-	      $\phi_X^{-1}\circ\Spec(\phi_X^\sharp):\Spec F(X)\xrightarrow\sim X$.
+	      opposite category of affine schemes. Conversely, let $\Gamma$ denote
+	      the functor in the reverse direction given by taking global function
+	      rings, which sends a morphism $\pi:X\to Y$ to the pullback map
+	      $\pi^\sharp:\Gamma(Y)\to\Gamma(Y,\pi_*\O_X)=\Gamma(X)$. Clearly we
+	      have a canonical isomorphism $\Gamma\circ\Spec\cong\id$. Conversely,
+	      suppose $\phi_X:X\xrightarrow\sim\Spec A_X$ for each affine scheme
+	      $X$. Then
+	      $\phi_X^{-1}\circ\Spec(\phi_X^\sharp):\Spec\Gamma(X)\xrightarrow\sim X$.
 	      Given a morphism $\pi:X\to Y$, the following diagram commutes
 	      \begin{equation*}
 		      \begin{tikzcd}[column sep=huge]
 			      &X \arrow{r}{\pi}
 			      &Y \\
-			      &\Spec(F(X))
+			      &\Spec(\Gamma(X))
 			      \arrow{r}{\Spec(\pi^\sharp)}
 			      \arrow{u}{\phi_X^{-1}\circ\Spec(\phi_X^\sharp)}
-			      &\Spec(F(Y))
+			      &\Spec(\Gamma(Y))
 			      \arrow[swap]{u}{\phi_Y^{-1}\circ\Spec(\phi_Y^\sharp)}
 		      \end{tikzcd}
 	      \end{equation*}
@@ -5268,7 +5267,7 @@
 		      \circ\pi^\sharp\circ
 		      \phi_Y^\sharp\circ(\phi_Y^\sharp)^{-1} = \pi^\sharp.
 	      \end{equation*}
-	      Hence this gives a natural isomorphism $\Spec\circ F\cong\id$. See
+	      Hence this gives a natural isomorphism $\Spec\circ\Gamma\cong\id$. See
 	      6.3.4 for a canonical version.
 
 	\item As well as the cover
@@ -5326,11 +5325,13 @@
 	      $D_{\A^{n+1}_k}(x_i)\cap D_{\A^{n+1}_k}(x_j)$. By gluing, we then get a
 	      morphism $\A^{n+1}_k\setminus\{\vec0\}\to\P^n_k$.
 
-	\item Let $\phi_i:\Spec B_i\to U_i\subseteq X$ be open immersions covering
+	\item
+	      { \color{gray}
+	      Let $\phi_i:\Spec B_i\to U_i\subseteq X$ be open immersions covering
 	      $X$. We may assume the cover is closed under intersections, by using
 	      distinguished open sets.
 
-	      Given $f:A\to\Gamma(X,\O_X)$, we have morphisms
+	      Given $f:A\to\Gamma(X)$, we have morphisms
 	      $\Spec(\phi_i^\sharp\circ\res_{X,U_i}\circ f)\circ\phi_i^{-1}:U_i\to\Spec A$.
 	      If $U_j\subseteq U_i$, then
 	      \begin{equation*}
@@ -5356,16 +5357,51 @@
 	      so $\pi^\sharp=f$. By 6.3.2, the restrictions $\pi|_{U_i}$ are uniquely
 	      determined by this property, and it follows that $\pi$ is unique.
 
-	      This shows that the functor $F$ composed with the obvious natural
-	      isomorphism $F\circ\Spec\cong\id$ gives a bijection
-	      $\Mor(X,\Spec A)\to\Mor(A,F(X))$, and this is natural in both arguments
-	      since $F$ is a functor and $F\circ\Spec\cong\id$ is natural. Hence $F$
-	      and $\Spec$, which were an equivalence of categories when restricted to
-	      affine schemes, are an adjoint pair on schemes in general.
+	      This shows that the functor $\Gamma$ composed with the obvious natural
+	      isomorphism $\Gamma\circ\Spec\cong\id$ gives a bijection
+	      $\Mor(X,\Spec A)\to\Mor(A,\Gamma(X))$, and this is natural in both
+	      arguments since $\Gamma$ is a functor and $\Gamma\circ\Spec\cong\id$ is
+	      natural. Hence $\Gamma$ and $\Spec$, which were an equivalence of
+	      categories when restricted to affine schemes, are an adjoint pair on
+	      schemes in general.
+	      }
 
-	      % This is claimed to hold for locally ringed spaces in general, with a
-	      % harder proof. See 6.3.6, which also poses the question: what's the
-	      % situation for general ringed spaces?
+	      Suppose $X$ is a locally ringed spaced, and we have a map
+	      $A\to\Gamma(X)$. For a point $p\in X$, the maximal ideal
+	      $\m_p\subseteq\O_{X,p}$ has a prime preimage $\q_p\subseteq\Gamma(X)$,
+	      which has a prime preimage $\p_p\subseteq A$. Hence we have a map of
+	      sets $X\to\Spec A$ by $p\mapsto[\p_p]$. The closed set $V(I)$ pulls
+	      back to the vanishing set of an ideal in $\Gamma(X)$, which is closed
+	      by 4.3.G. Hence this is a continuous map.
+
+	      Now for $p\in X$, we have the composite $A\to\Gamma(X)\to\O_{X,p}$,
+	      and since $\p_p$ is the preimage of $\m_p$, the multiplicative set
+	      $A\setminus\p_p$ maps into $\O_{X,p}\setminus\m_p$. Hence we get a map
+	      of stalks $A_{\p_p}\to\O_{X,p}$. Suppose we have a section
+	      $a/f^n\in A_f$, where $[\p_p]\in D(f)$. The germs of this section have
+	      images $b_q/g_q^n\in\O_{X,q}$ where $b_q$ and $g_q$ are the images of
+	      $a$ and $f$, and $g_q$ is invertible for $q$ in some neighbourhood $U$
+	      of $p$ by 4.3.G. But these are just the germs of the section
+	      $b/g^n\in\O_X(U)$, where $b$ and $g$ are the images of $a$ and $f$,
+	      and $g\in\O_X(U)$ is invertible since all its germs are (using 2.4.E).
+	      Therefore these maps of stalks preserve compatability of germs, and so
+	      give a sheaf morphism from the pushforward of $\O_{\Spec A}$ to $\O_X$.
+
+	      By construction the maximal ideal $\m_p$ pulls back to the maximal
+	      ideal in $A_\p$, and hence we have a morphism of locally ringed spaces
+	      $X\to\Spec A$. The pullback on global sections is the original map
+	      $A\to\Gamma(X)$, by applying the definition to $D(1)$. Moreover the
+	      morphism $X\to\Spec A$ is unique with this property, since all choices
+	      of images in the previous paragraphs were determined by the map
+	      $A\to\Gamma(X)$ and the properties of morphisms.
+
+	      This shows that the functor $\Gamma$ composed with the obvious natural
+	      isomorphism $\Gamma\circ\Spec\cong\id$ gives a bijection
+	      $\Mor(X,\Spec A)\to\Mor(A,\Gamma(X))$, since we have constructed an
+	      inverse for it. Since $F$ is a functor and $\Gamma\circ\Spec\cong\id$
+	      is natural, this is a natural isomorphism. Hence $\Gamma$ and $\Spec$,
+	      which were an equivalence of categories when restricted to affine
+	      schemes, are an adjoint pair on locally ringed spaces in general.
 
 	\item Note that having an $A$-algebra structure on $\Gamma(U,\O_X)$ for each
 	      $U$ in a way that commutes with restriction is equivalent to having an
@@ -5398,6 +5434,9 @@
 	      definition. This applies when $A=k$.
 
 	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item
+	      \end{enumerate}
 \end{enumerate}
 
 \end{document}
