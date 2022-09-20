@@ -85,7 +85,7 @@
 
 % TODO: before starting chapter 23, cover the exercise 2.7.G ('a)
 
-% TODO: analytification exercises ('b)
+% TODO: analytification exercises ('b) ('c)
 
 \maketitle
 
@@ -5270,60 +5270,58 @@
 	      Hence this gives a natural isomorphism $\Spec\circ\Gamma\cong\id$. See
 	      6.3.4 for a canonical version.
 
-	\item As well as the cover
+	\item We can replace $k$ with a general ring $B$. As well as the cover
 	      \begin{equation*}
-		      \P^n_k = D_{\P^n_k}(x_0)\cup\cdots\cup D_{\P^n_k}(x_n),
+		      \P^n_B = D_{\P^n_B}(x_0)\cup\cdots\cup D_{\P^n_B}(x_n),
 	      \end{equation*}
 	      we also have
 	      \begin{equation*}
-		      \A^{n+1}_k\setminus\{\vec0\}
-		      = \A^{n+1}_k\setminus V(x_0,\ldots,x_n)
-		      = D_{\A^{n+1}_k}(x_0)\cup\cdots\cup D_{\A^{n+1}_k}(x_n).
+		      \A^{n+1}_B\setminus\{\vec0\}
+		      = \A^{n+1}_B\setminus V(x_0,\ldots,x_n)
+		      = D_{\A^{n+1}_B}(x_0)\cup\cdots\cup D_{\A^{n+1}_B}(x_n).
 	      \end{equation*}
 	      These affine open subschemes are given by
 	      \begin{align*}
-		      D_{\A^{n+1}_k}(x_i) & = \Spec k[x_0,\ldots,x_n,1/x_i]    \\
-		      D_{\P^n_k}(x_i)     & = \Spec k[x_0/x_i,\ldots,x_n/x_i],
+		      D_{\A^{n+1}_B}(x_i) & = \Spec B[x_0,\ldots,x_n,1/x_i]    \\
+		      D_{\P^n_B}(x_i)     & = \Spec B[x_0/x_i,\ldots,x_n/x_i],
 	      \end{align*}
-	      so $k[x_0/x_i,\ldots,x_n/x_i]\subseteq k[x_0,\ldots,x_n,1/x_i]$ gives a
-	      morphism of schemes $D_{\A^{n+1}_k}(x_i)\to D_{\P^n_k}(x_i)$. On closed
-	      points we get
-	      $(a_0,\ldots,a_n)\mapsto[a_0/a_i,\ldots,a_n/a_i]=[a_0,\ldots,a_n]$ as
-	      expected.
+	      so $B[x_0/x_i,\ldots,x_n/x_i]\subseteq B[x_0,\ldots,x_n,1/x_i]$ gives a
+	      morphism of schemes $D_{\A^{n+1}_B}(x_i)\to D_{\P^n_B}(x_i)$.
 
 	      The intersections are
 	      \begin{align*}
-		      D_{\A^{n+1}_k}(x_i)\cap D_{\A^{n+1}_k}(x_j)
-		       & = D_{\A^{n+1}_k}(x_ix_j)
-		      = \Spec k[x_0,\ldots,x_n,1/x_i,1/x_j] \\
-		      D_{\P^n_k}(x_i)\cap D_{\P^n_k}(x_j)
-		       & = D_{\P^n_k}(x_ix_j)
-		      = \Spec k[x_0/x_i,\ldots,x_n/x_i,x_0/x_j,\ldots,x_n/x_j],
+		      D_{\A^{n+1}_B}(x_i)\cap D_{\A^{n+1}_B}(x_j)
+		       & = D_{\A^{n+1}_B}(x_ix_j)
+		      = \Spec B[x_0,\ldots,x_n,1/x_i,1/x_j] \\
+		      D_{\P^n_B}(x_i)\cap D_{\P^n_B}(x_j)
+		       & = D_{\P^n_B}(x_ix_j)
+		      = \Spec B[x_0/x_i,\ldots,x_n/x_i,x_0/x_j,\ldots,x_n/x_j],
 	      \end{align*}
-	      which include into $D_{\A^{n+1}_k}(x_i)$ / $D_{\P^n_k}(x_i)$ by
+	      which include into $D_{\A^{n+1}_B}(x_i)$ / $D_{\P^n_B}(x_i)$ by
 	      \begin{align*}
-		      k[x_0,\ldots,x_n,1/x_i]   & \subseteq
-		      k[x_0,\ldots,x_n,1/x_i,1/x_j]         \\
-		      k[x_0/x_i,\ldots,x_n/x_i] & \subseteq
-		      k[x_0/x_i,\ldots,x_n/x_i,x_0/x_j,\ldots,x_n/x_j].
+		      B[x_0,\ldots,x_n,1/x_i]   & \subseteq
+		      B[x_0,\ldots,x_n,1/x_i,1/x_j]         \\
+		      B[x_0/x_i,\ldots,x_n/x_i] & \subseteq
+		      B[x_0/x_i,\ldots,x_n/x_i,x_0/x_j,\ldots,x_n/x_j].
 	      \end{align*}
-	      Hence the restriction of $D_{\A^{n+1}_k}(x_i)\to D_{\P^n_k}(x_i)$ to
-	      $D_{\A^{n+1}_k}(x_i)\cap D_{\A^{n+1}_k}(x_j)$ is given by
+	      Hence the restriction of $D_{\A^{n+1}_B}(x_i)\to D_{\P^n_B}(x_i)$ to
+	      $D_{\A^{n+1}_B}(x_i)\cap D_{\A^{n+1}_B}(x_j)$ is given by
 	      \begin{equation*}
-		      k[x_0/x_i,\ldots,x_n/x_i] \subseteq k[x_0,\ldots,x_n,1/x_i,1/x_j],
+		      B[x_0/x_i,\ldots,x_n/x_i] \subseteq B[x_0,\ldots,x_n,1/x_i,1/x_j],
 	      \end{equation*}
 	      which factors through the morphism
-	      $D_{\A^{n+1}_k}(x_i)\cap D_{\A^{n+1}_k}(x_j)\to D_{\P^n_k}(x_i)\cap D_{\P^n_k}(x_j)$
+	      $D_{\A^{n+1}_B}(x_i)\cap D_{\A^{n+1}_B}(x_j)\to D_{\P^n_B}(x_i)\cap D_{\P^n_B}(x_j)$
 	      given by
 	      \begin{equation*}
-		      k[x_0/x_i,\ldots,x_n/x_i,x_0/x_j,\ldots,x_n/x_j]
-		      \subseteq k[x_0,\ldots,x_n,1/x_i,1/x_j].
+		      B[x_0/x_i,\ldots,x_n/x_i,x_0/x_j,\ldots,x_n/x_j]
+		      \subseteq B[x_0,\ldots,x_n,1/x_i,1/x_j].
 	      \end{equation*}
 	      Since this final morphism is symmetric with respect to $i$ and $j$, we
-	      see that $D_{\A^{n+1}_k}(x_i)\to \P^n_k$ and
-	      $D_{\A^{n+1}_k}(x_j)\to \P^n_k$ restrict to the same morphism on
-	      $D_{\A^{n+1}_k}(x_i)\cap D_{\A^{n+1}_k}(x_j)$. By gluing, we then get a
-	      morphism $\A^{n+1}_k\setminus\{\vec0\}\to\P^n_k$.
+	      see that $D_{\A^{n+1}_B}(x_i)\to \P^n_B$ and
+	      $D_{\A^{n+1}_B}(x_j)\to \P^n_B$ restrict to the same morphism on
+	      $D_{\A^{n+1}_B}(x_i)\cap D_{\A^{n+1}_B}(x_j)$. By gluing, we then get a
+	      morphism $\A^{n+1}_B\setminus\{\vec0\}\to\P^n_B$. All maps considered
+	      were inclusions of $B$-algebras, so this is a morphism of $B$-schemes.
 
 	\item
 	      { \color{gray}
@@ -5393,7 +5391,9 @@
 	      $A\to\Gamma(X)$, by applying the definition to $D(1)$. Moreover the
 	      morphism $X\to\Spec A$ is unique with this property, since all choices
 	      of images in the previous paragraphs were determined by the map
-	      $A\to\Gamma(X)$ and the properties of morphisms.
+	      $A\to\Gamma(X)$ and the properties of morphisms (note that the action
+	      on points is forced, since a morphism of locally ringed spaces must
+	      preserve the ideal vanishing at a point).
 
 	      This shows that the functor $\Gamma$ composed with the obvious natural
 	      isomorphism $\Gamma\circ\Spec\cong\id$ gives a bijection
@@ -5435,8 +5435,98 @@
 
 	\item
 	      \begin{enumerate}[label=(\alph*)]
-		      \item
+		      \item For an affine scheme $X$, we can compose the natural map
+		            $\Spec\O_{X,p}\to\Spec\Gamma(X)$ with the canonical
+		            isomorphism $X\cong\Spec\Gamma(X)$ to get $\Spec\O_{X,p}\to X$.
+		            This gives a natural transformation from $\Spec$ of the stalk
+		            functor to the identity in the category of affine schemes with
+		            basepoint.
+
+		            From this naturality, affine open neighbourhoods
+		            $W\subseteq U\cap V$ of a point $p$ in a general scheme $X$
+		            make the following diagram commute.
+		            \begin{equation*}
+			            \begin{tikzcd}
+				            & &U \\
+				            &\Spec\O_{X,p} \arrow{r} \arrow{ur} \arrow{dr}
+				            &W \arrow[hook]{u} \arrow[hook]{d} \\
+				            & &V
+			            \end{tikzcd}
+		            \end{equation*}
+		            Hence the map $\Spec\O_{X,p}\to X$ is independent of choice of
+		            neighbourhood.
+
+		      \item We can compose the map from (a) with $\Spec$ of the quotient
+		            map $\O_{X,p}\to\O_{X,p}/\m_p=\kappa(p)$.
 	      \end{enumerate}
+
+	\item An open set containing $p$ pulls back to an open set containing
+	      $[\m]$, and every point in $\Spec A$ is a generization of $[\m]$ so
+	      the only such open set is the whole of $\Spec A$.
+
+	      Hence the morphisms $\Spec A\to X$ sending $[\m]$ to $p$ are in
+	      bijection with the morphisms $\Spec A\to\Spec B$ sending $[\m]$ to
+	      $p=[\p]$ for an affine open neighbourhood $\Spec B$ of $p$, i.e.
+	      homomorphisms $\phi:B\to A$ with $\phi^{-1}(\m)=\p$. Since $A$ is
+	      local, we get $\phi(B\setminus\p)\subseteq A\setminus\m\subseteq U(A)$,
+	      so these correspond to local homomorphisms $B_\p\to A$, and of course
+	      $B_\p\cong\O_{X,p}$.
+
+	      In particular, that $B\to A$ factors through $B\to B_\p$ means every
+	      morphism $\Spec A\to X$ sending $[\m]$ to $p$ factors through the
+	      morphism $\Spec\O_{X,p}\to X$ from 6.3.J.
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item Simply form the composite $Z\to X\to Y$.
+
+		      \item There are multiple morphisms $\Spec k\to\Spec k$ when
+		            $\Aut k$ is non-trivial (e.g. complex conjugation on $\C$),
+		            but the topological space underlying $\Spec k$ has only one
+		            point.
+
+		            Now there is a canonical $X$-valued point in $X(X)$ given by
+		            the identity, and its image in $Y(X)$ is just the original
+		            morphism $X\to Y$, so the map $X(X)\to Y(X)$ determines the
+		            morphism $X\to Y$.
+	      \end{enumerate}
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item We have a morphism of $B$-schemes $X\to\A^{n+1}_B$ given by
+		            the $B$-algebra map $B[x_0,\ldots,x_n]\to\Gamma(X)$;
+		            $x_i\mapsto f_i$. The preimage of $\vec0=V(x_0,\ldots,x_n)$ is
+		            $V(f_0,\ldots,f_n)$, which is empty by assumption. Hence this
+		            gives a morphism of $B$-schemes
+		            $X\to\A^{n+1}_B\setminus\{\vec0\}$, and by 6.3.E we get a
+		            morphism of $B$-schemes $X\to\P^n_B$.
+
+		      \item The restricted morphism
+		            $D(f_i)\to D_{\A^{n+1}_B}(x_i)\to D_{\P^n_B}(x_i)$ is given by
+		            \begin{equation*}
+			            B[x_0/x_i,\ldots,x_n/x_i]
+			            \subseteq B[x_0,\ldots,x_n,1/x_i]
+			            \to B[f_0,\ldots,f_n,1/f_i]
+			            \subseteq \Gamma(D(f_i),X),
+		            \end{equation*}
+		            and the restricted morphism
+		            $D(gf_i)\to D_{\A^{n+1}_B}(x_i)\to D_{\P^n_B}(x_i)$ is given
+		            by
+		            \begin{equation*}
+			            B[x_0/x_i,\ldots,x_n/x_i]
+			            \subseteq B[x_0,\ldots,x_n,1/x_i]
+			            \to B[gf_0,\ldots,gf_n,1/(gf_i)]
+			            \subseteq \Gamma(D(gf_i),X).
+		            \end{equation*}
+		            Both are the same composite map, since
+		            $(gf_j)/(gf_i)=f_j/f_i$.
+	      \end{enumerate}
+
+	\item $\star\star$ skipped.
+\end{enumerate}
+
+\begin{enumerate}[label=\textbf{6.4.\Alph*.}]
+	\item
 \end{enumerate}
 
 \end{document}
