@@ -1,6 +1,10 @@
 \documentclass{report}
 
-\title{Exercise Solutions for \\ Foundations of Algebraic Geometry \\ by Ravi Vakil (November 18, 2017 draft)}
+\title{
+    Exercise Solutions for \\
+    Foundations of Algebraic Geometry \\
+    by Ravi Vakil (November 18, 2017 draft)
+}
 \author{Calum Crossley}
 \date{}
 
@@ -11,7 +15,7 @@
 \usepackage{mathrsfs} % mathscr
 \usepackage{amsfonts} % mathbb
 \usepackage{amssymb} % subsetneq, nmid, ...
-\usepackage{calligra} % calligra (for sheaf hom)
+\usepackage{calligra} % calligra font (for sheaf hom)
 \usepackage{xcolor} % text colors
 \usepackage{tikz} % tikzpicture diagrams
 \usepackage{tikz-cd} % tikzcd diagrams
@@ -24,7 +28,7 @@
 \newcommand{\shConst}[1]{\underline{#1}} % constant sheaf
 \newcommand{\rad}[1]{\sqrt{#1}} % radical of an ideal
 \newcommand{\closure}[1]{\overline{#1}} % (algebraic / topological) closure 
-\newcommand{\shMod}[1]{\widetilde{#1}} % sheaf of modules
+\newcommand{\shMod}[1]{\widetilde{#1}} % module sheaf
 
 % names / symbols
 \newcommand{\opp}{{\mathrm{opp}}} % opposite label
@@ -33,10 +37,10 @@
 \newcommand{\dual}{\vee} % dual label
 \newcommand{\id}{{\mathrm{id}}} % identity map
 \newcommand{\res}{{\mathrm{res}}} % restriction map
-\newcommand{\divides}{\mathrel{\mid}}
-\newcommand{\ndivides}{\mathrel{\nmid}}
-\newcommand{\limit}{\varprojlim}
-\newcommand{\colimit}{\varinjlim}
+\newcommand{\divides}{\mathrel{\mid}} % divisibility relation
+\newcommand{\ndivides}{\mathrel{\nmid}} % non-divisibility relation
+\newcommand{\limit}{\varprojlim} % categorical limit
+\newcommand{\colimit}{\varinjlim} % categorical colimit
 
 % letter variants
 \newcommand{\m}{\mathfrak{m}}
@@ -45,9 +49,9 @@
 \newcommand{\I}{\mathscr{I}}
 \newcommand{\J}{\mathscr{J}}
 \renewcommand{\O}{\mathscr{O}} % old \O command was for the slashed O letter
-\newcommand{\Fscr}{\mathscr{F}}
-\newcommand{\Gscr}{\mathscr{G}}
-\newcommand{\Hscr}{\mathscr{H}}
+\newcommand{\scrF}{\mathscr{F}}
+\newcommand{\scrG}{\mathscr{G}}
+\newcommand{\scrH}{\mathscr{H}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\A}{\mathbb{A}}
 \renewcommand{\P}{\mathbb{P}} % old \P command was for the pilcrow
@@ -73,7 +77,6 @@
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Proj}{Proj}
 \DeclareMathOperator{\nilrad}{\mathfrak{N}}
-\DeclareMathOperator{\ch}{char}
 \DeclareMathOperator{\Ann}{Ann}
 \DeclareMathOperator{\Ass}{Ass}
 
@@ -1557,12 +1560,12 @@
 \end{enumerate}
 
 \begin{enumerate}[label=\textbf{2.2.\Alph*.}]
-	\item The data $\Fscr(U)$ is the functor on objects, the data $\res_{U,V}$ is
+	\item The data $\scrF(U)$ is the functor on objects, the data $\res_{U,V}$ is
 	      the functor on morphisms, and the remaining two conditions are the two
 	      properties a functor is required to satisfy; respecting identities and
 	      composition of morphisms. The functor is contravariant since by
 	      convention we had morphisms $U\hookrightarrow V$ when $U\subseteq V$,
-	      whereas $\res_{U,V}:\Fscr(V)\to\Fscr(U)$.
+	      whereas $\res_{U,V}:\scrF(V)\to\scrF(U)$.
 	\item
 	      \begin{enumerate}[label=(\alph*)]
 		      \item Restriction of functions clearly makes this a presheaf, but
@@ -1577,10 +1580,10 @@
 		            having no holomorphic square root on their union $\C\setminus0$.
 	      \end{enumerate}
 
-	\item It is the limit of the diagram of $\Fscr(U_i)$'s and $\Fscr(U_i\cap U_j)$'s
-	      with the restriction maps $\Fscr(U_i),\Fscr(U_j)\to\Fscr(U_i\cap U_j)$; the
-	      axioms say that elements of $\Fscr(\cup_{i\in I}U_i)$ exist and are
-	      uniquely determined by elements of the $\Fscr(U_i)$ (and $\Fscr(U_i\cap U_j)$)
+	\item It is the limit of the diagram of $\scrF(U_i)$'s and $\scrF(U_i\cap U_j)$'s
+	      with the restriction maps $\scrF(U_i),\scrF(U_j)\to\scrF(U_i\cap U_j)$; the
+	      axioms say that elements of $\scrF(\cup_{i\in I}U_i)$ exist and are
+	      uniquely determined by elements of the $\scrF(U_i)$ (and $\scrF(U_i\cap U_j)$)
 	      that ``commute'' (as maps from a singleton set) with these restriction
 	      maps, and this generalizes to all morphisms in $\cat{Set}$. Since the
 	      forgetful functor commutes with limits, this gives an accurate
@@ -1610,23 +1613,23 @@
 	\item See above. Let's work it out in full. It forms a presheaf:
 	      \begin{itemize}
 		      \item If $V\subseteq U$, restriction of functions $f\mapsto f|_V$
-		            gives a map $\Fscr(U)\to\Fscr(V)$, since the restriction of a
+		            gives a map $\scrF(U)\to\scrF(V)$, since the restriction of a
 		            continuous function is continuous: $f|_V^{-1}(O)=V\cap f^{-1}(O)$
 		            is open for open sets $O$ since $f$ is continuous and
 		            intersections of open sets are open.
 
-		      \item Restriction $\Fscr(U)\to\Fscr(U)$ is the identity by definition, and
+		      \item Restriction $\scrF(U)\to\scrF(U)$ is the identity by definition, and
 		            if $W\subseteq V\subseteq U$ then the composite
-		            $\Fscr(U)\to\Fscr(V)\to\Fscr(W)$ is $(f|_V)|_W=f|_W$; both given by
+		            $\scrF(U)\to\scrF(V)\to\scrF(W)$ is $(f|_V)|_W=f|_W$; both given by
 		            $f$ on points.
 	      \end{itemize}
 	      It forms a sheaf:
 	      \begin{itemize}
-		      \item If $U=\cup_{i\in I}U_i$, $f,g\in\Fscr(U)$, and $f|_{U_i}=g|_{U_i}$
+		      \item If $U=\cup_{i\in I}U_i$, $f,g\in\scrF(U)$, and $f|_{U_i}=g|_{U_i}$
 		            for all $i\in I$, then $f(x)=g(x)$ for any point $x\in U$ since
 		            $x\in U_i$ for some $i\in I$. Hence $f=g$.
 
-		      \item If $U=\cup_{i\in I}U_i$, $f_i\in\Fscr(U_i)$ for each $i\in I$,
+		      \item If $U=\cup_{i\in I}U_i$, $f_i\in\scrF(U_i)$ for each $i\in I$,
 		            and $f_i|_{U_i\cap U_j}=f_j|_{U_i\cap U_j}$ for all $i,j\in I$,
 		            then one can define $f:U\to Y$ by
 		            \begin{equation*}
@@ -1652,7 +1655,7 @@
 		            $s$ is a section iff it is a section at each point, so the
 		            function obtained by gluing section maps remains a section.
 
-		      \item From 2.2.F they form a sheaf of sets, and each $\Fscr(U)$ has the
+		      \item From 2.2.F they form a sheaf of sets, and each $\scrF(U)$ has the
 		            structure of a group by $(f_1\cdot f_2)(x)=f_1(x)\cdot f_2(x)$.
 		            Then the restriction maps are group homomorphisms, since
 		            $(f_1\cdot f_2)|_V=f_1|_V\cdot f_2|_V$ (both are given by
@@ -1664,42 +1667,42 @@
 	      the open sets in $X$ since $\pi$ is continuous, and this map is monotone;
 	      if $U\subseteq V$ then $\pi^{-1}(U)\subseteq\pi^{-1}(V)$. Hence it gives
 	      a covariant functor of the poset categories of open sets in $Y$ and $X$.
-	      Since $\Fscr$ is a contravariant functor from the category of open sets in
+	      Since $\scrF$ is a contravariant functor from the category of open sets in
 	      $X$, its composite with this $\pi^{-1}$ functor is a contravariant
-	      functor from the category of open sets in $Y$. Hence $\pi_*\Fscr$ is a
+	      functor from the category of open sets in $Y$. Hence $\pi_*\scrF$ is a
 	      presheaf on $Y$.
 
-	      If $\Fscr$ is a sheaf, then $\pi_*\Fscr$ is also a sheaf since
+	      If $\scrF$ is a sheaf, then $\pi_*\scrF$ is also a sheaf since
 	      \begin{equation*}
 		      U=\bigcup_{i\in I}U_i \implies \pi^{-1}(U)=\bigcup_{i\in I}\pi^{-1}(U_i)
 	      \end{equation*}
 	      so identity and gluing are inherited directly.
 
-	\item If an element of $(\pi_*\Fscr)_q$ is represented by $(f,U)$, where $U$ is
-	      an open set containing $q$ and $f\in\Fscr(\pi^{-1}(U))$, then
-	      $(f,\pi^{-1}(U))$ represents an element of $\Fscr_p$, since
-	      $p\in\pi^{-1}(U)$. This gives a well-defined map $(\pi_*\Fscr)_q\to\Fscr_p$:
+	\item If an element of $(\pi_*\scrF)_q$ is represented by $(f,U)$, where $U$ is
+	      an open set containing $q$ and $f\in\scrF(\pi^{-1}(U))$, then
+	      $(f,\pi^{-1}(U))$ represents an element of $\scrF_p$, since
+	      $p\in\pi^{-1}(U)$. This gives a well-defined map $(\pi_*\scrF)_q\to\scrF_p$:
 	      if $(g,V)$ represents the same element as $(f,U)$, we have some
 	      open set $q\in W\subseteq U\cap V$ with $\res_{U,W}(f)=\res_{V,W}(g)$,
 	      so $\res_{\pi^{-1}(U),\pi^{-1}(W)}(f)=\res_{\pi^{-1}(V),\pi^{-1}(W)}(g)$,
 	      so that $(f,\pi^{-1}(U))$ and $(g,\pi^{-1}(V))$ represent the same
-	      element of $\Fscr_p$. This will generally be a morphism, since it acts
+	      element of $\scrF_p$. This will generally be a morphism, since it acts
 	      trivially on representatives.
 
-	      Using the universal property, a morphism $(\pi_*\Fscr)_q\to\Fscr_p$ is the
-	      same as a collection of morphisms $\pi_*\Fscr(U)\to\Fscr_p$ for all open sets
+	      Using the universal property, a morphism $(\pi_*\scrF)_q\to\scrF_p$ is the
+	      same as a collection of morphisms $\pi_*\scrF(U)\to\scrF_p$ for all open sets
 	      $U\ni q$ that commute with restriction. We have the canonical
-	      isomorphism $\pi_*\Fscr(U)\cong\Fscr(\pi^{-1}(U))$, and this can be composed
-	      with the map $\Fscr(\pi^{-1}(U))\to\Fscr_p$ that exists since $p\in\pi^{-1}(U)$.
-	      These morphisms commute with restriction by the definition of $\Fscr_p$, so
-	      this gives the desired morphism $(\pi_*\Fscr)_q\to\Fscr_p$.
+	      isomorphism $\pi_*\scrF(U)\cong\scrF(\pi^{-1}(U))$, and this can be composed
+	      with the map $\scrF(\pi^{-1}(U))\to\scrF_p$ that exists since $p\in\pi^{-1}(U)$.
+	      These morphisms commute with restriction by the definition of $\scrF_p$, so
+	      this gives the desired morphism $(\pi_*\scrF)_q\to\scrF_p$.
 
-	\item Suppose we have elements of $\O_{X,p}$ and $\Fscr_p$ represented by
+	\item Suppose we have elements of $\O_{X,p}$ and $\scrF_p$ represented by
 	      $(r,U)$, $(m,V)$ respectively. Then
 	      \begin{equation*}
 		      (\res_{U,U\cap V}(r)\cdot\res_{V,U\cap V}(m),U\cap V)
 	      \end{equation*}
-	      gives an element of $\Fscr_p$. This is a well-defined operation: if
+	      gives an element of $\scrF_p$. This is a well-defined operation: if
 	      $(r',U')$ and $(m',V')$ are alternative representatives, we can get by
 	      intersection an open set $W\subseteq U\cap U'\cap V\cap V'$ with
 	      $\res_{U,W}(r) = \res_{U',W}(r')$ and $\res_{V,W}(m)=\res_{V',W}(m')$,
@@ -1713,36 +1716,36 @@
 		      \cdot\res_{V',U'\cap V'}(m')\bigr).
 	      \end{align*}
 	      Since the restriction maps are morphisms, this operation gives a
-	      $\O_{X,p}$-module structure on $\Fscr_p$.
+	      $\O_{X,p}$-module structure on $\scrF_p$.
 \end{enumerate}
 
 \begin{enumerate}[label=\textbf{2.3.\Alph*.}]
 	\item This essentially follows as in chapter 1 from the view that limits are
-	      functors. The maps $\Fscr(U)\to\Gscr(U)$ given by $\phi$ commute with
+	      functors. The maps $\scrF(U)\to\scrG(U)$ given by $\phi$ commute with
 	      restriction by the definition of a morphism of presheaves, and composing
-	      them with the limit maps $\Gscr(U)\to\Gscr_p$ when $p\in U$ results in maps
-	      $\Fscr(U)\to\Gscr_p$ commuting with restriction (since restriction on $\Gscr$ is
-	      trivialized in the stalk $\Gscr_p$). Hence we get a map $\Fscr_p\to\Gscr_p$ by
-	      the universal property of $\Fscr_p$.
+	      them with the limit maps $\scrG(U)\to\scrG_p$ when $p\in U$ results in maps
+	      $\scrF(U)\to\scrG_p$ commuting with restriction (since restriction on $\scrG$ is
+	      trivialized in the stalk $\scrG_p$). Hence we get a map $\scrF_p\to\scrG_p$ by
+	      the universal property of $\scrF_p$.
 
-	\item Given a morphism $\phi:\Fscr\to\Gscr$ of sheaves on $X$, we get a morphism
-	      $\pi_*\phi:\pi_*\Fscr\to\pi_*\Gscr$ given by the maps
-	      $\Fscr(\pi^{-1}(U))\to\Gscr(\pi^{-1}(U))$ given by $\phi$ on $\pi^{-1}(U)$.
+	\item Given a morphism $\phi:\scrF\to\scrG$ of sheaves on $X$, we get a morphism
+	      $\pi_*\phi:\pi_*\scrF\to\pi_*\scrG$ given by the maps
+	      $\scrF(\pi^{-1}(U))\to\scrG(\pi^{-1}(U))$ given by $\phi$ on $\pi^{-1}(U)$.
 	      This inherits naturality from $\phi$ to give a morphism of sheaves, and
 	      we have both $\pi_*(\id)=\id$ and
 	      $\pi_*(\phi\circ\psi)=\pi_*\phi\circ\pi_*\psi$, so that $\pi_*$ becomes
 	      a functor in this way.
 
-	\item It is a presheaf: if $U\subseteq V$ and $\phi:\Fscr|_V\to\Gscr|_V$, then
+	\item It is a presheaf: if $U\subseteq V$ and $\phi:\scrF|_V\to\scrG|_V$, then
 	      restricting $\phi$ to just the open subsets of $U$ gives a morphism
-	      $\res_{V,U}\phi:\Fscr|_U\to\Gscr|_U$. Restrictions in this way satisfy the
+	      $\res_{V,U}\phi:\scrF|_U\to\scrG|_U$. Restrictions in this way satisfy the
 	      presheaf axioms since in all cases the result is just defined by $\phi$
 	      on the relevant open subsets.
 
 	      It is a sheaf:
 	      \begin{itemize}
 		      \item If $U=\cup_{i\in I}U_i$, and $\res_{U,U_i}\phi=\res_{U,U_i}\psi$
-		            for all $i\in I$, then for any $V\subseteq U$ and $x\in\Fscr(V)$,
+		            for all $i\in I$, then for any $V\subseteq U$ and $x\in\scrF(V)$,
 		            we have
 		            \begin{align*}
 			            \res_{V,V\cap U_i}\bigl(\phi(V)(x)\bigr)
@@ -1755,10 +1758,10 @@
 		            arbitrary $V\subseteq U$, so $\phi=\psi$.
 
 		      \item If $U=\cup_{i\in I}U_i$, and we have
-		            $\phi_i:\Fscr|_{U_i}\to\Gscr|_{U_i}$ such that
+		            $\phi_i:\scrF|_{U_i}\to\scrG|_{U_i}$ such that
 		            $\res_{U_i,U_i\cap U_j}\phi_i=\res_{U_i,U_i\cap U_j}\phi_j$,
-		            then for any $V\subseteq U$ define $\phi(V):\Fscr(V)\to\Gscr(V)$ as
-		            follows: given $x\in\Fscr(V)$, the values
+		            then for any $V\subseteq U$ define $\phi(V):\scrF(V)\to\scrG(V)$ as
+		            follows: given $x\in\scrF(V)$, the values
 		            \begin{equation*}
 			            y_i=\phi_i(V\cap U_i)(\res_{V,V\cap U_i}(x))
 		            \end{equation*}
@@ -1769,7 +1772,7 @@
 			             & = \phi_j(V\cap U_i\cap U_j)(\res_{V,V\cap U_i\cap U_j}(x)) \\
 			             & = \res_{V\cap U_j,V\cap U_i\cap U_j}(y_j),
 		            \end{align*}
-		            so by gluing there is a (unique) $y\in\Gscr(V)$ with
+		            so by gluing there is a (unique) $y\in\scrG(V)$ with
 		            $\res_{V,V\cap U_i}(y)=y_i$. We let $\phi(V)(x)=y$. By
 		            construction $\res_{U,U_i}\phi=\phi_i$.
 	      \end{itemize}
@@ -1777,32 +1780,32 @@
 	\item
 	      \begin{enumerate}[label=(\alph*)]
 		      \item For each $U\subseteq X$, a morphism
-		            $\phi:\shConst{\{p\}}|_U\to\Fscr|_U$ specifies for each
-		            $V\subseteq U$ a morphism $\phi(V):\{p\}\to\Fscr(V)$. This is the
-		            same as giving an element $\phi(V)(p)\in\Fscr(V)$, and naturality
+		            $\phi:\shConst{\{p\}}|_U\to\scrF|_U$ specifies for each
+		            $V\subseteq U$ a morphism $\phi(V):\{p\}\to\scrF(V)$. This is the
+		            same as giving an element $\phi(V)(p)\in\scrF(V)$, and naturality
 		            of $\phi$ implies that these elements are just given by
 		            $\res_{U,V}\bigl(\phi(U)(p)\bigr)$. Hence
-		            $\Mor(\shConst{\{p\}}|_U,\Fscr|_U)\cong\Fscr(U)$, so that
-		            $\shHom(\shConst{\{p\}},\Fscr)\cong\Fscr$.
+		            $\Mor(\shConst{\{p\}}|_U,\scrF|_U)\cong\scrF(U)$, so that
+		            $\shHom(\shConst{\{p\}},\scrF)\cong\scrF$.
 
 		      \item For each $U\subseteq X$, a morphism
-		            $\phi:\shConst\Z|_U\to\Fscr|_U$ specifies for each
-		            $\emptyset\ne V\subseteq U$ a morphism $\phi(V):\Z\to\Fscr(V)$.
-		            This is the same as giving an element $\phi(V)(1)\in\Fscr(V)$, and
+		            $\phi:\shConst\Z|_U\to\scrF|_U$ specifies for each
+		            $\emptyset\ne V\subseteq U$ a morphism $\phi(V):\Z\to\scrF(V)$.
+		            This is the same as giving an element $\phi(V)(1)\in\scrF(V)$, and
 		            naturality of $\phi$ implies that these elements are just given
 		            by $\res_{U,V}\bigl(\phi(U)(1)\bigr)$. Hence
-		            $\Mor(\shConst\Z|_U,\Fscr|_U)\cong\Fscr(U)$, so that
-		            $\shHom_{\cat{Ab}_X}(\shConst\Z,\Fscr)\cong\Fscr$. The key point here
+		            $\Mor(\shConst\Z|_U,\scrF|_U)\cong\scrF(U)$, so that
+		            $\shHom_{\cat{Ab}_X}(\shConst\Z,\scrF)\cong\scrF$. The key point here
 		            is that $\Z$ is the free abelian group on one element.
 
-		      \item For each $U\subseteq X$, a morphism $\phi:\O_X|_U\to\Fscr|_U$
+		      \item For each $U\subseteq X$, a morphism $\phi:\O_X|_U\to\scrF|_U$
 		            specifies for each $V\subseteq U$ a morphism (of
-		            $\O_X(V)$-modules) $\phi(V):\O_X(V)\to\Fscr(V)$. This is the same
-		            as giving an element $\phi(V)(1)\in\Fscr(V)$, and naturality of
+		            $\O_X(V)$-modules) $\phi(V):\O_X(V)\to\scrF(V)$. This is the same
+		            as giving an element $\phi(V)(1)\in\scrF(V)$, and naturality of
 		            $\phi$ implies that these elements are just given by
 		            $\res_{U,V}\bigl(\phi(U)(1)\bigr)$. Hence
-		            $\Mor(\O_X|_U,\Fscr|_U)\cong\Fscr(U)$, so that
-		            $\shHom_{\cat{Mod}_{\O_X}}(\O_X,\Fscr)\cong\Fscr$. The key point here
+		            $\Mor(\O_X|_U,\scrF|_U)\cong\scrF(U)$, so that
+		            $\shHom_{\cat{Mod}_{\O_X}}(\O_X,\scrF)\cong\scrF$. The key point here
 		            is that $\O_X(V)$ is the free $\O_X(V)$-module on one element.
 	      \end{enumerate}
 
@@ -1814,26 +1817,26 @@
 			      &\ker\phi(U)
 			      \arrow{r}
 			      \arrow[dashed]{d}
-			      &\Fscr(U)
+			      &\scrF(U)
 			      \arrow{r}
 			      \arrow{d}{\res_{U,V}}
-			      &\Gscr(U)
+			      &\scrG(U)
 			      \arrow{d}{\res_{U,V}} \\
 			      &0 \arrow{r}
 			      &\ker\phi(V)
 			      \arrow{r}
-			      &\Fscr(V)
+			      &\scrF(V)
 			      \arrow{r}
-			      &\Gscr(V)
+			      &\scrG(V)
 		      \end{tikzcd}
 	      \end{equation*}
 	      where the dashed arrow is uniquely induced from the universal property
 	      of the kernel, since the square on the right commutes by the definition
 	      of a morphism of presheaves. Really $\ker\phi(U)$ is just a sub-object
-	      of $\Fscr(U)$ for each $U$, and the restriction maps $\res_{U,V}$ of $\Fscr$
+	      of $\scrF(U)$ for each $U$, and the restriction maps $\res_{U,V}$ of $\scrF$
 	      map $\ker\phi(U)$ into $\ker\phi(V)$ because of this commuting square,
-	      so $\ker_\pre\phi$ becomes a sub-presheaf of $\Fscr$; the composition of
-	      restriction maps behaves correctly as inherited from $\Fscr$.
+	      so $\ker_\pre\phi$ becomes a sub-presheaf of $\scrF$; the composition of
+	      restriction maps behaves correctly as inherited from $\scrF$.
 
 	\item Let's prove a general result, tying this in with 1.6.C. If $\I$ is a
 	      small category, and $\mathscr{C}$ is an abelian category, then the
@@ -1943,9 +1946,9 @@
 		            abelian category are satisfied.
 	      \end{itemize}
 
-	\item Suppose $\Fscr\xrightarrow{f}\Gscr\xrightarrow{g}\Hscr$ is an exact sequence
+	\item Suppose $\scrF\xrightarrow{f}\scrG\xrightarrow{g}\scrH$ is an exact sequence
 	      in $\cat{Ab}^\pre_X$, so $\ker g=\im f$. Evaluation at $U$ gives
-	      $\Fscr(U)\xrightarrow{f(U)}\Gscr(U)\xrightarrow{g(U)}\Hscr(U)$ in $\cat{Ab}$.
+	      $\scrF(U)\xrightarrow{f(U)}\scrG(U)\xrightarrow{g(U)}\scrH(U)$ in $\cat{Ab}$.
 	      From the previous result (viewing presheaves as functors, and presheaf
 	      morphisms as natural transformations) we have $(\ker g)(U)=\ker(g(U))$,
 	      and
@@ -1955,14 +1958,14 @@
 		                 & = \ker\bigl(\coker(f(U))\bigr)  \\
 		                 & = \im(f(U)),
 	      \end{align*}
-	      so $\ker(g(U))=\im(f(U))$, and hence $\Fscr(U)\to\Gscr(U)\to\Hscr(U)$ is exact.
+	      so $\ker(g(U))=\im(f(U))$, and hence $\scrF(U)\to\scrG(U)\to\scrH(U)$ is exact.
 
 	\item From 2.3.G we have the forward implication. It suffices to consider
-	      a sequence $\Fscr\xrightarrow{f}\Gscr\xrightarrow{g}\Hscr$; suppose
-	      $\Fscr(U)\to\Gscr(U)\to\Hscr(U)$ is exact for every $U$. Then
+	      a sequence $\scrF\xrightarrow{f}\scrG\xrightarrow{g}\scrH$; suppose
+	      $\scrF(U)\to\scrG(U)\to\scrH(U)$ is exact for every $U$. Then
 	      $(\im f)(U)=\im(f(U))$ is a kernel for $g(U)$ for every $U$, and from
 	      the result in 2.3.F we see that $\im f$ is a kernel for $g$. Hence
-	      $\Fscr\to\Gscr\to\Hscr$ is exact.
+	      $\scrF\to\scrG\to\scrH$ is exact.
 
 	\item Since $\cat{Ab}_X$ is a full subcategory of the abelian category
 	      $\cat{Ab}^\pre_X$, the kernel $\ker_\pre\phi$ is a kernel in
@@ -1970,12 +1973,12 @@
 	      ($\cat{Ab}_X$ is additive since $\shConst0$ is a sheaf, and products
 	      of sheaves are sheaves.)
 
-	      Now $\ker_\pre\phi(U)$ is a subgroup of $\Fscr(U)$, and the restriction
-	      morphisms on $\ker_\pre\phi$ are the restrictions of those from $\Fscr$,
-	      so identity is inherited directly from $\Fscr$. To show gluing, it
-	      suffices to show that a section $f\in\Fscr(U)$ is in $\ker_\pre\phi(U)$
+	      Now $\ker_\pre\phi(U)$ is a subgroup of $\scrF(U)$, and the restriction
+	      morphisms on $\ker_\pre\phi$ are the restrictions of those from $\scrF$,
+	      so identity is inherited directly from $\scrF$. To show gluing, it
+	      suffices to show that a section $f\in\scrF(U)$ is in $\ker_\pre\phi(U)$
 	      if its restriction to $U_i$ is in $\ker_\pre\phi(U_i)$ for each $i$,
-	      where $U=\cup_{i\in I}U_i$. But by identity on $\Gscr$, the image
+	      where $U=\cup_{i\in I}U_i$. But by identity on $\scrG$, the image
 	      $\phi(f)$ is determined by each
 	      $\res_{U,U_i}(\phi(f))=\phi(\res_{U,U_i}f)$, and hence $\phi(f)=0$
 	      iff $\phi(\res_{U,U_i}f)=0$ for each $i$.
@@ -1984,49 +1987,49 @@
 	      are certainly holomorphic, and $2\pi if$ is a holomorphic logarithm
 	      for $e^{2\pi if}$. Now for any open $U\subseteq\C$, the map
 	      $\shConst\Z(U)\to\O_X(U)$ is certainly injective, and for
-	      $f\in\O_X(U)$ we have $e^{2\pi if}=1$ (note that $\Fscr(U)$ is a
+	      $f\in\O_X(U)$ we have $e^{2\pi if}=1$ (note that $\scrF(U)$ is a
 	      multiplicative abelian group) iff $f(z)\in\Z$ for all $z\in U$, i.e.
 	      iff $f$ is a continuous function to the discrete space $\Z$. This
-	      shows exactness at $\shConst\Z$ and $O_X$. Finally, if $g\in\Fscr(U)$
+	      shows exactness at $\shConst\Z$ and $O_X$. Finally, if $g\in\scrF(U)$
 	      then we have some $f\in\O_X(U)$ with $g=e^f$. Hence
-	      $g=e^{2\pi i(f/2\pi i)}$ is in the image of $\O_X(U)\to\Fscr(U)$,
-	      showing exactness at $\Fscr$.
+	      $g=e^{2\pi i(f/2\pi i)}$ is in the image of $\O_X(U)\to\scrF(U)$,
+	      showing exactness at $\scrF$.
 
 	      Now the identity map $z\mapsto z$ is present in
-	      $\in\Fscr(\C\setminus[0,\infty))$ and $\Fscr(\C\setminus(-\infty,0])$,
+	      $\in\scrF(\C\setminus[0,\infty))$ and $\scrF(\C\setminus(-\infty,0])$,
 	      since the natural logarithm has holomorphic branches on these sets.
 	      However the unique gluing on their union $\C\setminus0$ has no
-	      holomorphic logarithm, so $\Fscr$ does not satisfy gluing and is not a
+	      holomorphic logarithm, so $\scrF$ does not satisfy gluing and is not a
 	      sheaf.
 \end{enumerate}
 
 \begin{enumerate}[label=\textbf{2.4.\Alph*.}]
-	\item If sections $f,g\in\Fscr(U)$ have the same germs, then for every $p\in U$
+	\item If sections $f,g\in\scrF(U)$ have the same germs, then for every $p\in U$
 	      there is some open neighbourhood $p\in W_p\subseteq U$ with
-	      $\res_{U,W_p}(f)=\res_{U,W_p}(g)$, by the concrete definition of $\Fscr_p$.
+	      $\res_{U,W_p}(f)=\res_{U,W_p}(g)$, by the concrete definition of $\scrF_p$.
 	      Then since $U=\cup_{p\in U}W_p$, we have $f=g$ by identity.
 
 	\item If $s_p=0$, then there is some open neighbourhood $p\in U$ with
-	      $\res_{X,U}(s)=0$ by the concrete definition of $\Fscr_p$. Then $s_q=0$ for
+	      $\res_{X,U}(s)=0$ by the concrete definition of $\scrF_p$. Then $s_q=0$ for
 	      all $q\in U$, so we see that the complement of $\Supp s$ is open.
 
 	\item For every $p\in U$, we have some open set $U_p\subseteq U$ and a
-	      section $t_p\in\Fscr(U_p)$ such that for all $q\in U_p$, the germ
+	      section $t_p\in\scrF(U_p)$ such that for all $q\in U_p$, the germ
 	      $(t_p)_q=s_q$. Then $\res_{U_p,U_p\cap U_q}(t_p)$ and
 	      $\res_{U_q,U_p\cap U_q}(t_q)$ have the same germs, and hence are equal
-	      by the previous exercise. By gluing, we get a section $s\in\Fscr(U)$ such
+	      by the previous exercise. By gluing, we get a section $s\in\scrF(U)$ such
 	      that $\res_{U,U_p}(s)=t_p$ for all $p\in U$. Then if $p\in U$, the germ
 	      of $s$ at $p$ equals the germ of $t_p$ at $p$, which is $s_p$.
 
-	\item Given $f\in\Fscr(U)$, the germs of $\phi_i(f)$ are determined by taking
+	\item Given $f\in\scrF(U)$, the germs of $\phi_i(f)$ are determined by taking
 	      the germs of $f$ and applying the maps at the level of stalks, because
 	      of the commuting square:
 	      \begin{equation*}
 		      \begin{tikzcd}
-			      &\Fscr(U) \arrow{r}{\phi_i} \arrow{d}
-			      &\Gscr(U) \arrow{d} \\
-			      &\prod_{p\in U}\Fscr_p \arrow{r}
-			      &\prod_{p\in U}\Gscr_p
+			      &\scrF(U) \arrow{r}{\phi_i} \arrow{d}
+			      &\scrG(U) \arrow{d} \\
+			      &\prod_{p\in U}\scrF_p \arrow{r}
+			      &\prod_{p\in U}\scrG_p
 		      \end{tikzcd}
 	      \end{equation*}
 	      Since $\phi_1$ and $\phi_2$ induce the same maps of stalks, this shows
@@ -2035,12 +2038,12 @@
 
 	\item Clearly isomorphisms of sheaves induce isomorphisms on stalks, since
 	      the induction of maps on stalks is functorial. Conversely, suppose
-	      $\phi:\Fscr\to\Gscr$ is a map of sheaves, and $\phi_p:\Fscr_p\to\Gscr_p$ is an
+	      $\phi:\scrF\to\scrG$ is a map of sheaves, and $\phi_p:\scrF_p\to\scrG_p$ is an
 	      isomorphism for all $p\in X$. Observing the diagram 2.4.4.1, where now
 	      both vertical arrows are injective, the fact that the bottom map is an
 	      isomorphism immediately implies that the top map is injective. Now
-	      suppose we have a section $s\in\Gscr(U)$. For $p\in U$, the germ
-	      $\phi_p^{-1}(s_p)$ has a representative $t^p\in\Fscr(U^p)$ say. Then
+	      suppose we have a section $s\in\scrG(U)$. For $p\in U$, the germ
+	      $\phi_p^{-1}(s_p)$ has a representative $t^p\in\scrF(U^p)$ say. Then
 	      \begin{equation*}
 		      \phi(U^p)(t^p)_p
 		      = \phi_p\bigl((t^p)_p\bigr)
@@ -2057,7 +2060,7 @@
 	      \end{equation*}
 	      and hence $(t^p)_q=\phi_q^{-1}(s_q)$. This shows that the germs
 	      $\phi_p^{-1}(s_p)$ form a compatible collection of germs, so that we
-	      have some section $f\in\Fscr(U)$ with $f_p=\phi_p^{-1}(s_p)$. Then
+	      have some section $f\in\scrF(U)$ with $f_p=\phi_p^{-1}(s_p)$. Then
 	      $\phi(U)(f)=s$ since they have the same germs.
 
 	      Hence for each $U$ we have that $\phi(U)$ is injective, surjective,
@@ -2066,12 +2069,12 @@
 	\item
 	      \begin{enumerate}[label=(\alph*)]
 		      \item Take the discrete space $X=\{0,1\}$, and the presheaf of sets
-		            $\Fscr(U)=U$ (for $U$ non-empty), with the only possible
+		            $\scrF(U)=U$ (for $U$ non-empty), with the only possible
 		            restriction maps. The two global sections have the same germs,
 		            since only one germ is possible at each point.
 
 		      \item In the same scenario as (a), there is a non-trivial morphism
-		            $\Fscr\to\Fscr$ given by sending both global sections to 0. Since the
+		            $\scrF\to\scrF$ given by sending both global sections to 0. Since the
 		            stalks are final objects in $\cat{Set}$, this induces the same
 		            maps on stalks as the identity morphism.
 
@@ -2080,21 +2083,21 @@
 	      \end{enumerate}
 
 	\item A sheafification is by definition an initial object in the category of
-	      presheaf morphisms from $\Fscr$ to sheaves, and hence is unique up to
-	      unique isomorphism in this category. If $\Fscr$ is a sheaf then $\id_\Fscr$ is
+	      presheaf morphisms from $\scrF$ to sheaves, and hence is unique up to
+	      unique isomorphism in this category. If $\scrF$ is a sheaf then $\id_\scrF$ is
 	      actually in said category, and factorization through the identity is
 	      always unique so that it is initial.
 
-	\item The composite $\Fscr\to\Gscr\to\Gscr^\sh$ has a unique factorization
-	      $\Fscr^\sh\to\Gscr^\sh$. It is clear that this preserves identities, since
-	      factorization through the identity is trivial. If $\phi:\Fscr\to\Gscr$ and
-	      $\psi:\Gscr\to\Hscr$, then we can combine the commuting squares:
+	\item The composite $\scrF\to\scrG\to\scrG^\sh$ has a unique factorization
+	      $\scrF^\sh\to\scrG^\sh$. It is clear that this preserves identities, since
+	      factorization through the identity is trivial. If $\phi:\scrF\to\scrG$ and
+	      $\psi:\scrG\to\scrH$, then we can combine the commuting squares:
 	      \begin{equation*}
 		      \begin{tikzcd}
-			      &\Fscr^\sh \arrow{r}{\phi^\sh} &\Gscr^\sh \arrow{r}{\psi^\sh} &\Hscr^\sh \\
-			      &\Fscr \arrow{r}{\phi} \arrow{u}
-			      &\Gscr \arrow{r}{\psi} \arrow{u}
-			      &\Hscr \arrow{u}
+			      &\scrF^\sh \arrow{r}{\phi^\sh} &\scrG^\sh \arrow{r}{\psi^\sh} &\scrH^\sh \\
+			      &\scrF \arrow{r}{\phi} \arrow{u}
+			      &\scrG \arrow{r}{\psi} \arrow{u}
+			      &\scrH \arrow{u}
 		      \end{tikzcd}
 	      \end{equation*}
 	      so $(\psi\circ\phi)^\sh=\psi^\sh\circ\phi^\sh$ because it composes
@@ -2109,42 +2112,42 @@
 	      checked at each point, where each point is by assumption contained in
 	      some set from the union.
 
-	\item For $f\in\Fscr(U)$, take the element $(f_x)_{x\in U}\in\Fscr^\sh(U)$. This
+	\item For $f\in\scrF(U)$, take the element $(f_x)_{x\in U}\in\scrF^\sh(U)$. This
 	      is well-defined since the germs $f_x$ are compatible ($f$ is a section),
 	      and gives a morphism of sheaves since germs are unaffected by
 	      restriction.
 
-	\item Suppose $\phi:\Fscr\to\Gscr$ is a map of presheaves, with $\Gscr$ a sheaf.
-	      Define $\psi:\Fscr^\sh\to\Gscr$ as follows: given a section $(f_p)_{p\in U}$
-	      of $\Fscr^\sh$, take its image under $\psi$ to be the gluing of the
+	\item Suppose $\phi:\scrF\to\scrG$ is a map of presheaves, with $\scrG$ a sheaf.
+	      Define $\psi:\scrF^\sh\to\scrG$ as follows: given a section $(f_p)_{p\in U}$
+	      of $\scrF^\sh$, take its image under $\psi$ to be the gluing of the
 	      compatible germs $\bigl(\phi_p(f_p)\bigr)_{p\in U}$. This is
 	      well-defined: the germs $f_p$ are compatible (locally given by sections),
 	      so taking the image of these sections under $\phi$ shows that the
 	      germs $\phi_p(f_p)$ are also compatible. They then have a (unique)
-	      gluing since $\Gscr$ is a sheaf. It gives a morphism, since restriction
+	      gluing since $\scrG$ is a sheaf. It gives a morphism, since restriction
 	      preserves germs, and $\phi$ commutes with restriction. Moreover this
 	      morphism is unique by 2.4.M and 2.4.D.
 
-	\item The statement of adjointness is that maps of presheaves $\Fscr\to\Gscr$ for
-	      $\Gscr$ a sheaf correspond naturally to maps of sheaves $\Fscr^\sh\to\Gscr$. The
-	      universal property gives an association from maps $\Fscr\to\Gscr$ to maps
-	      $\Fscr^\sh\to\Gscr$, and the inverse is given by composition with
-	      $\Fscr\to\Fscr^\sh$. Naturality in $\Gscr$ is clear, since composition on the
-	      left commutes with composition on the right. Naturality in $\Fscr$ follows
+	\item The statement of adjointness is that maps of presheaves $\scrF\to\scrG$ for
+	      $\scrG$ a sheaf correspond naturally to maps of sheaves $\scrF^\sh\to\scrG$. The
+	      universal property gives an association from maps $\scrF\to\scrG$ to maps
+	      $\scrF^\sh\to\scrG$, and the inverse is given by composition with
+	      $\scrF\to\scrF^\sh$. Naturality in $\scrG$ is clear, since composition on the
+	      left commutes with composition on the right. Naturality in $\scrF$ follows
 	      from the definition of how $\sh$ acts on morphisms (the individual
 	      commuting squares in 2.4.H).
 
-	\item For $p\in X$, the maps $\Fscr^\sh(U)\to\Fscr_p$ given by
-	      $(f_x)_{x\in U}\mapsto f_p$ descend to a map of stalks $\Fscr^\sh_p\to\Fscr_p$,
+	\item For $p\in X$, the maps $\scrF^\sh(U)\to\scrF_p$ given by
+	      $(f_x)_{x\in U}\mapsto f_p$ descend to a map of stalks $\scrF^\sh_p\to\scrF_p$,
 	      since restriction to an open set containing $p$ leaves $f_p$ unchanged.
-	      This gives an inverse to $\sh_p:\Fscr_p\to\Fscr^\sh_p$, since:
+	      This gives an inverse to $\sh_p:\scrF_p\to\scrF^\sh_p$, since:
 	      \begin{itemize}
-		      \item If $f\in\Fscr(U)$ is a representative for $f_p$, then
+		      \item If $f\in\scrF(U)$ is a representative for $f_p$, then
 		            $\sh(U)(f)=(f_x)_{x\in U}$ is a representative for $\sh_p(f_p)$,
 		            so $\sh_p(f_p)$ is mapped to $f_p$.
 
 		      \item Since $(f_x)_{x\in U}$ consists of compatible germs, we may
-		            restrict $U$ so that it is given by a section $f\in\Fscr(U)$. Then
+		            restrict $U$ so that it is given by a section $f\in\scrF(U)$. Then
 		            $\sh_p(f_p)$ has $\sh(U)(f)=(f_x)_{x\in U}$ as a representative,
 		            so $\sh_p(f_p)$ is the germ of $(f_x)_{x\in U}$ at $p$.
 	      \end{itemize}
@@ -2152,35 +2155,35 @@
 	\item ~
 	      \begin{itemize}
 		      \item[(c)$\implies$(b):] If we have germs at $p$ represented by
-			      $f,g\in\Fscr(U)$, and $\phi_p(f_p)=\phi_p(g_p)$, then $\phi(U)(f)$
+			      $f,g\in\scrF(U)$, and $\phi_p(f_p)=\phi_p(g_p)$, then $\phi(U)(f)$
 			      and $\phi(U)(g)$ have the same germ at $p$, so we can restrict
 			      $U$ so that $\phi(U)(f)=\phi(U)(g)$. Hence $f=g$ on this
 			      restricted $U$, so $f_p=g_p$.
 
 		      \item[(b)$\implies$(a):] If $\phi\circ\psi_1=\phi\circ\psi_2$, where
-			      $\psi_1,\psi_2:\Hscr\to\Fscr$ are maps of sheaves, then for $p\in X$
+			      $\psi_1,\psi_2:\scrH\to\scrF$ are maps of sheaves, then for $p\in X$
 			      we have $\phi_p\circ(\psi_1)_p=\phi_p\circ(\psi_2)_p$, and so
 			      $(\psi_1)_p=(\psi_2)_p$. Hence $\psi_1=\psi_2$ by 2.4.D.
 
-		      \item[(a)$\implies$(c):] If we have sections $f_1,f_2\in\Fscr(U)$ with
-			      $\phi(U)(f_1)=\phi(U)(f_2)$, then let $\Hscr$ be the sheaf
+		      \item[(a)$\implies$(c):] If we have sections $f_1,f_2\in\scrF(U)$ with
+			      $\phi(U)(f_1)=\phi(U)(f_2)$, then let $\scrH$ be the sheaf
 			      \begin{equation*}
-				      \Hscr(V) = \begin{cases*}
+				      \scrH(V) = \begin{cases*}
 					      \{*\}     & if $V\subseteq U$ \\
 					      \emptyset & otherwise
 				      \end{cases*}
 			      \end{equation*}
-			      and consider the maps $\psi_1,\psi_2:\Hscr\to\Fscr$ given by
+			      and consider the maps $\psi_1,\psi_2:\scrH\to\scrF$ given by
 			      $*\mapsto f_1,f_2$ respectively. Since
 			      $\phi\circ\psi_1=\phi\circ\psi_2$ we get $\psi_1=\psi_2$, and
 			      hence $f_1=f_2$.
 	      \end{itemize}
 
 	\item Reversing the arrows from 2.4.N gives a proof that (b) implies (a).
-	      For the reverse implication, suppose $f_1,f_2:\Gscr_p\to X$ are functions
-	      of sets, with $f_1\circ\phi_p=f_2\circ\phi_p$. Then if $\Hscr$ is the
+	      For the reverse implication, suppose $f_1,f_2:\scrG_p\to X$ are functions
+	      of sets, with $f_1\circ\phi_p=f_2\circ\phi_p$. Then if $\scrH$ is the
 	      skyscraper sheaf with stalk $X$ at $p$, we can define morphisms
-	      $\psi_1,\psi_2:\Gscr\to\Hscr$ by
+	      $\psi_1,\psi_2:\scrG\to\scrH$ by
 	      \begin{equation*}
 		      \psi_i(U)(g) = \begin{cases*}
 			      f_i(g_p) & if $p\in U$ \\
@@ -2199,10 +2202,10 @@
 \end{enumerate}
 
 \begin{enumerate}[label=\textbf{2.5.\Alph*.}]
-	\item If $x\in X$, suppose we have maps $f_i:\Fscr(B_i)\to X$ for $x\in B_i$
+	\item If $x\in X$, suppose we have maps $f_i:\scrF(B_i)\to X$ for $x\in B_i$
 	      that commute with the restriction maps. For any open set $U$ containing
 	      $x$, since $U$ is a union of $B_i$'s there is some $B_i\subseteq U$
-	      containing $x$. Then $f_i\circ\res_{U,B_i}:\Fscr(U)\to X$, and if
+	      containing $x$. Then $f_i\circ\res_{U,B_i}:\scrF(U)\to X$, and if
 	      $B_j\subseteq U$ also contains $x$ we have some
 	      $B_k\subseteq B_i\cap B_j$ since $B_i\cap B_j$ is open and non-empty, so
 	      \begin{align*}
@@ -2212,26 +2215,26 @@
 		       & = f_k\circ\res_{B_j,B_k}\circ\res_{U,B_j}
 		      = f_j\circ\res_{U,B_j}.
 	      \end{align*}
-	      Hence these give a well-defined collection of maps $\Fscr(U)\to X$, and
-	      they commute with restrictions $\Fscr(U)\to\Fscr(V)$ since if $B_i\subseteq V$
+	      Hence these give a well-defined collection of maps $\scrF(U)\to X$, and
+	      they commute with restrictions $\scrF(U)\to\scrF(V)$ since if $B_i\subseteq V$
 	      then $B_i\subseteq U$. Because of this, the universal property of
-	      $\colimit_{x\in U}\Fscr(U)$ is equivalent to the universal property of
-	      $\colimit_{x\in B_i}\Fscr(B_i)$. Hence we can recover stalks (up to
+	      $\colimit_{x\in U}\scrF(U)$ is equivalent to the universal property of
+	      $\colimit_{x\in B_i}\scrF(B_i)$. Hence we can recover stalks (up to
 	      unique isomorphism) from the given data.
 
 	      Now suppose we have a collection of germs $(f_x)_{x\in U}$, where
-	      $f_x\in\Fscr_x$ and $U$ is open. Since any open neighbourhood of $x$
+	      $f_x\in\scrF_x$ and $U$ is open. Since any open neighbourhood of $x$
 	      contains a basic open neighbourhood of $x$, these germs are compatible
 	      iff for each $x$ there is a basic open neighbourhood $x\in B_i$ such
-	      that the germs $(f_x)_{x\in B_i}$ are given by a section $f\in\Fscr(B_i)$.
+	      that the germs $(f_x)_{x\in B_i}$ are given by a section $f\in\scrF(B_i)$.
 
 	      This shows that both stalks and compatability of germs can be recovered
-	      from the given data. Since $\Fscr\cong\Fscr^\sh$, we are then able to recover
-	      the sheaf $\Fscr$ completely; simply take the sections on $U$ to be
+	      from the given data. Since $\scrF\cong\scrF^\sh$, we are then able to recover
+	      the sheaf $\scrF$ completely; simply take the sections on $U$ to be
 	      collections $(f_x)_{x\in U}$, where the
-	      $f_x\in\colimit_{x\in B_i}\Fscr(B_i)$ are compatible in the sense that each
+	      $f_x\in\colimit_{x\in B_i}\scrF(B_i)$ are compatible in the sense that each
 	      $x$ has some $x\in B_i$ with $(f_x)_{x\in B_i}$ given by a section
-	      $f\in\Fscr(B_i)$. The restriction maps are trivial in this representation.
+	      $f\in\scrF(B_i)$. The restriction maps are trivial in this representation.
 
 	\item The base gluability axiom guarantees surjectivity, and injectivity
 	      holds since if $f_p=g_p$ for all $p$, then by the concrete description
@@ -2253,8 +2256,8 @@
 		            of $F_x$ represented by $f\in F(B)$ to the image of $\phi(B)(f)$
 		            in $G_x$ is well-defined.
 
-		            Then if $\Fscr$ and $\Gscr$ are the induced sheaves, we can define
-		            $\induced\phi:\Fscr\to\Gscr$ by
+		            Then if $\scrF$ and $\scrG$ are the induced sheaves, we can define
+		            $\induced\phi:\scrF\to\scrG$ by
 		            \begin{equation*}
 			            \induced\phi(U)\bigl((f_x)_{x\in U}\bigr)
 			            = (\phi_x(f_x))_{x\in U},
@@ -2266,33 +2269,33 @@
 
 	\item We have a base given by the open sets $B$ with $B\subseteq U_i$ for
 	      some $i$. For such $B$, choose a witnessing value $i_B$ (so
-	      $B\subseteq U_{i_B}$). Define a sheaf on the base by $F(B)=\Fscr_{i_B}(B)$,
-	      with restriction maps $\phi_{i_Bi_{B'}}(B')\circ\res^{(\Fscr_{i_B})}_{B,B'}$
+	      $B\subseteq U_{i_B}$). Define a sheaf on the base by $F(B)=\scrF_{i_B}(B)$,
+	      with restriction maps $\phi_{i_Bi_{B'}}(B')\circ\res^{(\scrF_{i_B})}_{B,B'}$
 	      for $B'\subseteq B$.
 
 	      This gives a presheaf on the base:
 	      \begin{itemize}
 		      \item Restriction $F(B)\to F(B)$ is given by
-		            $\phi_{i_Bi_B}(B)\circ\res^{(\Fscr_{i_B})}_{B,B}=\id\circ\id$.
+		            $\phi_{i_Bi_B}(B)\circ\res^{(\scrF_{i_B})}_{B,B}=\id\circ\id$.
 
 		      \item If $B_3\subseteq B_2\subseteq B_1$, then the composite
 		            $F(B_1)\to F(B_2)\to F(B_3)$ is given by
 		            \begin{align*}
 			            \left(
 			            \phi_{i_{B_2}i_{B_3}}(B_3)
-			            \circ\res^{(\Fscr_{i_{B_2}})}_{B_2,B_3}
+			            \circ\res^{(\scrF_{i_{B_2}})}_{B_2,B_3}
 			            \right) & \circ\left(
 			            \phi_{i_{B_1}i_{B_2}}(B_2)
-			            \circ\res^{(\Fscr_{i_{B_1}})}_{B_1,B_2}
+			            \circ\res^{(\scrF_{i_{B_1}})}_{B_1,B_2}
 			            \right)                             \\
 			                    & =
 			            \phi_{i_{B_2}i_{B_3}}(B_3)
 			            \circ\phi_{i_{B_1}i_{B_2}}(B_3)
-			            \circ\res^{(\Fscr_{B_1})}_{B_2,B_3}
-			            \circ\res^{(\Fscr_{B_1})}_{B_1,B_2} \\
+			            \circ\res^{(\scrF_{B_1})}_{B_2,B_3}
+			            \circ\res^{(\scrF_{B_1})}_{B_1,B_2} \\
 			                    & =
 			            \phi_{i_{B_1}i_{B_3}}(B_3)
-			            \circ\res^{(\Fscr_{B_1})}_{B_1,B_3}
+			            \circ\res^{(\scrF_{B_1})}_{B_1,B_3}
 		            \end{align*}
 		            using the fact that $\phi_{i_{B_1}i_{B_2}}$ is a sheaf morphism,
 		            and the cocycle condition.
@@ -2302,41 +2305,41 @@
 		      \item If $B=\cup_\alpha B_\alpha$, and we have $f,g\in F(B)$
 		            agreeing on each $B_\alpha$, then
 		            \begin{align*}
-			            \res^{(\Fscr_{i_B})}_{B,B_\alpha}(f)
+			            \res^{(\scrF_{i_B})}_{B,B_\alpha}(f)
 			             & = \phi_{i_Bi_{B_\alpha}}(B_\alpha)^{-1}\bigl(
 			            \res^{(F)}_{B,B_\alpha}(f)\bigr)                 \\
 			             & = \phi_{i_Bi_{B_\alpha}}(B_\alpha)^{-1}\bigl(
 			            \res^{(F)}_{B,B_\alpha}(g)\bigr)
-			            = \res^{(\Fscr_{i_B})}_{B,B_\alpha}(g),
+			            = \res^{(\scrF_{i_B})}_{B,B_\alpha}(g),
 		            \end{align*}
-		            so $f=g$ by identity on $\Fscr_{i_B}$.
+		            so $f=g$ by identity on $\scrF_{i_B}$.
 
 		      \item If we have $f_\alpha\in F(B_\alpha)$, where
 		            $B=\cup_\alpha B_\alpha$, such that $f_\alpha$ and $f_\beta$
 		            agree on $B_\alpha\cap B_\beta$ (which is basic), then
 		            \begin{align*}
-			            \res^{(\Fscr_{i_B})}_{B_\alpha,B_\alpha\cap B_\beta}\bigl(
+			            \res^{(\scrF_{i_B})}_{B_\alpha,B_\alpha\cap B_\beta}\bigl(
 			            \phi_{i_{B_\alpha}i_B}(B_\alpha)(f_\alpha)\bigr)
 			             & = \phi_{i_{B_\alpha}i_B}(B_\alpha\cap B_\beta)\bigl(
-			            \res^{(\Fscr_{i_{B_\alpha}})}
+			            \res^{(\scrF_{i_{B_\alpha}})}
 			            _{B_\alpha,B_\alpha\cap B_\beta}(f_\alpha)\bigr)                    \\
 			             & = \phi_{i_{B_\alpha\cap B_\beta}i_B}(B_\alpha\cap B_\beta)\bigl(
 			            \res^{(F)}_{B_\alpha,B_\alpha\cap B_\beta}(f_\alpha)\bigr)          \\
 			             & = \phi_{i_{B_\alpha\cap B_\beta}i_B}(B_\alpha\cap B_\beta)\bigl(
 			            \res^{(F)}_{B_\beta,B_\alpha\cap B_\beta}(f_\beta)\bigr)            \\
 			             & = \phi_{i_{B_\beta}i_B}(B_\alpha\cap B_\beta)\bigl(
-			            \res^{(\Fscr_{i_{B_\beta}})}
+			            \res^{(\scrF_{i_{B_\beta}})}
 			            _{B_\beta,B_\alpha\cap B_\beta}(f_\beta)\bigr)                      \\
-			             & = \res^{(\Fscr_{i_B})}_{B_\beta,B_\alpha\cap B_\beta}\bigl(
+			             & = \res^{(\scrF_{i_B})}_{B_\beta,B_\alpha\cap B_\beta}\bigl(
 			            \phi_{i_{B_\beta}i_B}(B_\beta)(f_\beta)\bigr).
 		            \end{align*}
-		            Hence by gluing on $\Fscr_{i_B}$, we get an $f\in\Fscr_{i_B}(B)$ with
-		            $\res^{(\Fscr_{i_B})}_{B,B_\alpha}(f)=\phi_{i_{B_\alpha}i_B}(B_\alpha)(f_\alpha)$,
+		            Hence by gluing on $\scrF_{i_B}$, we get an $f\in\scrF_{i_B}(B)$ with
+		            $\res^{(\scrF_{i_B})}_{B,B_\alpha}(f)=\phi_{i_{B_\alpha}i_B}(B_\alpha)(f_\alpha)$,
 		            so
 		            \begin{align*}
 			            \res^{(F)}_{B,B_\alpha}(f)
 			             & = \phi_{i_Bi_{B_\alpha}}(B_\alpha)\bigl(
-			            \res_{B,B_\alpha}^{(\Fscr_{i_B})}(f)\bigr)  \\
+			            \res_{B,B_\alpha}^{(\scrF_{i_B})}(f)\bigr)  \\
 			             & = \bigl(\phi_{i_Bi_{B_\alpha}}(B_\alpha)
 			            \circ\phi_{i_{B_\alpha}i_B}(B_\alpha)\bigr)
 			            (f_\alpha)
@@ -2345,30 +2348,30 @@
 		            since the cocycle condition guarantees $\phi_{ij}=\phi_{ji}^{-1}$.
 	      \end{itemize}
 
-	      Let $\Fscr$ be the induced sheaf. Then for $B\subseteq U_i$, which is
-	      automatically basic, we have the natural isomorphism $\Fscr(B)\cong F(B)$.
-	      Hence $\Fscr|_{U_i}$ is given by the data of $F|_{U_i}$, and is
-	      isomorphic to $\Fscr_i$ by the maps $\phi_{i_Bi}(B)$ for $B\subseteq U_i$;
+	      Let $\scrF$ be the induced sheaf. Then for $B\subseteq U_i$, which is
+	      automatically basic, we have the natural isomorphism $\scrF(B)\cong F(B)$.
+	      Hence $\scrF|_{U_i}$ is given by the data of $F|_{U_i}$, and is
+	      isomorphic to $\scrF_i$ by the maps $\phi_{i_Bi}(B)$ for $B\subseteq U_i$;
 	      they give a morphism of sheaves by the cocycle condition and the
 	      definition of restriction on $F$. The composite isomorphism
 	      \begin{equation*}
-		      \Fscr_i|_{U_i\cap U_j} \cong \Fscr|_{U_i\cap U_j} \cong \Fscr_j|_{U_i\cap U_j}
+		      \scrF_i|_{U_i\cap U_j} \cong \scrF|_{U_i\cap U_j} \cong \scrF_j|_{U_i\cap U_j}
 	      \end{equation*}
 	      is then given by $\phi_{ji_B}(B)\circ\phi_{i_Bi}(B)$ for
 	      $B\subseteq U_i\cap U_j$, which is just $\phi_{ij}$ by the cocycle
 	      condition.
 
-	      Now suppose $\Gscr$ is a sheaf on $X$, with isomorphisms
-	      $\Gscr|_{U_i}\cong\Fscr_i$ such that the induced isomorphisms
+	      Now suppose $\scrG$ is a sheaf on $X$, with isomorphisms
+	      $\scrG|_{U_i}\cong\scrF_i$ such that the induced isomorphisms
 	      \begin{equation*}
-		      \Fscr_i|_{U_i\cap U_j}\cong\Gscr|_{U_i\cap U_j}\cong\Fscr_j|_{U_i\cap U_j}
+		      \scrF_i|_{U_i\cap U_j}\cong\scrG|_{U_i\cap U_j}\cong\scrF_j|_{U_i\cap U_j}
 	      \end{equation*}
 	      are given by $\phi_{ij}$. There is a unique isomorphism
-	      $\Fscr\cong\Gscr$ that restricts to the composite
-	      $\Fscr|_{U_i}\cong\Fscr_i\cong\Gscr|_{U_i}$ on each $U_i$, since these
+	      $\scrF\cong\scrG$ that restricts to the composite
+	      $\scrF|_{U_i}\cong\scrF_i\cong\scrG|_{U_i}$ on each $U_i$, since these
 	      isomorphisms agree on overlaps (being given by $\phi_{ij}$); this
-	      follows from the fact that $\shHom(\Fscr,\Gscr)$ is a sheaf. Hence
-	      $\Fscr$ is unique up to unique isomorphism in this sense.
+	      follows from the fact that $\shHom(\scrF,\scrG)$ is a sheaf. Hence
+	      $\scrF$ is unique up to unique isomorphism in this sense.
 
 	\item Given surjectivity on the base, we get surjectivity on the stalks (as
 	      calculated from the data on the base); any germ is represented by some
@@ -2378,16 +2381,16 @@
 \end{enumerate}
 
 \begin{enumerate}[label=\textbf{2.6.\Alph*.}]
-	\item Since $\ker(\Fscr\to\Gscr)$ is a subsheaf of $\Fscr$, it gives an injection
-	      $(\ker(\Fscr\to\Gscr))_x\hookrightarrow\Fscr_x$. The image is contained in
-	      $\ker(\Fscr_x\to\Gscr_x)$, since if a section maps to zero then so do all of
-	      its germs. If an element of $\ker(\Fscr_x\to\Gscr_x)$ is represented by the
-	      section $f\in\Fscr(U)$, then since the germ of $f$ maps to zero we can
+	\item Since $\ker(\scrF\to\scrG)$ is a subsheaf of $\scrF$, it gives an injection
+	      $(\ker(\scrF\to\scrG))_x\hookrightarrow\scrF_x$. The image is contained in
+	      $\ker(\scrF_x\to\scrG_x)$, since if a section maps to zero then so do all of
+	      its germs. If an element of $\ker(\scrF_x\to\scrG_x)$ is represented by the
+	      section $f\in\scrF(U)$, then since the germ of $f$ maps to zero we can
 	      restrict to a smaller $U$ and assume
-	      $f\in\ker(\Fscr(U)\to\Gscr(U))\cong\ker(\Fscr\to\Gscr)(U)$. Then $f_x$ is in the
+	      $f\in\ker(\scrF(U)\to\scrG(U))\cong\ker(\scrF\to\scrG)(U)$. Then $f_x$ is in the
 	      image of the above map, so we have surjectivity also.
 
-	\item The stalk functor $\Fscr\mapsto\Fscr_x$ on \emph{presheaves} is right-exact,
+	\item The stalk functor $\scrF\mapsto\scrF_x$ on \emph{presheaves} is right-exact,
 	      because cokernels commute with colimits by 1.6.I (the stalk is a colimit
 	      and morphisms of sheaves give natural transformations) and cokernels of
 	      presheaves are computed open set by open set (2.3.F). Then the stalk
@@ -2410,14 +2413,14 @@
 	      those functors which preserve kernels and cokernels.
 
 	\item Firstly, let's prove the implied claim that exactness can be checked
-	      at the level of stalks. Suppose $\Fscr\xrightarrow\phi\Gscr\xrightarrow\psi\Hscr$
-	      is such that $\Fscr_p\to\Gscr_p\to\Hscr_p$ is exact for each $p\in X$. Then
+	      at the level of stalks. Suppose $\scrF\xrightarrow\phi\scrG\xrightarrow\psi\scrH$
+	      is such that $\scrF_p\to\scrG_p\to\scrH_p$ is exact for each $p\in X$. Then
 	      $(\psi\circ\phi)_p=\phi_p\circ\psi_p=0$ for each $p$, and hence
 	      $\psi\circ\phi=0$ by 2.4.D. This gives a natural map
 	      $\im\phi\to\ker\psi$, and at the level of stalks it gives the
 	      isomorphism $(\im\phi)_x\cong\im(\phi_x)\cong\ker(\psi_x)\cong(\ker\psi)_x$.
 	      Hence the map actually gives an isomorphism $\im\phi\cong\ker\psi$ by
-	      2.4.E. Therefore $\Fscr\to\Gscr\to\Hscr$ is exact.
+	      2.4.E. Therefore $\scrF\to\scrG\to\scrH$ is exact.
 
 	      Now for the actual question. At a point $z\in\C$, taking stalks gives
 	      \begin{equation*}
@@ -2434,9 +2437,9 @@
 	      in $2\pi i\Z$), since $\exp$ is locally invertible. Hence the sequence
 	      is exact.
 
-	\item By 2.4.N, the map $\Fscr(U)\to\Gscr(U)$ is a monomorphism since $\Fscr\to\Gscr$
-	      is. Now $\Fscr\to\Gscr=\ker(\Gscr\to\Hscr)$, so since kernels are computed open set
-	      by open set we have $\Fscr(U)\to\Gscr(U)=\ker(\Gscr(U)\to\Hscr(U))$. This shows
+	\item By 2.4.N, the map $\scrF(U)\to\scrG(U)$ is a monomorphism since $\scrF\to\scrG$
+	      is. Now $\scrF\to\scrG=\ker(\scrG\to\scrH)$, so since kernels are computed open set
+	      by open set we have $\scrF(U)\to\scrG(U)=\ker(\scrG(U)\to\scrH(U))$. This shows
 	      left-exactness.
 
 	      For a counter-example to right-exactness, take $U$ to be an open annulus
@@ -2447,43 +2450,43 @@
 	      and $\O_X(U)\to\O_X^*(U)$ is not surjective, since the section given by
 	      $z\mapsto z$ in $\O_X^*(U)$ has no holomorphic logarithm.
 
-	\item Since $\ker=\ker_\pre$, a sequence $0\to\Fscr\to\Gscr\to\Hscr$ is exact in
+	\item Since $\ker=\ker_\pre$, a sequence $0\to\scrF\to\scrG\to\scrH$ is exact in
 	      $\cat{Ab}_X$ iff it  is exact in $\cat{Ab}_X^\pre$. Now if
 	      $V\subseteq Y$ is open, then the sequence
 	      \begin{equation*}
-		      0 \to \pi_*\Fscr(V) \to \pi_*\Gscr(V) \to \pi_*\Hscr(V)
+		      0 \to \pi_*\scrF(V) \to \pi_*\scrG(V) \to \pi_*\scrH(V)
 	      \end{equation*}
 	      is nothing more than
 	      \begin{equation*}
-		      0 \to \Fscr(\pi^{-1}(V)) \to \Gscr(\pi^{-1}(V)) \to \Hscr(\pi^{-1}(V)),
+		      0 \to \scrF(\pi^{-1}(V)) \to \scrG(\pi^{-1}(V)) \to \scrH(\pi^{-1}(V)),
 	      \end{equation*}
-	      which is exact since $0\to\Fscr\to\Gscr\to\Hscr$ is exact by 2.3.H. Hence
-	      $0\to\pi_*\Fscr\to\pi_*\Gscr\to\pi_*\Hscr$ is exact by 2.3.H again.
+	      which is exact since $0\to\scrF\to\scrG\to\scrH$ is exact by 2.3.H. Hence
+	      $0\to\pi_*\scrF\to\pi_*\scrG\to\pi_*\scrH$ is exact by 2.3.H again.
 
 	\item As above, left-exactness can be checked open set by open set. In
-	      particular, if $0\to\Gscr'\to\Gscr\to\Gscr''$ is exact, then
-	      $0\to\Gscr'|_U\to\Gscr|_U\to\Gscr''|_U$ is exact for each $U$ (since this simply
+	      particular, if $0\to\scrG'\to\scrG\to\scrG''$ is exact, then
+	      $0\to\scrG'|_U\to\scrG|_U\to\scrG''|_U$ is exact for each $U$ (since this simply
 	      restricts the open sets that need checking). Hence
 	      \begin{equation*}
 		      \begin{tikzcd}
 			      &0 \arrow{r}
-			      &\Hom(\Fscr|_U,\Gscr'|_U) \arrow{r}
-			      &\Hom(\Fscr|_U,\Gscr|_U) \arrow{r}
-			      &\Hom(\Fscr|_U,\Gscr''|_U) \\
+			      &\Hom(\scrF|_U,\scrG'|_U) \arrow{r}
+			      &\Hom(\scrF|_U,\scrG|_U) \arrow{r}
+			      &\Hom(\scrF|_U,\scrG''|_U) \\
 			      &
-			      &\shHom(\Fscr,\Gscr')(U) \arrow[equal]{u}
-			      &\shHom(\Fscr,\Gscr)(U) \arrow[equal]{u}
-			      &\shHom(\Fscr,\Gscr'')(U) \arrow[equal]{u}
+			      &\shHom(\scrF,\scrG')(U) \arrow[equal]{u}
+			      &\shHom(\scrF,\scrG)(U) \arrow[equal]{u}
+			      &\shHom(\scrF,\scrG'')(U) \arrow[equal]{u}
 		      \end{tikzcd}
 	      \end{equation*}
 	      is exact by 1.6.F (working in the abelian category $\cat{Ab}_U$).
 	      Therefore
 	      \begin{equation*}
-		      0 \to \shHom(\Fscr,\Gscr') \to \shHom(\Fscr,\Gscr) \to \shHom(\Fscr,\Gscr'')
+		      0 \to \shHom(\scrF,\scrG') \to \shHom(\scrF,\scrG) \to \shHom(\scrF,\scrG'')
 	      \end{equation*}
 	      is exact, again since left-exactness can be checked open set by open set.
 
-	      On the other hand, suppose $\Gscr'\to\Gscr\to\Gscr''\to0$ is exact. Since
+	      On the other hand, suppose $\scrG'\to\scrG\to\scrG''\to0$ is exact. Since
 	      $\coker$ is the sheafification of $\coker_\pre$, we get
 	      \begin{equation*}
 		      \begin{tikzcd}
@@ -2491,9 +2494,9 @@
 			      &
 			      &\coker_\pre\phi \arrow{r} \arrow{d}{\sh}
 			      &0 \\
-			      &\Gscr' \arrow{r}{\phi}
-			      &\Gscr \arrow{r}{\psi} \arrow{ur}{\induced\psi}
-			      &\Gscr'' \arrow{r}
+			      &\scrG' \arrow{r}{\phi}
+			      &\scrG \arrow{r}{\psi} \arrow{ur}{\induced\psi}
+			      &\scrG'' \arrow{r}
 			      &0
 		      \end{tikzcd}
 	      \end{equation*}
@@ -2507,40 +2510,40 @@
 			      &
 			      &(\coker_\pre\phi)|_U \arrow{r} \arrow{d}{\sh}
 			      &0 \\
-			      &\Gscr'|_U \arrow{r}
-			      &\Gscr|_U \arrow{r} \arrow{ur}
-			      &\Gscr''|_U \arrow{r}
+			      &\scrG'|_U \arrow{r}
+			      &\scrG|_U \arrow{r} \arrow{ur}
+			      &\scrG''|_U \arrow{r}
 			      &0
 		      \end{tikzcd}
 	      \end{equation*}
 	      with the top sequence remaining exact. But this exactness means that
-	      $\Gscr|_U\to\Gscr''|_U$ is given by
+	      $\scrG|_U\to\scrG''|_U$ is given by
 	      \begin{equation*}
-		      (\coker_\pre(\Gscr'|_U\to\Gscr|_U))^\sh = \coker(\Gscr'|_U\to\Gscr|_U),
+		      (\coker_\pre(\scrG'|_U\to\scrG|_U))^\sh = \coker(\scrG'|_U\to\scrG|_U),
 	      \end{equation*}
 	      so the bottom sequence is also exact. Hence
 	      \begin{equation*}
 		      \begin{tikzcd}
 			      &0 \arrow{r}
-			      &\Hom(\Gscr'|_U,\Fscr|_U) \arrow{r}
-			      &\Hom(\Gscr|_U,\Fscr|_U) \arrow{r}
-			      &\Hom(\Gscr''|_U,\Fscr|_U) \\
+			      &\Hom(\scrG'|_U,\scrF|_U) \arrow{r}
+			      &\Hom(\scrG|_U,\scrF|_U) \arrow{r}
+			      &\Hom(\scrG''|_U,\scrF|_U) \\
 			      &
-			      &\shHom(\Gscr',\Fscr)(U) \arrow[equal]{u}
-			      &\shHom(\Gscr,\Fscr)(U) \arrow[equal]{u}
-			      &\shHom(\Gscr'',\Fscr)(U) \arrow[equal]{u}
+			      &\shHom(\scrG',\scrF)(U) \arrow[equal]{u}
+			      &\shHom(\scrG,\scrF)(U) \arrow[equal]{u}
+			      &\shHom(\scrG'',\scrF)(U) \arrow[equal]{u}
 		      \end{tikzcd}
 	      \end{equation*}
 	      is exact by 1.6.F (again working in $\cat{Ab}_U$), and so
 	      \begin{equation*}
-		      0 \to \shHom(\Gscr',\Fscr) \to \shHom(\Gscr,\Fscr) \to \shHom(\Gscr'',\Fscr)
+		      0 \to \shHom(\scrG',\scrF) \to \shHom(\scrG,\scrF) \to \shHom(\scrG'',\scrF)
 	      \end{equation*}
 	      is exact open set by open set.
 
 	\item They form an additive category:
 	      \begin{itemize}
-		      \item For $\O_X$-modules $\Fscr$ and $\Gscr$, the morphisms
-		            $\Hom_{\O_X}(\Fscr,\Gscr)$ are a subset of the group of underlying
+		      \item For $\O_X$-modules $\scrF$ and $\scrG$, the morphisms
+		            $\Hom_{\O_X}(\scrF,\scrG)$ are a subset of the group of underlying
 		            $\cat{Ab}_X$ homomorphisms. Moreover they form a subgroup, since
 		            the zero morphism is $\O_X$-linear and sums of $\O_X$-linear
 		            maps are $\O_X$-linear by distributivity of scalar
@@ -2551,32 +2554,32 @@
 		            $\O_X$-modules are a subgroup of the morphisms of underlying
 		            groups it remains a zero object.
 
-		      \item If $\Fscr$ and $\Gscr$ are $\O_X$-modules, then their product
-		            $\Fscr\times\Gscr$ in $\cat{Ab}_X$ has an $\O_X$-module structure
+		      \item If $\scrF$ and $\scrG$ are $\O_X$-modules, then their product
+		            $\scrF\times\scrG$ in $\cat{Ab}_X$ has an $\O_X$-module structure
 		            given by $r(f,g)=(rf,rg)$ for $r\in\O_X(U)$ and
-		            $(f,g)\in(\Fscr\times\Gscr)(U)$. The projection maps $\Fscr\times\Gscr\to\Fscr$
-		            and $\Fscr\times\Gscr\to\Gscr$ in $\cat{Ab}_X$ become $\O_X$-linear with
-		            this structure, and if $\phi:\Hscr\to\Fscr$, $\psi:\Hscr\to\Gscr$ are
-		            $\O_X$-linear then $(\phi,\psi):\Hscr\to\Fscr\times\Gscr$ is also
+		            $(f,g)\in(\scrF\times\scrG)(U)$. The projection maps $\scrF\times\scrG\to\scrF$
+		            and $\scrF\times\scrG\to\scrG$ in $\cat{Ab}_X$ become $\O_X$-linear with
+		            this structure, and if $\phi:\scrH\to\scrF$, $\psi:\scrH\to\scrG$ are
+		            $\O_X$-linear then $(\phi,\psi):\scrH\to\scrF\times\scrG$ is also
 		            $\O_X$-linear. It follows that this gives a product in
 		            $\cat{Mod}_{\O_X}$, since the morphisms of $\O_X$-modules are a
 		            subgroup of the morphisms of underlying groups.
 	      \end{itemize}
 	      They form an abelian category:
 	      \begin{itemize}
-		      \item If $\phi:\Fscr\to\Gscr$ is $\O_X$-linear, then the subgroup
-		            $\ker\phi(U)$ of $\Fscr(U)$ is an $\O_X(U)$-submodule. Moreover the
+		      \item If $\phi:\scrF\to\scrG$ is $\O_X$-linear, then the subgroup
+		            $\ker\phi(U)$ of $\scrF(U)$ is an $\O_X(U)$-submodule. Moreover the
 		            restriction morphisms on $\ker\phi$ are $\O_X$-linear, since
-		            they are just given by those of $\Fscr$. Hence the kernel $\ker\phi$
+		            they are just given by those of $\scrF$. Hence the kernel $\ker\phi$
 		            in $\cat{Ab}_X$ gets an $\O_X$-module structure, and since
-		            $\ker\phi\to\Fscr$ is just given by inclusion maps, it retains the
+		            $\ker\phi\to\scrF$ is just given by inclusion maps, it retains the
 		            universal property in $\cat{Mod}_{\O_X}$.
 
-		      \item If $\phi:\Fscr\to\Gscr$ is $\O_X$-linear, then the quotient group
-		            $\coker_\pre\phi(U)$ of $\Gscr(U)$ is a quotient by an
+		      \item If $\phi:\scrF\to\scrG$ is $\O_X$-linear, then the quotient group
+		            $\coker_\pre\phi(U)$ of $\scrG(U)$ is a quotient by an
 		            $\O_X(U)$-submodule, and hence gets an $\O_X(U)$-module
 		            structure. Moreover the restriction morphisms are induced from
-		            those of $\Gscr$, and so are $\O_X$-linear. Hence we get an
+		            those of $\scrG$, and so are $\O_X$-linear. Hence we get an
 		            $\O_X$-module structure on $\coker_\pre\phi$, and in particular
 		            on all of its stalks. Then on its sheafification $\coker\phi$,
 		            we can define an $\O_X$-module structure by
@@ -2584,7 +2587,7 @@
 		            since the restriction morphisms are $\O_X$-linear; if
 		            $(f_x)_{x\in U}$ is given by a section $f$, then
 		            $(rf_x)_{x\in U}$ is given by $rf$. With this structure the map
-		            $\Gscr\to\coker\phi$ is $\O_X$-linear, and it retains the universal
+		            $\scrG\to\coker\phi$ is $\O_X$-linear, and it retains the universal
 		            property in $\cat{Mod}_{\O_X}$ since when starting with
 		            $\O_X$-linear maps, the induced morphisms from $\coker_\pre$ and
 		            sheafification remain $\O_X$-linear.
@@ -2601,69 +2604,69 @@
 
 	\item
 	      \begin{enumerate}[label=(\alph*)]
-		      \item The tensor product $\Fscr\times\Gscr\to\Fscr\otimes\Gscr$ should be
+		      \item The tensor product $\scrF\times\scrG\to\scrF\otimes\scrG$ should be
 		            universal with respect to sheaf-of-set morphisms out of
-		            $\Fscr\times\Gscr$ into an $\O_X$-module that are $\O_X(U)$-bilinear on every $U$.
+		            $\scrF\times\scrG$ into an $\O_X$-module that are $\O_X(U)$-bilinear on every $U$.
 
 		            On presheaves, we have such a tensor product by
-		            $(\Fscr\otimes_\pre\Gscr)(U)=\Fscr(U)\otimes_{\O_X(U)}\Gscr(U)$, with
+		            $(\scrF\otimes_\pre\scrG)(U)=\scrF(U)\otimes_{\O_X(U)}\scrG(U)$, with
 		            restriction maps
-		            $\bigl(\Fscr(U)\to\Fscr(V)\bigr)\otimes_{\O_X(U)}\bigl(\Gscr(U)\to\Gscr(V)\bigr)$,
+		            $\bigl(\scrF(U)\to\scrF(V)\bigr)\otimes_{\O_X(U)}\bigl(\scrG(U)\to\scrG(V)\bigr)$,
 		            where the individual restriction maps are $\O_X(U)$-linear by
 		            the definition of an $\O_X$-module. Let
-		            $\Fscr\otimes\Gscr=(\Fscr\otimes_\pre\Gscr)^\sh$, with the map
-		            $\Fscr\times\Gscr\to\Fscr\otimes\Gscr$ given by composition with the
-		            sheafification map, so $(f,g)\in(\Fscr\times\Gscr)(U)$ maps to
+		            $\scrF\otimes\scrG=(\scrF\otimes_\pre\scrG)^\sh$, with the map
+		            $\scrF\times\scrG\to\scrF\otimes\scrG$ given by composition with the
+		            sheafification map, so $(f,g)\in(\scrF\times\scrG)(U)$ maps to
 		            $\sh(f\otimes_\pre g)$.
 		            This is an $\O_X$-module, since (pre-)$\O_X$-module structures
 		            descend to sheafifications as in 2.6.I with the cokernel.
 
-		            Suppose $\phi:\Fscr\times\Gscr\to\Hscr$ is $\O_X(U)$-bilinear on each $U$.
+		            Suppose $\phi:\scrF\times\scrG\to\scrH$ is $\O_X(U)$-bilinear on each $U$.
 		            Then $\phi$ factors uniquely through an $\O_X$-linear map of
-		            presheaf $\O_X$-modules $\induced\phi_\pre:\Fscr\otimes_\pre\Gscr\to\Hscr$.
+		            presheaf $\O_X$-modules $\induced\phi_\pre:\scrF\otimes_\pre\scrG\to\scrH$.
 		            This then factors through a unique map of sheaves
-		            $\induced\phi:\Fscr\otimes\Gscr\to\Hscr$ by the universal property of
+		            $\induced\phi:\scrF\otimes\scrG\to\scrH$ by the universal property of
 		            sheafification, which is $\O_X$-linear by the construction of
 		            the $\O_X$-module structure on sheafification. This proves the
 		            universal property.
 
 		      \item Since sheafification preserves stalks, we can consider the
 		            presheaf tensor product. Then for each $U\ni x$, we have a map
-		            $(\Fscr\otimes_\pre\Gscr)(U)=\Fscr(U)\otimes\Gscr(U)\to\Fscr_x\otimes\Gscr_x$
-		            given by tensoring the maps $\Fscr(U)\to\Fscr_x$ and $\Gscr(U)\to\Gscr_x$.
+		            $(\scrF\otimes_\pre\scrG)(U)=\scrF(U)\otimes\scrG(U)\to\scrF_x\otimes\scrG_x$
+		            given by tensoring the maps $\scrF(U)\to\scrF_x$ and $\scrG(U)\to\scrG_x$.
 		            Since the latter commute with the individual restriction maps,
 		            the former commutes with the tensor product restriction maps, so
-		            we get an induced map $(\Fscr\otimes_\pre\Gscr)_x\to\Fscr_x\otimes\Gscr_x$,
+		            we get an induced map $(\scrF\otimes_\pre\scrG)_x\to\scrF_x\otimes\scrG_x$,
 		            where elementary tensor stalks $(f\otimes g)_x$ map to
 		            $f_x\otimes g_x$.
 
 		            Conversely, taking the morphism of sheaves of sets
-		            $\Fscr\times\Gscr\to\Fscr\otimes_\pre\Gscr$ on stalks gives a morphism
-		            $\Fscr_x\times\Gscr_x=(\Fscr\times\Gscr)_x\to(\Fscr\otimes_\pre\Gscr)_x$, where
+		            $\scrF\times\scrG\to\scrF\otimes_\pre\scrG$ on stalks gives a morphism
+		            $\scrF_x\times\scrG_x=(\scrF\times\scrG)_x\to(\scrF\otimes_\pre\scrG)_x$, where
 		            $(f_x,g_x)$ maps to $(f\otimes g)_x$ after restricting $f$ and
 		            $g$ to the same domain. This is $(\O_X)_x$-bilinear, since the
-		            original map $\Fscr\times\Gscr\to\Fscr\otimes_\pre\Gscr$ was $\O_X$-bilinear,
-		            so we get an induced map $\Fscr_x\otimes\Gscr_x\to(\Fscr\otimes_\pre\Gscr)_x$.
+		            original map $\scrF\times\scrG\to\scrF\otimes_\pre\scrG$ was $\O_X$-bilinear,
+		            so we get an induced map $\scrF_x\otimes\scrG_x\to(\scrF\otimes_\pre\scrG)_x$.
 
 		            These two maps are inverse to each other, and so give an
-		            isomorphism $(\Fscr\otimes_\pre\Gscr)_x\cong\Fscr_x\otimes\Gscr_x$ of
+		            isomorphism $(\scrF\otimes_\pre\scrG)_x\cong\scrF_x\otimes\scrG_x$ of
 		            $(\O_X)_x$-modules.
 	      \end{enumerate}
 \end{enumerate}
 
 \begin{enumerate}[label=\textbf{2.7.\Alph*.}]
-	\item For $U'\subseteq U$, the diagram of $\Gscr(V)$ for $V\supseteq\pi(U)$ is
+	\item For $U'\subseteq U$, the diagram of $\scrG(V)$ for $V\supseteq\pi(U)$ is
 	      a subcategory of that for $V\supseteq\pi(U')$, and so we get a natural
-	      morphism $\pi^{-1}\Gscr^\pre(U)\to\pi^{-1}\Gscr^\pre(U')$. Taking these to be
+	      morphism $\pi^{-1}\scrG^\pre(U)\to\pi^{-1}\scrG^\pre(U')$. Taking these to be
 	      the restriction maps gives a presheaf structure, where both
 	      functoriality conditions hold since the resulting morphism is uniquely
-	      determined by how it maps from the individual $\Gscr(V)$'s.
+	      determined by how it maps from the individual $\scrG(V)$'s.
 
 	      It may not be a sheaf: take the continuous map $\pi:\{0,1\}\to\{*\}$ on
-	      $\{0,1\}$ with the discrete topology, and $\Gscr(\{*\})=\{a,b\}$ with
-	      $a\ne b$. Then $\pi^{-1}\Gscr^\pre(U)=\Gscr(\{*\})$ for any non-empty
+	      $\{0,1\}$ with the discrete topology, and $\scrG(\{*\})=\{a,b\}$ with
+	      $a\ne b$. Then $\pi^{-1}\scrG^\pre(U)=\scrG(\{*\})$ for any non-empty
 	      $U\subseteq\{0,1\}$, and hence we get two sections
-	      $a\in\pi^{-1}\Gscr^\pre(\{0\})$ and $b\in\pi^{-1}\Gscr^\pre(\{1\})$ which have
+	      $a\in\pi^{-1}\scrG^\pre(\{0\})$ and $b\in\pi^{-1}\scrG^\pre(\{1\})$ which have
 	      no gluing to all of $\{0,1\}$, since they are distinct and restriction
 	      is trivial.
 
@@ -2671,53 +2674,53 @@
 	      (2.7.2.1) commute iff the following two triangles commute:
 	      \begin{equation*}
 		      \begin{tikzcd}
-			      &\Gscr(V) \arrow[swap]{d}{\res_{V,V'}} \arrow{dr}{\phi_{VU'}}
+			      &\scrG(V) \arrow[swap]{d}{\res_{V,V'}} \arrow{dr}{\phi_{VU'}}
 			      & \\
-			      &\Gscr(V') \arrow[swap]{r}{\phi_{V'U'}}
-			      &\Fscr(U')
+			      &\scrG(V') \arrow[swap]{r}{\phi_{V'U'}}
+			      &\scrF(U')
 		      \end{tikzcd}
 		      \begin{tikzcd}
-			      &\Gscr(V) \arrow{r}{\phi_{VU}} \arrow[swap]{dr}{\phi_{VU'}}
-			      &\Fscr(U) \arrow{d}{\res_{U,U'}} \\
+			      &\scrG(V) \arrow{r}{\phi_{VU}} \arrow[swap]{dr}{\phi_{VU'}}
+			      &\scrF(U) \arrow{d}{\res_{U,U'}} \\
 			      &
-			      &\Fscr(U')
+			      &\scrF(U')
 		      \end{tikzcd}
 	      \end{equation*}
 	      Now the triangle on the left is the condition for the $\phi_{VU}$'s to
-	      give a map $\pi^{-1}\Gscr^\pre(U)\to\Fscr(U)$ by the universal property of the
+	      give a map $\pi^{-1}\scrG^\pre(U)\to\scrF(U)$ by the universal property of the
 	      colimit, and the triangle on the right is the condition for these maps
-	      to give a morphism $\pi^{-1}\Gscr^\pre\to\Fscr$. Hence $\Mor_{YX}(\Gscr,\Fscr)$ is
-	      in bijection with $\Mor_X(\pi^{-1}\Gscr^\pre,\Fscr)$, and further with
-	      $\Mor_X(\pi^{-1}\Gscr,\Fscr)$ by the universal property of sheafification.
+	      to give a morphism $\pi^{-1}\scrG^\pre\to\scrF$. Hence $\Mor_{YX}(\scrG,\scrF)$ is
+	      in bijection with $\Mor_X(\pi^{-1}\scrG^\pre,\scrF)$, and further with
+	      $\Mor_X(\pi^{-1}\scrG,\scrF)$ by the universal property of sheafification.
 
 	      On the other hand, the triangle on the right is also equivalent to the
 	      maps $\phi_{VU}$ being simply given by restriction from
 	      $\phi_{V\pi^{-1}(V)}$, since $\pi^{-1}(V)$ is a maximal value for $U$.
 	      Then the triangle on the left is the condition for these maps to give a
-	      morphism $\Gscr\to\pi_*\Fscr$, so $\Mor_{YX}(\Gscr,\Fscr)$ is also in bijection with
-	      $\Mor_Y(\Gscr,\pi_*\Fscr)$.
+	      morphism $\scrG\to\pi_*\scrF$, so $\Mor_{YX}(\scrG,\scrF)$ is also in bijection with
+	      $\Mor_Y(\scrG,\pi_*\scrF)$.
 
-	      If $\psi:\Gscr'\to\Gscr$, then we get the induced map
-	      $\Mor_{YX}(\Gscr,\Fscr)\to\Mor_{YX}(\Gscr',\Fscr)$ by
+	      If $\psi:\scrG'\to\scrG$, then we get the induced map
+	      $\Mor_{YX}(\scrG,\scrF)\to\Mor_{YX}(\scrG',\scrF)$ by
 	      $\phi_{VU}\mapsto\phi_{VU}\circ\psi(V)$, which clearly corresponds to
-	      composition with $\psi$ in $\Mor_Y(\Gscr,\pi_*\Fscr)$, but also corresponds to
-	      composition with $\pi^{-1}\psi$ in $\Mor_X(\pi^{-1}\Gscr,\Fscr)$, since
+	      composition with $\psi$ in $\Mor_Y(\scrG,\pi_*\scrF)$, but also corresponds to
+	      composition with $\pi^{-1}\psi$ in $\Mor_X(\pi^{-1}\scrG,\scrF)$, since
 	      $\pi^{-1}\psi$ is induced directly from the maps $\psi(V)$.
 
-	      Similarly, if $\psi:\Fscr\to\Fscr'$ we get
-	      $\Mor_{YX}(\Gscr,\Fscr)\to\Mor_{YX}(\Gscr,\Fscr')$ by
+	      Similarly, if $\psi:\scrF\to\scrF'$ we get
+	      $\Mor_{YX}(\scrG,\scrF)\to\Mor_{YX}(\scrG,\scrF')$ by
 	      $\phi_{VU}\mapsto\psi(U)\circ\phi_{VU}$, which clearly corresponds to
-	      composition with $\psi$ in $\Mor_X(\pi^{-1}\Gscr,\Fscr)$, but also corresponds
-	      to composition with $\pi_*\psi$ in $\Mor_Y(\Gscr,\pi_*\Fscr)$ since
+	      composition with $\psi$ in $\Mor_X(\pi^{-1}\scrG,\scrF)$, but also corresponds
+	      to composition with $\pi_*\psi$ in $\Mor_Y(\scrG,\pi_*\scrF)$ since
 	      $\pi_*\psi$ is given by the maps $\psi(\pi^{-1}(V))$.
 
 	\item Since sheafification preserves stalks, we can consider
-	      $\pi^{-1}\Gscr^\pre$. Then
+	      $\pi^{-1}\scrG^\pre$. Then
 	      \begin{equation*}
-		      (\pi^{-1}\Gscr^\pre)_p
-		      = \colimit_{p\in U}\colimit_{\pi(U)\subseteq V}\Gscr(V)
-		      \cong \colimit_{q\in V}\Gscr(V)
-		      = \Gscr_q,
+		      (\pi^{-1}\scrG^\pre)_p
+		      = \colimit_{p\in U}\colimit_{\pi(U)\subseteq V}\scrG(V)
+		      \cong \colimit_{q\in V}\scrG(V)
+		      = \scrG_q,
 	      \end{equation*}
 	      since $V\supseteq\pi(U)$ for some $U\ni p$ iff $q\in V$, by taking
 	      $U=\pi^{-1}(V)$, and hence unwinding the universal property of the two
@@ -2727,29 +2730,29 @@
 	      then the functor $a^{-1}\circ b^{-1}$ is a left-adjoint for
 	      $b_*\circ a_*=(b\circ a)_*$, and so $a^{-1}\circ b^{-1}$ is naturally
 	      isomorphic to $(b\circ a)^{-1}$. Then letting $i:\{*\}\to X$ be the
-	      inclusion of $p$, we have $(\pi^{-1}\Gscr)_p$ given by
-	      $i^{-1}(\pi^{-1}\Gscr)\cong(\pi\circ i)^{-1}\Gscr$, which is $\Gscr_q$ since
+	      inclusion of $p$, we have $(\pi^{-1}\scrG)_p$ given by
+	      $i^{-1}(\pi^{-1}\scrG)\cong(\pi\circ i)^{-1}\scrG$, which is $\scrG_q$ since
 	      $\pi\circ i$ is the inclusion of $q$.
 
 	\item If $W\subseteq U$ is open, then
-	      $i^{-1}\Gscr(W)=\colimit_{W\subseteq V}\Gscr(V)\cong\Gscr(W)$ since $W$ is final
+	      $i^{-1}\scrG(W)=\colimit_{W\subseteq V}\scrG(V)\cong\scrG(W)$ since $W$ is final
 	      in the index category.
 
-	\item If $\Fscr\to\Gscr\to\Hscr$ is exact, then $\Fscr_q\to\Gscr_q\to\Hscr_q$ is exact for
+	\item If $\scrF\to\scrG\to\scrH$ is exact, then $\scrF_q\to\scrG_q\to\scrH_q$ is exact for
 	      each $q=\pi(p)$, and by 2.7.C we get that
-	      $(\pi^{-1}\Fscr)_p\to(\pi^{-1}\Gscr)_p\to(\pi^{-1}\Hscr)_p$ is exact. Hence
-	      $\pi^{-1}\Fscr\to\pi^{-1}\Gscr\to\pi^{-1}\Hscr$ is exact, since exactness can be
+	      $(\pi^{-1}\scrF)_p\to(\pi^{-1}\scrG)_p\to(\pi^{-1}\scrH)_p$ is exact. Hence
+	      $\pi^{-1}\scrF\to\pi^{-1}\scrG\to\pi^{-1}\scrH$ is exact, since exactness can be
 	      checked on stalks (see the solution to 2.6.E).
 
 	\item
 	      \begin{enumerate}[label=(\alph*)]
 		      \item If $q\notin Z$, then $q\in Y\setminus Z$ and
 		            $i^{-1}(Y\setminus Z)=\emptyset$, so
-		            $(i_*\Fscr)_q\cong\Fscr(\emptyset)$. Otherwise, if $U$ is an open
+		            $(i_*\scrF)_q\cong\scrF(\emptyset)$. Otherwise, if $U$ is an open
 		            neighbourhood of $q$ in $Y$ then $i^{-1}(U)$ is an open
 		            neighbourhood of $q$ in $Z$, and any open neighbourhood of $q$
 		            in $Z$ arises in this way by the definition of the subspace
-		            topology. Then $(i_*\Fscr)_q\cong\Fscr_q$, both being given by the
+		            topology. Then $(i_*\scrF)_q\cong\scrF_q$, both being given by the
 		            same diagram (up to duplicated objects).
 
 		      \item It is enough to check that the map is an isomorphism on
@@ -4148,16 +4151,16 @@
 
 	\item From 4.5.J we have a structure sheaf on the distinguished open set
 	      $D(f)\subseteq\Proj S_\bullet$ for each homogeneous $f$ of positive
-	      degree, given by $\Fscr_f=\pi_f^{-1}\Spec((S_\bullet)_f)_0$, where
+	      degree, given by $\scrF_f=\pi_f^{-1}\Spec((S_\bullet)_f)_0$, where
 	      $\pi_f:D(f)\to\Spec((S_\bullet)_f)_0$ is a homeomorphism. From 4.5.K we
-	      have isomorphisms on the overlaps $\Fscr_f|_{D(fg)} \cong \Fscr_{fg}$,
+	      have isomorphisms on the overlaps $\scrF_f|_{D(fg)} \cong \scrF_{fg}$,
 	      and for these to behave well on triple overlaps we need the composite
 	      \begin{equation*}
-		      \Fscr_f|_{D(fgh)} \cong \Fscr_{fg}|_{D(fgh)} \cong \Fscr_{fgh}
+		      \scrF_f|_{D(fgh)} \cong \scrF_{fg}|_{D(fgh)} \cong \scrF_{fgh}
 	      \end{equation*}
 	      to equal the direct isomorphism
 	      \begin{equation*}
-		      \Fscr_f|_{D(fgh)} \cong \Fscr_{fgh}.
+		      \scrF_f|_{D(fgh)} \cong \scrF_{fgh}.
 	      \end{equation*}
 	      But this holds, since the morphisms involved are all unique
 	      $((S_\bullet)_f)_0$-algebra morphisms (conflating the isomorphisms of
@@ -5526,7 +5529,85 @@
 \end{enumerate}
 
 \begin{enumerate}[label=\textbf{6.4.\Alph*.}]
-	\item
+	\item For $f\in S_+$ homogeneous of positive degree we have a morphism
+	      $D(\phi(f))\to D(f)$, since $\phi$ localizes to a graded map
+	      $(S_\bullet)_f\to(R_\bullet)_{\phi(f)}$. The restriction to
+	      $D(\phi(fg))$ is just the further localization
+	      $(S_\bullet)_{fg}\to(R_\bullet)_{\phi(fg)}$, so we get agreement on
+	      overlaps. By gluing we then get a morphism
+	      $\Proj R_\bullet\setminus V(\phi(S_+))\to\Proj S_\bullet$, since
+	      $V(\phi(S_+))=\cap V(\phi(f))$.
+
+	\item This is immediate from 4.5.I.
+
+	\item For any $\Z_{\ge0}$-graded ring $S_\bullet$ and any homogeneous ideal
+	      $I\subseteq S_\bullet$, if $f\in S_+\setminus I$ is homogeneous of
+	      positive degree we get
+	      \begin{equation*}
+		      (S_\bullet/(S_+\cdot I))_f\cong(S_\bullet/I)_f,
+	      \end{equation*}
+	      since $S_+$ generates the unit ideal in $(S_\bullet)_f$. Hence the
+	      obvious quotient map gives an isomorphism
+	      $\Proj S_\bullet/(S_+\cdot I)\cong\Proj S_\bullet/I$.
+
+	      For $R_\bullet=k[x,y,z]/(xz,yz,z^2)$ we get
+	      $\Proj R_\bullet\cong\Proj k[x,y,z]/(z)\cong\P^1_k$, and since
+	      $(x,y,z)\mapsto(x,y,0)$ on $R_\bullet$ induces the identity on the
+	      quotient $k[x,y,z]/(z)$, it induces the identity on $\Proj R_\bullet$.
+
+	\item If $f\in S_+$ is homogeneous of positive degree divisible by $n$, then
+	      $((S_\bullet)_f)_0=((S_{n\bullet})_f)_0$ since the numerator of an
+	      element of the former must have degree divisible by $n$. Now
+	      $D(g)=D(g^n)$ for any homogeneous $g\in S_+$, so the open sets $D(f)$
+	      as above cover $\Proj S_\bullet$, and hence
+	      $\Proj S_\bullet=\Proj S_{n\bullet}$.
+
+	\item Any $f\in S_{nm}$ is given by a polynomial in $A[S_1]$, and we can
+	      assume all the monomials have degree $nm$ so $f$ is an $A$-linear
+	      combination from $\{\prod_{i=1}^{nm}g_i:g_i\in S_1\}$. Now
+	      $\prod_{i=1}^{nm}g_i$ is a product of $m$ elements from $S_n$, so we see
+	      that $f\in A[S_n]$. Hence $S_{n\bullet}$ is generated in degree 1. Note
+	      that if we had finitely many generators in $S_1$ then this would give a
+	      finite generating set for $S_{n\bullet}$ in degree 1 (their $n$-fold
+	      products).
+
+	\item We can interpret the condition as saying we have a graded map
+	      $R_\bullet\to S_\bullet$ which restricts to an isomorphism of abelian
+	      groups on all but finitely many $R_n$'s. Then for a large value of $N$,
+	      it induces an isomorphism $R_{N\bullet}\to S_{N\bullet}$. Hence
+	      $\Proj R_\bullet\cong\Proj S_\bullet$ by 6.4.D.
+
+	\item We can assume $f_1,\ldots,f_n$ are homogeneous of positive degree.
+	      Let $d=\prod d_i$ be the product of their degrees $d_i=\deg f_i$.
+	      Suppose a product $f_1^{a_1}\cdots f_n^{a_n}$ has degree
+	      $a_1d_1+\cdots+a_nd_n\ge nd$. Then we must have $a_i\ge d/d_i$ for some
+	      $i$, and hence can pull out the factor $f_i^{d/d_i}$ of degree $d$. By
+	      induction, $f_1^{a_1}\cdots f_n^{a_n}$ is a monomial in the
+	      $f_i^{d/d_i}$'s multiplied by a homogeneous element of degree less than
+	      $nd$. If $a_1d_1+\cdots+a_nd_n$ is a multiple of $nd$, then this latter
+	      element has degree divisible by $nd$, and hence lies in $S_0$. Moreover
+	      the number of factors of the form $f_i^{d/d_i}$ must be divisible by $n$,
+	      so it follows that $S_{nd\bullet}$ is generated over $S_0$ by the finite
+	      set of $n$-fold products from $\{f_i^{d/d_i}\}$.
+
+	\item By 6.4.G, we have $S_{N\bullet}$ finitely generated in degree 1 for
+	      some $N$. Then $S_{nN\bullet}$ is also finitely generated in degree 1 by
+	      6.4.E. Let $f_1,\ldots,f_r\in S_+$ be homogeneous generators with
+	      $d_i=\deg f_i$. For $0\le j<N$, any element of $S_{nN\bullet+nj}$ is an
+	      $S_0$-linear combination of monomials $\prod_if_i^{a_i}$ with
+	      $\sum_ia_id_i=nj$ modulo $nN$. We can assume each $d_i$ divides $nN$, so
+	      by the same argument as in 6.4.G we can pull out factors $f_i^{nN/d_i}$
+	      until $\sum_ia_id_i=nj$. Hence $S_{nN\bullet+nj}$ is finitely-generated
+	      as an $S_{nN\bullet}$-module by $\{\prod_if_i^{a_i}:\sum_ia_id_i=nj\}$.
+	      Then $S_{n\bullet}=\oplus_jS_{nN\bullet+nj}$ is finite over
+	      $S_{nN\bullet}$, and hence finitely-generated over $S_0$.
+\end{enumerate}
+
+\begin{enumerate}[label=\textbf{6.5.\Alph*.}]
+	\item If $\pi$ is defined on a dense open set $U$, then the generic point
+	      $p$ of $X$ lies in $U$, and $\pi(U)\subseteq\closure{\{\pi(p)\}}$ since
+	      $U\subseteq\closure{\{p\}}$. Hence $\pi(U)$ is dense if $\pi(p)$ is the
+	      generic point of $Y$, and the converse is clear since $\pi(p)\in\pi(U)$.
 \end{enumerate}
 
 \end{document}
