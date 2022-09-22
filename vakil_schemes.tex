@@ -5137,7 +5137,7 @@
 
 \part{Morphisms}
 
-\chapter{Morphisms of Ringed Spaces}
+\chapter{Morphisms of schemes}
 
 \begin{enumerate}[label=\textbf{6.2.\Alph*.}]
 	\item There is a unique morphism of topological spaces $\pi:X\to Y$ as
@@ -5608,6 +5608,121 @@
 	      $p$ of $X$ lies in $U$, and $\pi(U)\subseteq\closure{\{\pi(p)\}}$ since
 	      $U\subseteq\closure{\{p\}}$. Hence $\pi(U)$ is dense if $\pi(p)$ is the
 	      generic point of $Y$, and the converse is clear since $\pi(p)\in\pi(U)$.
+
+	\item If $V\subseteq Y$ is the image of the rational map, then we have
+	      $\Gamma(V,\O_Y)\to K(X)$, and this factors through a map $K(Y)\to K(X)$
+	      since $K(Y)$ is the fraction field of $\Gamma(V,\O_Y)$.
+
+	\item If $a_1,\ldots,a_n\in K$ are generators over $k$, then consider the
+	      map $k[x_1,\ldots,x_n]\to K$ given by $x_i\mapsto a_i$. This gives an
+	      injection $k[x_1,\ldots,x_n]/\p\to K$ (note that $K$ is an integral
+	      domain so the kernel must have been prime), and the image generates
+	      $K$ as a field so $K$ is the fraction field of $k[x_1,\ldots,x_n]/\p$.
+	      Hence $\Spec k[x_1,\ldots,x_n]/\p$ gives an integral affine
+	      $k$-variety with function field $K$.
+
+	\item By 6.5.B, taking function fields gives a functor $K$ from (a) to (c).
+	      Now if we choose a generating set for everything in (c), then by 6.5.C
+	      and 6.5.7 we get a functor $F$ from (c) to the full subcategory (b) of
+	      (a). Clearly $K\circ F\cong\id$, and applying 6.5.7 to the identity
+	      gives $F\circ K\cong\id$, since a morphism inducing the identity on
+	      $K(X)$ must be $\id_X$ by considering an affine cover. This shows that
+	      both (a) and (b) are equivalent to (c).
+
+	\item Apart from $p$, every rational point $q$ on $C$ is given by
+	      $x=(m^2-1)/(m^2+1)$, $y=-2m/(m^2+1)$ for some $m\in\Q$. Multiplying
+	      out denominators this is given by $x=(a^2-b^2)/(a^2+b^2)$,
+	      $y=-2ab/(a^2+b^2)$ for $a,b\in\Z$ not both zero, where the case $b=0$
+	      has added in $p$. Hence every pythagorean triple is of the form
+	      $(a^2-b^2,-2ab,a^2+b^2)$ for $a,b\in\Z$, where the case $a=b=0$ has
+	      added in the one triple $(0,0,0)$ which does not project onto the
+	      circle.
+
+	\item In this and later exercises we are using 6.4.A and 6.3.M to define
+	      morphisms. The equivalent fact to 6.3.M(b) for morphisms defined as in
+	      6.4.A can be checked. Recall that $V(I)=\emptyset$ if $I$ contains a
+	      power of the irrelevant ideal.
+
+	      Write $C=\Proj k[x,y,z]/(x^2+y^2-z^2)$. We have a map $\P^1_k\to C$
+	      given by $[x,y]\mapsto[x^2-y^2,-2xy,x^2+y^2]$, since
+	      $(x^2-y^2,-2xy,x^2+y^2)=(x,y)^2$. The preimage of $D(x-z)$ is
+	      $D(-2y^2)=D(y)$, and the preimage of $D(x+z)$ is $D(2x^2)=D(x)$.
+	      Moreover, we have inverses $D(x-z)\to D(y)$ and $D(x+z)\to D(x)$ given
+	      by $[x,y,z]\mapsto[y,x-z]$ and $[x,y,z]\mapsto[x+z,-y]$; the
+	      composites are
+	      \begin{align*}
+		      [x,y]   & \mapsto [x^2-y^2,-2xy,x^2+y^2] \mapsto [-2xy,-2y^2] = [x,y] \\
+		      [x,y,z] & \mapsto [y,x-z] \mapsto [2(z-x)x,2(z-x)y,2(z-x)z] = [x,y,z]
+	      \end{align*}
+	      and
+	      \begin{align*}
+		      [x,y]   & \mapsto [x^2-y^2,-2xy,x^2+y^2] \mapsto [2x^2,2xy] = [x,y]     \\
+		      [x,y,z] & \mapsto [x+z,-y] \mapsto [2(x+z)x,2(x+z)y,2(x+z)z] = [x,y,z].
+	      \end{align*}
+	      Hence this gives an isomorphism $C\cong\P^1_k$.
+
+	\item If $C=\Spec\Q[x,y]/(y^2-x^3-x^2)$, then $(x,y)\mapsto y/x$ gives a
+	      rational map $C\dashrightarrow\A^1_\Q$ defined on
+	      $D(x)=C\setminus\{(0,0)\}$. Since the line with slope $m$ through
+	      $(0,0)$ meets $C$ where $m^2x^2=x^3+x^2$, the only other intersection
+	      is $(m^2-1,m^3-m)$. Hence the morphism $\A^1_\Q\to C$ given by
+	      $m\mapsto(m^2-1,m^3-m)$ is an inverse to the rational map
+	      $C\dashrightarrow\A^1_\Q$. In fact the two extraneous points $\pm1$
+	      map to $(0,0)$, so every rational point on $C$ is given by
+	      $(m^2-1,m^3-m)$ for some $m\in\Q$.
+
+	\item We have a map $f:\P^2_\Q\dashrightarrow Q$ given by intersecting the
+	      line through $[1,0,0,1]$ and $[x,y,z,0]$:
+	      \begin{equation*}
+		      [x,y,z]\mapsto[y^2-z^2-x^2,-2yx,-2zx,y^2-z^2+x^2],
+	      \end{equation*}
+	      defined on $D(x)\cup D(y^2-z^2)$. The inverse is defined on
+	      $Q\setminus\{[1,0,0,1]\}$ by $[x,y,z,w]\mapsto[x-w,y,z]$, so the
+	      map is birational. Now the preimage of $V(x,y^2-z^2)$ in
+	      $Q\setminus\{[1,0,0,1]\}$ is given by the two lines
+	      $V(x-w,y-z)\cup V(x-w,y+z)$, so $Q$ is covered by the images of three
+	      maps:
+	      \begin{align*}
+		      \P^2_\Q\supseteq D(x)\cup D(y^2-z^2) & \to Q; & [x,y,z] & \mapsto[y^2-z^2-x^2,-2yx,-2zx,y^2-z^2+x^2], \\
+		      \P^1_\Q                              & \to Q; & [x,y]   & \mapsto[x,y,y,x],                           \\
+		      \P^1_\Q                              & \to Q; & [x,y]   & \mapsto[x,y,-y,x].
+	      \end{align*}
+
+	\item On $D(xyz)$ we get
+	      \begin{equation*}
+		      [1/x,1/y,1/z]=[yz,xz,xy],
+	      \end{equation*}
+	      so it can be extended to
+	      \begin{equation*}
+		      D(yz)\cup D(xz)\cup D(xy)
+		      = \P^2_k\setminus\{[1,0,0],[0,1,0],[0,0,1]\}.
+	      \end{equation*}
+
+	\item Write $C=\Proj\C[x,y,z]/(x^n+y^n-z^n)$. Since $y^n-1$ is divisible
+	      by $y-1$ exactly once, the polynomial $x^n+y^n-1$ is irreducible (if
+	      it is a product of $f$ and $g$, they can't both be non-constant in
+	      $\C[x,y]/(y-1)$). Hence the homogenization $x^n+y^n-z^n$ is
+	      irreducible, so $C$ is an integral $\C$-variety.
+
+	      To show that there is no dominant rational map of $\C$-schemes
+	      $\P^1_\C\dashrightarrow C$, we reduce to showing that there are no
+	      maps of $\C$-extensions $K(C)\to K(\P^1_\C)$ by 6.5.B. Since $K(C)$ is
+	      the stalk at the generic point, we can reduce to an affine
+	      neighbourhood, and by the universal property of the fraction field we
+	      want to show non-existence of an injective $\C$-algebra map
+	      $\C[x,y]/(x^n+y^n-1)\hookrightarrow K(\P^1_\C)=\C(t)$. Considering the
+	      images of $x$ and $y$, it suffices to show that no non-constant
+	      functions $f,g\in\C(t)$ satisfy $f^n+g^n=1$. Note that this fails when
+	      $n=2$, since $\bigl(\frac{t^2-1}{t^2+1}\bigr)^2+\bigl(\frac{2t}{t^2+1}\bigr)^2=1$.
+
+	      Bringing $f$ and $g$ to a common denominator, we have an equation of
+	      polynomials $p(t)^n+q(t)^n=r(t)^n$ with $p,q,r\in\C[t]$ having no
+	      common factor, and we want to show that they are constant. Now if
+	      $\zeta$ is a primitive $n$th root of unity, we get
+	      \begin{equation*}
+		      \prod_{k=0}^{n-1}(r-\zeta^kq) = p^n,
+	      \end{equation*}
+	      so
 \end{enumerate}
 
 \end{document}
