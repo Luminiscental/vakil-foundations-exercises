@@ -5720,9 +5720,37 @@
 	      common factor, and we want to show that they are constant. Now if
 	      $\zeta$ is a primitive $n$th root of unity, we get
 	      \begin{equation*}
-		      \prod_{k=0}^{n-1}(r-\zeta^kq) = p^n,
+		      \prod_{k=0}^{n-1}(r-\zeta^kq) = p^n.
 	      \end{equation*}
-	      so
+	      For $\zeta^k\ne\zeta^{k'}$, since $q$ and $r$ are linear combinations
+	      of $r-\zeta^kq$ and $r-\zeta^{k'}q$, we get that no irreducible factor
+	      of $p$ can divide both. Moreover every irreducible factor of
+	      $r-\zeta^kq$ divides $p^n$, and hence $p$, so the irreducible
+	      factorization of $r-\zeta^kq$ is the $n$th power of a part of the
+	      irreducible factorization of $p$. Then since $1,\zeta,\zeta^2$ are
+	      distinct (as $n>2$), we get an alternative solution with relatively
+	      prime polynomials given by
+	      \begin{equation*}
+		      \biggl(\sqrt[n]{r-q}\biggr)^n + \biggl(\sqrt[n]{\alpha(r-\zeta q)}\biggr)^n
+		      = \biggl(\sqrt[n]{\beta(r-\zeta^2q)}\biggr)^n
+	      \end{equation*}
+	      whenever $\alpha,\beta\in\C$ satisfy $1+\alpha=\beta$ and
+	      $1+\zeta\alpha=\zeta^2\beta$. Such a choice of $\alpha$ and $\beta$ is
+	      possible, since $(1,-1)$ and $(\zeta^2,-\zeta)$ are linearly
+	      independent. If $\max\{\deg r,\deg q\}>0$, we have
+	      \begin{equation*}
+		      \max\{\deg\sqrt[n]{r-q},\deg\sqrt[n]{\alpha(r-\zeta q)}\}
+		      \le \frac{1}{n}\max\{\deg q,\deg r\}
+		      < \max\{\deg q,\deg r\},
+	      \end{equation*}
+	      so by induction $r-q$ and $r-\zeta q$ are constant. Hence $r$ and $q$
+	      are constant, so $p$ is too.
+
+	\item Since any nonempty open subset of an irreducible space is dense, the
+	      curves $C$ and $\P^1_\C$ from 6.5.J cannot have nonempty isomorphic
+	      open subsets.
+
+	\item
 \end{enumerate}
 
 \end{document}
