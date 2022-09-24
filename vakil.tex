@@ -49,6 +49,7 @@
 \newcommand{\I}{\mathscr{I}}
 \newcommand{\J}{\mathscr{J}}
 \renewcommand{\O}{\mathscr{O}} % old \O command was for the slashed O letter
+\newcommand{\scrC}{\mathscr{C}}
 \newcommand{\scrF}{\mathscr{F}}
 \newcommand{\scrG}{\mathscr{G}}
 \newcommand{\scrH}{\mathscr{H}}
@@ -126,7 +127,7 @@
 	      which has inverse given by the same construction with $f^{-1}$, and
 	      hence is an isomorphism $\Aut(A)\cong\Aut(B)$. In fact we see that
 	      $\Aut$ defines a functor from any groupoid to $\cat{Grp}$ with this
-          action on morphisms.
+	      action on morphisms.
 
 	\item We have linear maps $V\to V^{\dual\dual}$ given by $v\mapsto E_v$, where
 	      $E_v(f)=f(v)$. These form a natural transformation (note that $V$ is the
@@ -167,10 +168,9 @@
 	      $f\circ g=\id_B$). Hence $A\cong B$, and in fact the isomorphism is
 	      unique since $f$ and $g$ are the only maps between $A$ and $B$.
 
-	      Since final objects are initial objects in the opposite category,
-	      and isomorphisms in $\mathscr{C}$ correspond one-to-one with
-	      isomorphisms in $\mathscr{C}^\opp$, final objects are also
-	      uniquely isomorphic.
+	      Since final objects are initial objects in the opposite category, and
+	      isomorphisms in $\scrC$ correspond one-to-one with isomorphisms in
+	      $\scrC^\opp$, final objects are also uniquely isomorphic.
 
 	\item In $\cat{Set}$ the initial object is $0=\emptyset$ and the final
 	      object is $1=\{\emptyset\}$. The same is true for $\cat{Top}$, where
@@ -801,11 +801,11 @@
 \end{enumerate}
 
 \begin{enumerate}[label=\textbf{1.4.\Alph*.}]
-	\item Given a diagram $F:\J\to\mathscr{C}$, the object $F(e)$ together with
-	      the maps $F(\lambda)$ for $\lambda:i\to e$ in $\J$ gives a limit for the
+	\item Given a diagram $F:\J\to\scrC$, the object $F(e)$ together with the
+	      maps $F(\lambda)$ for $\lambda:i\to e$ in $\J$ gives a limit for the
 	      diagram, since any collection of commuting maps from the diagram
-	      includes a map from $F(e)$ which factors all the other maps since $e$ is
-	      initial.
+	      includes a map from $F(e)$ which factors all the other maps since $e$
+	      is initial.
 
 	\item Suppose we have maps $f_i:W\to A_i$ for $i\in\I$ which
 	      commute with each $F(m)$ for $m\in\Mor(\I)$. Then the map
@@ -1151,7 +1151,7 @@
 	      $(A^\bullet,f^\bullet)$ and $(B^\bullet,g^\bullet)$, the complex
 	      $(A^\bullet\times B^\bullet,f^\bullet\times g^\bullet)$ is a product,
 	      since existence and uniqueness of maps holds for each term, and the
-	      diagrams commute in both variables. Hence $\cat{Com}_\mathscr{C}$ is an
+	      diagrams commute in both variables. Hence $\cat{Com}_\scrC$ is an
 	      additive category.
 
 	      Given a morphism $\phi^\bullet:A^\bullet\to B^\bullet$, let
@@ -1174,7 +1174,7 @@
 	      monomorphisms (factorizations through a kernel are unique by definition).
 	      Hence $m^\bullet$ is a morphism, and we see that $k^\bullet$ is a kernel
 	      of $\phi^\bullet$. The same argument with arrows reversed shows that
-	      cokernels exist, so $\cat{Com}_\mathscr{C}$ satisfies axiom (1).
+	      cokernels exist, so $\cat{Com}_\scrC$ satisfies axiom (1).
 
 	      Suppose now that $\phi^\bullet$ is a monomorphism. Then each $\phi^i$ is
 	      a monomorphism; if $a:X\to A^i$ we can construct the following chain
@@ -1206,10 +1206,10 @@
 	      cokernel for $\phi^\bullet$, and suppose
 	      $\psi^\bullet:Y^\bullet\to B^\bullet$ is such that
 	      $k^\bullet\circ\psi^\bullet=0$. Since $\phi^i$ is a monomorphism, and
-	      $\mathscr{C}$ an abelian category, we have unique maps
-	      $l^i:Y^i\to A^i$ with $\psi^i=\phi^i\circ l^i$. It remains to show that
-	      $l^\bullet$ is a morphism. Say $y^\bullet$ is the coboundary operator of
-	      $Y^\bullet$. Then
+	      $\scrC$ an abelian category, we have unique maps $l^i:Y^i\to A^i$ with
+	      $\psi^i=\phi^i\circ l^i$. It remains to show that $l^\bullet$ is a
+	      morphism. Say $y^\bullet$ is the coboundary operator of $Y^\bullet$.
+	      Then
 	      \begin{align*}
 		      \phi^i\circ l^i\circ y^{i-1}
 		       & = \psi^i\circ y^{i-1}                 \\
@@ -1243,7 +1243,7 @@
 			      &\cdots
 		      \end{tikzcd}
 	      \end{equation*}
-	      Hence $\cat{Com}_\mathscr{C}$ is an abelian category.
+	      Hence $\cat{Com}_\scrC$ is an abelian category.
 
 	\item If $\phi^\bullet:A^\bullet\to B^\bullet$ is a morphism, then $\phi^i$
 	      maps $\ker f^i$ into $\ker g^i$ since $g^i\circ\phi^i=\phi^{i+1}\circ f^i$.
@@ -1292,10 +1292,10 @@
 		            $f\otimes\id$ as desired.
 
 		      \item
-		            That $\Hom(C,\cdot)$ is a functor $\mathscr{C}\to\cat{Ab}$
-		            follows from distributivity of composition over addition of
-		            morphisms. Then if $f:A\to B$ is a morphism in $\mathscr{C}$,
-		            we have $g\in\ker\bigl(\Hom(C,f)\bigr)$ iff $f\circ g=0$, iff
+		            That $\Hom(C,\cdot)$ is a functor $\scrC\to\cat{Ab}$ follows
+		            from distributivity of composition over addition of
+		            morphisms. Then if $f:A\to B$ is a morphism in $\scrC$, we
+		            have $g\in\ker\bigl(\Hom(C,f)\bigr)$ iff $f\circ g=0$, iff
 		            $g$ factors through $\ker f$, i.e. $g$ is in the image of
 		            $\Hom(C,\ker f)$. Moreover $\Hom(C,\ker f)$ is a monomorphism,
 		            since $\ker f$ is, so $\Hom(C,\ker f)$ is a kernel of
@@ -1308,8 +1308,8 @@
 		            group, which is clear and doesn't affect the argument.
 
 		      \item For the same reason as above it suffices to consider the
-		            general case. If $f:A\to B$ is a morphism in $\mathscr{C}$,
-		            then $g\in\ker\bigl(\Hom(f,C)\bigr)$ iff $g\circ f=0$, iff $g$
+		            general case. If $f:A\to B$ is a morphism in $\scrC$, then
+		            $g\in\ker\bigl(\Hom(f,C)\bigr)$ iff $g\circ f=0$, iff $g$
 		            factors through the cokernel of $f$, i.e. $g$ is in the image
 		            of $\Hom(\coker f,C)$. Moreover $\Hom(\coker f,C)$ is a
 		            monomorphism, since $\coker f$ is an epimorphism, so
@@ -1407,28 +1407,25 @@
 	      property of $Z$. Therefore $k$ is a kernel of $h$ as required.
 
 	\item Suppose $\I$, $\J$ are small categories, and we
-	      have a diagram $\pi:\I\times\J\to\mathscr{C}$ in
-	      $\mathscr{C}$, where $\I\times\J$ has objects (resp.
-	      morphisms) given by ordered pairs of those for $\I$ and
-	      $\J$. Suppose that for each $i\in\I$, and each
-	      $j\in\J$, the diagrams $\pi(\cdot,j)$ and $\pi(i,\cdot)$ have
-	      limits. (Note that these are diagrams indexed by $\I$ and
-	      $\J$; a morphism $\lambda$ is mapped to $\pi(\id_i,\lambda)$
-	      or $\pi(\lambda,\id_j)$.) Write $L_j=\limit\pi(\cdot,j)$ with
-	      $l_{ji}:L_j\to\pi(i,j)$, and $R_i=\limit\pi(i,\cdot)$ with
-	      $r_{ij}:R_i\to\pi(i,j)$. If $\lambda:j_1\to j_2$, then the morphisms
-	      $\pi(\cdot,\lambda)$ give a natural transformation
-	      $\pi(\cdot,j_1)\to\pi(\cdot,j_2)$. Similarly if $\mu:i_1\to i_2$,
-	      then the morphisms $\pi(\mu,\cdot)$ give a natural transformation
-	      $\pi(i_1,\cdot)\to\pi(i_2,\cdot)$. As previously, these natural
-	      transformations give morphisms $l(\lambda):L_{j_1}\to L_{j_2}$ and
-	      $r(\mu):R_{i_1}\to R_{i_2}$ by
+	      have a diagram $\pi:\I\times\J\to\scrC$ in $\scrC$, where $\I\times\J$
+	      has objects (resp. morphisms) given by ordered pairs of those for $\I$
+	      and $\J$. Suppose that for each $i\in\I$, and each $j\in\J$, the
+	      diagrams $\pi(\cdot,j)$ and $\pi(i,\cdot)$ have limits. (Note that
+	      these are diagrams indexed by $\I$ and $\J$; a morphism $\lambda$ is
+	      mapped to $\pi(\id_i,\lambda)$ or $\pi(\lambda,\id_j)$.) Write
+	      $L_j=\limit\pi(\cdot,j)$ with $l_{ji}:L_j\to\pi(i,j)$, and
+	      $R_i=\limit\pi(i,\cdot)$ with $r_{ij}:R_i\to\pi(i,j)$. If
+	      $\lambda:j_1\to j_2$, then the morphisms $\pi(\cdot,\lambda)$ give a
+	      natural transformation $\pi(\cdot,j_1)\to\pi(\cdot,j_2)$. Similarly if
+	      $\mu:i_1\to i_2$, then the morphisms $\pi(\mu,\cdot)$ give a natural
+	      transformation $\pi(i_1,\cdot)\to\pi(i_2,\cdot)$. As previously, these
+	      natural transformations give morphisms $l(\lambda):L_{j_1}\to L_{j_2}$
+	      and $r(\mu):R_{i_1}\to R_{i_2}$ by
 	      $l_{j_2i}\circ l(\lambda)=\pi(\id_i,\lambda)\circ l_{j_1i}$ and
 	      $r_{i_2j}\circ r(\mu)=\pi(\mu,\id_j)\circ r_{i_1j}$. In this way the
 	      $L_j$'s and $R_i$'s form diagrams indexed by $\J$ and
-	      $\I$ in $\mathscr{C}$. Suppose we have a limit
-	      $A=\limit L_j$ with $a_j:A\to L_j$. The claim is
-	      that $A$ gives a limit
+	      $\I$ in $\scrC$. Suppose we have a limit $A=\limit L_j$ with
+	      $a_j:A\to L_j$. The claim is that $A$ gives a limit
 	      $\limit_{\I\times\J}\pi(i,j)$ of the whole
 	      product-indexed diagram. By symmetry, $A$ is then also a limit of the
 	      $R_i$'s, so the limits commute.
@@ -1839,34 +1836,33 @@
 	      restriction maps behaves correctly as inherited from $\scrF$.
 
 	\item Let's prove a general result, tying this in with 1.6.C. If $\I$ is a
-	      small category, and $\mathscr{C}$ is an abelian category, then the
-	      functors $\I\to\mathscr{C}$ together with natural transformations
-	      between them form a functor category $\mathscr{C}^\I$. If $O$
-	      is a set of objects in $\I$, we can consider the full subcategory of
-	      functors that send every object in $O$ to 0 in $\mathscr{C}$.
-	      The claim is that this forms an abelian category, where kernels and
-	      cokernels can be computed term-wise. Viewing presheaves as functors,
-	      this shows what we want for $\ker_\pre$ and $\coker_\pre$, and we can
-	      get the result of 1.6.C by using a non-empty $O$ to
-	      characterize chain complexes.
+	      small category, and $\scrC$ is an abelian category, then the functors
+	      $\I\to\scrC$ together with natural transformations between them form a
+	      functor category $\scrC^\I$. If $O$ is a set of objects in $\I$, we
+	      can consider the full subcategory of functors that send every object
+	      in $O$ to 0 in $\scrC$. The claim is that this forms an abelian
+	      category, where kernels and cokernels can be computed term-wise.
+	      Viewing presheaves as functors, this shows what we want for $\ker_\pre$
+	      and $\coker_\pre$, and we can get the result of 1.6.C by using a
+	      non-empty $O$ to characterize chain complexes.
 
 	      It is an additive category:
 	      \begin{itemize}
 		      \item For functors $F$ and $G$ in the category, we have a subgroup
 		            relation
 		            \begin{equation*}
-			            \Hom(F,G) \le \prod_{i\in\I}\Hom_\mathscr{C}(F(i),G(i)),
+			            \Hom(F,G) \le \prod_{i\in\I}\Hom_\scrC(F(i),G(i)),
 		            \end{equation*}
 		            since the zero morphism is natural (the relevant composite
 		            morphisms are all zero, so everything commutes), and linearity
-		            of composition in $\mathscr{C}$ means naturality is preserved by
+		            of composition in $\scrC$ means naturality is preserved by
 		            addition. Hence $\Hom(F,G)$ has an abelian group structure,
 		            which distributes over composition since composition applies
 		            term-wise.
 
 		      \item The constant zero functor is an object of the category, and
-		            gives a zero object since $\prod\Hom_\mathscr{C}(0,\cdot)$ and
-		            $\prod\Hom_\mathscr{C}(\cdot,0)$ are trivial.
+		            gives a zero object since $\prod\Hom_\scrC(0,\cdot)$ and
+		            $\prod\Hom_\scrC(\cdot,0)$ are trivial.
 
 		      \item We have a product $F\times G$ given by
 		            $(F\times G)(i)=F(i)\times G(i)$ and
@@ -1874,14 +1870,14 @@
 		            universal property holds term-wise, the transformations $F\times
 			            G\to F$ and $F\times G\to G$ are natural, and a transformation
 		            $\phi:H\to F\times G$ is natural iff the projections $H\to F$
-		            and $H\to G$ are. Since $0\times0=0$ in $\mathscr{C}$ this still
+		            and $H\to G$ are. Since $0\times0=0$ in $\scrC$ this still
 		            respects $O$.
 	      \end{itemize}
 	      It is an abelian category, with kernels and cokernels computed
 	      term-wise:
 	      \begin{itemize}
 		      \item If $\phi:F\to G$ is a natural transformation in the category,
-		            then for $i\in\I$ we have kernels in $\mathscr{C}$ say
+		            then for $i\in\I$ we have kernels in $\scrC$ say
 		            $\ker\phi(i):Z(i)\to F(i)$. Then $Z$ actually gives a functor
 		            (axiom of choice!): if $\lambda:i\to j$, then we have
 		            \begin{equation*}
@@ -2759,8 +2755,8 @@
 		            stalks. From (a) and 2.7.D the stalk maps are isomorphisms for
 		            points in $Z$, and outside of $Z$ both the source and target
 		            stalks are trivial (for the source this is because of
-		            $\Supp\mathscr{C}\subseteq Z$), so in either case we do get an
-		            isomorphisms.
+		            $\Supp\scrG\subseteq Z$), so in either case we get an
+		            isomorphism.
 	      \end{enumerate}
 
 	\item skipped.
@@ -5609,9 +5605,8 @@
 	      $U\subseteq\closure{\{p\}}$. Hence $\pi(U)$ is dense if $\pi(p)$ is the
 	      generic point of $Y$, and the converse is clear since $\pi(p)\in\pi(U)$.
 
-	\item If $V\subseteq Y$ is the image of the rational map, then we have
-	      $\Gamma(V,\O_Y)\to K(X)$, and this factors through a map $K(Y)\to K(X)$
-	      since $K(Y)$ is the fraction field of $\Gamma(V,\O_Y)$.
+	\item If $p\in X$, $q\in Y$ are the generic points, then from 6.5.A we have
+	      a map of stalks $K(Y)=\O_{Y,q}\to\O_{X,p}=K(X)$.
 
 	\item If $a_1,\ldots,a_n\in K$ are generators over $k$, then consider the
 	      map $k[x_1,\ldots,x_n]\to K$ given by $x_i\mapsto a_i$. This gives an
@@ -5749,6 +5744,115 @@
 	\item Since any nonempty open subset of an irreducible space is dense, the
 	      curves $C$ and $\P^1_\C$ from 6.5.J cannot have nonempty isomorphic
 	      open subsets.
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item We have distinct
+		            $[\alpha_1,\beta_1],\ldots,[\alpha_4,\beta_4]\in\P^2_\C$ with
+		            each $L_i=\alpha_iP+\beta_iQ$ a perfect square. We can replace
+		            $P$ and $Q$ with linear combinations that have the same span,
+		            since such combinations remain relatively prime. Applying this
+		            to $L_1$ and $L_2$ we can assume $[\alpha_1,\beta_1]=[1,0]$ and
+		            $[\alpha_2,\beta_2]=[0,1]$, so $[\alpha_3,\beta_3]=[1,-\mu]$ and
+		            $[\alpha_4,\beta_4]=[1,-\lambda]$ for some $\lambda,\mu\in\C^*$.
+		            Then replacing $Q$ by $\mu Q$ we can assume $\mu=1$, and still
+		            $[\alpha_1,\beta_1]=[1,0]$, $[\alpha_2,\beta_2]=[0,1]$. So $P$,
+		            $Q$, $P-Q$, and $P-\lambda Q$ are perfect squares, with
+		            $\lambda\in\C\setminus\{0,1\}$.
+
+		            Now $P$ and $Q$ are coprime, so $u=\sqrt{P}$ and $v=\sqrt{Q}$
+		            are coprime. Then $u\pm v$ and $u\pm\sqrt\lambda v$ are coprime
+		            pairs, so since $(u+v)(u-v)=P-Q$ and
+		            $(u+\sqrt\lambda v)(u-\sqrt\lambda v)=P-\lambda Q$ are squares
+		            we get that $u\pm v$ and $u\pm\sqrt\lambda v$ are squares.
+		            This is a non-degenerate solution since $\lambda\notin\{0,1\}$,
+		            and if $\max\{\deg P,\deg Q\}>0$ we get
+		            \begin{equation*}
+			            \max\{\deg u,\deg v\}
+			            = \frac{1}{2}\max\{\deg P,\deg Q\}
+			            < \max\{\deg P,\deg Q\},
+		            \end{equation*}
+		            so by induction $u$ and $v$ are constant. Hence $P$ and $Q$ are
+		            constant.
+
+		      \item Suppose $(x,y)=(p/q,r/s)$ is a solution to 6.5.10.1, with
+		            $p/q$ and $r/s$ in lowest terms. Then
+		            \begin{equation*}
+			            r^2q^3 = s^2(p-aq)(p-bq)(p-cq),
+		            \end{equation*}
+		            where $q$ is coprime to $(p-aq)(p-bq)(p-cq)$ since $p$ and $q$
+		            are coprime, and $s$ is coprime to $r^2$ since $r$ and $s$ are
+		            coprime. Hence $q^3\divides s^2$ and $s^2\divides q^3$, so
+		            $s^2=\delta q^3$ for some $\delta\in\C^*$ and therefore
+		            \begin{equation*}
+			            r^2 = \delta(p-aq)(p-bq)(p-cq).
+		            \end{equation*}
+		            Then $p-aq$, $p-bq$, $p-cq$ are squares, since they are coprime,
+		            and $q=(s/\sqrt\delta q)^2$ so by (a) we get that $p$ and $q$
+		            are constant, since $a,b,c$ are distinct. Then $r$ and $s$ are
+		            constant, since $r^2$ and $s^2$ are given in terms $p$ and $q$.
+	      \end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}[label=\textbf{6.6.\Alph*.}]
+	\item By 6.3.F there is a natural bijection between $\C$-scheme morphisms
+	      $X\to\A^1_\C$ and $\C$-algebra morphisms $\C[x]\to\Gamma(X)$. Now there
+	      is a natural transformation from $\C$-algebra morphisms
+	      $\C[x]\to\Gamma(X)$ to elements of $\Gamma(X)$, given by evaluation at
+	      $x$. This is injective, because $x$ generates $\C[x]$ as a $\C$-algebra,
+	      and surjective, because given any $f\in\Gamma(X)$ there is the
+	      evaluation map $\C[x]\to\Gamma(X)$ given by $p(x)\mapsto p(f)$.
+
+	\item By taking an affine neighbourhood $\Spec A$ of the generic point,
+	      contained in the domain of definition of a rational map
+	      $X\dashrightarrow\A^1_\Z$, we have a map $\Z[x]\to A$ (i.e. an element
+	      of $A\subseteq K(X)$), and this uniquely determines the rational map
+	      since $\Spec A$ is dense (contains the generic point). Since any element
+	      of $K(X)$ is defined on some such neighbourhood, this shows that maps to
+	      $\A^1_\Z$ correspond to rational functions.
+
+	\item Natural transformations $h_Y\to h_Z$ are in bijection with morphisms
+	      $Y\to Z$ by 1.3.Z(b), and this bijection respects composition since it is
+	      just given by evaluating at $\id_Y\in h_Y(Y)$. Hence a natural
+	      isomorphism $h_Y\cong h_Z$ induces an isomorphism $Y\cong Z$.
+
+	\item Since $\{\text{Grothendieck, A.}\}$ is a singleton set, it suffices to
+	      find a $Y$ such that $\Mor(X,Y)$ is a singleton set for each $X$. In
+	      other words, it suffices to find a final object $Y$ in $\cat{Sch}$. This
+	      is $\Spec\Z$.
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item Note that products in the category of functors
+		            $\scrC\to\cat{Set}$ can be taken pointwise. Now if $X,Y,Z\in\scrC$
+		            have a natural isomorphism $h_Z\cong h_X\times h_Y$, then by
+		            definition a morphism $A\to Z$ corresponds naturally to
+		            morphisms $A\to X$ and $A\to Y$. In other words $Z$ satisfies
+		            the universal property of $X\times Y$, where the maps $Z\to X$
+		            and $Z\to Y$ come from applying the natural isomorphism to the
+		            identity map $Z\to Z$.
+
+		            Since $\Spec$ is adjoint to $\Gamma$, we want to show that
+		            $\Z[x_1,\ldots,x_n]$ represents the functor $R\mapsto R^n$ on
+		            commutative rings. This follows from the fact that maps
+		            $\Z[x_1,\ldots,x_n]\to R$ are uniquely and freely determined by
+		            the choice of images for $x_1,\ldots,x_n$.
+
+		            Since the functors being represented are $n$-fold products of
+		            $\Gamma$, the comment from above shows that $\A^n_\Z$ is an
+		            $n$-fold product of $\A^1_\Z$ in $\cat{Sch}$, or equivalently
+		            $\Z[x_1,\ldots,x_n]$ is the $n$-fold coproduct in $\cat{CRing}$
+		            (i.e. tensor product over $\Z$) of $\Z[x_1]$. The maps
+		            $\A^2_\Z\to\A^1_\Z$ come from the inclusions
+		            $\Z[x_i]\subseteq\Z[x_1,x_2]$.
+
+		      \item Since $\Spec$ is adjoint to $\Gamma$, it suffices to show that
+		            the functor $R\mapsto U(R)$ on commutative rings is represented
+		            by $\Z[t,t^{-1}]$. But maps from $\Z[t,t^{-1}]$ correspond to
+		            choices of image for $t$, which must be units since $t$ is a
+		            unit, and can be arbitrary units $u\in U(R)$ since evaluation
+		            $p(t,t^{-1})\mapsto p(u,u^{-1})$ is then a homomorphism.
+	      \end{enumerate}
 
 	\item
 \end{enumerate}
