@@ -6108,8 +6108,58 @@
 
 	\item
 	      \begin{enumerate}[label=(\alph*)]
-		      \item
+		      \item A left action of a group scheme $X$ on a scheme $Y$ is a
+		            morphism $\sigma:X\times Y\to Y$ such that
+		            \begin{equation*}
+			            \begin{tikzcd}
+				            &X\times X\times Y \ar[r,"\id\times\sigma"] \ar[d,"m\times\id"]
+				            &X\times Y \ar[d,"\sigma"] \\
+				            &X\times Y \ar[r,"\sigma"]
+				            &Y
+			            \end{tikzcd}\tag{G}
+		            \end{equation*}
+		            commutes and the composite
+		            \begin{equation*}
+			            Y
+			            \xrightarrow{(Z,\id)} Z\times Y
+			            \xrightarrow{(i,\id)} X\times Y
+			            \xrightarrow{\sigma} Y \tag{I}
+		            \end{equation*}
+		            is the identity. Then we have a traditional action of the
+		            group $\Mor(F,X)$ on the set $\Mor(F,Y)$ for any scheme $F$.
+
+		      \item Note that $A\otimes_\Z\Z[t,t^{-1}]=A[t,t^{-1}]$, so a group
+		            scheme action of $\G_m$ on $\Spec A$ corresponds to a map
+		            $f:A\to A[t,t^{-1}]$ such that if $f(a)=\sum_na_nt^n$ we have
+		            $\sum_na_n(st)^n=\sum_nf(a_n)s^n$ for (G) and $a=\sum_na_n$
+		            for (I). In other words $a=\sum_na_n$ and $f(a_n)=a_nt^n$. Now
+		            evaluation at 1 is a left inverse for $f$, so $\ker f=0$, and
+		            hence the natural $\Z$-grading on $A[t,t^{-1}]$ pulls back to
+		            a grading on $A$:
+		            \begin{equation*}
+			            A = \bigoplus_{n\in\Z}f^{-1}(t^nA).
+		            \end{equation*}
+		            Moreover any $a_n\in f^{-1}(t^nA)$ satisfies $f(a_n)=a_nt^n$
+		            from (G), so the map $f$ is entirely determined by this
+		            grading. Hence it suffices to show that such an $f$ exists for
+		            any given $\Z$-grading on $A$. Certainly defining
+		            $f(a_n)=a_nt^n$ for homogeneous $a_n$ of degree $n$ gives a
+		            map of abelian groups, and it is a ring homomorphism since if
+		            $b_m$ is homogeneous of degree $m$ then
+		            $f(a_nb_m)=a_nb_mt^{n+m}=(a_nt^n)(b_mt^m)=f(a_n)f(b_m)$.
+		            But it satisfies (G) and (I) by construction, so we are done.
 	      \end{enumerate}
+
+	\item The group operation on $\A^1_\Z$ was given by $\Spec$ of
+	      $\Z[t]\to\Z[x,y]$ where $t\mapsto x+y$. This is using the
+	      identification $\A^2_\Z=\A^1_\Z\times\A^1_\Z$, which from the point of
+	      view of rings is $\Z[x,y]=\Z[x]\otimes_\Z\Z[y]$. Hence the
+	      comultiplication map $\Z[t]\to\Z[x]\otimes_\Z\Z[y]$ is given by
+	      $t\mapsto x\otimes1+1\otimes y$.
+\end{enumerate}
+
+\begin{enumerate}[label=\textbf{6.7.\Alph*.}]
+	\item
 \end{enumerate}
 
 \end{document}
