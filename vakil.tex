@@ -6079,8 +6079,9 @@
 	\item The functor in question is $X\mapsto\{u\in U(\Gamma(X)):u^n=1\}$.
 	      This is representable by the closed subscheme
 	      $\Spec A[t,t^{-1}]/(t^n-1)$ of $\G_m$. Over a field $k$ of
-	      characteristic $p$ dividing $n$ we have $t^n-1=(t-1)^n$, so $t-1$
-	      gives a non-trivial nilpotent function on this group scheme.
+	      characteristic $p$ dividing $n$ we have $t^n-1=(t^{n/p}-1)^p$, so
+	      $t^{n/p}-1$ gives a non-trivial nilpotent function on this group
+	      scheme.
 
 	\item The functor in question is
 	      $X\mapsto\{M\in\GL_n(\Gamma(X)):\det(M)=1\}=\SL_n(\Gamma(X))$. This is
@@ -6097,7 +6098,7 @@
 	      multiplication map $\A^1_A\to\A^1_A$ comes from
 	      \begin{equation*}
 		      \begin{tikzcd}
-			      &\id\in\Mor(\A^1_A\times\A^1_A) \ar[d,equal]
+			      &\id\in\Mor(\A^1_A\times\A^1_A,\A^1_A\times\A^1_A) \ar[d,equal]
 			      &\Mor(\A^1_A\times\A^1_A,\A^1_A)\ni m \ar[d,equal] \\
 			      &(x,y)\in\Gamma(\A^1_A\times\A^1_A)\times\Gamma(\A^1_A\times\A^1_A) \ar[r,"\times"]
 			      &\Gamma(\A^1_A\times\A^1_A)\ni xy
