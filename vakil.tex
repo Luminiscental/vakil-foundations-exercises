@@ -581,7 +581,7 @@
 	      category, the only interesting condition is the existence of a map
 	      $W\to X\times_ZY$ whenever maps $W\to X$, $W\to Y$ exist (as well as
 	      the existence of the maps $p_X$, $p_Y$). This says that
-	      $X\times_ZY\subseteq W$ whenever $X\subseteq W$ and $X\subseteq W$.
+	      $X\times_ZY\subseteq W$ whenever $X\subseteq W$ and $Y\subseteq W$.
 	      Hence $X\times_ZY$ is minimal with respect to containing $X$ and $Y$,
 	      i.e. $X\times_ZY=X\cup Y$; the (fibered) product is the union.
 
@@ -6160,6 +6160,103 @@
 \end{enumerate}
 
 \begin{enumerate}[label=\textbf{6.7.\Alph*.}]
+	\item Any map $A^{\oplus n}\to A^{\oplus n}$ is uniquely represented by a
+	      matrix in $M_n(A)$ with respect to the standard basis. If such a map is
+	      an isomorphism, then the corresponding matrix has an inverse (the matrix
+	      for the inverse map), and hence is invertible. If $(v_1,\ldots,v_n)$
+	      and $(w_1,\ldots,w_n)$ are bases for $A^{\oplus n}$, then we have a
+	      composite isomorphism $A^{\oplus n}\to A^{\oplus n}$ given by
+	      \begin{equation*}
+		      a_1w_1+\cdots+a_nw_n
+		      \mapsto (a_1,\ldots,a_n)
+		      \mapsto a_1v_1+\cdots+a_nv_n
+	      \end{equation*}
+	      which is hence represented by an invertible matrix $P\in\GL_n(A)$. (Note
+	      that $P\in M_n(A)$ has an inverse iff $\det(P)\in U(A)$, because of the
+	      adjugate matrix.) Then $v_i=Pw_i$, and $P$ is unique with this property.
+
+	\item Let $P\in\GL_n(A)$ be such that $v=Pw$. A plane from $U_v$ is the
+	      columnspan with respect to $v$ of a matrix
+	      \begin{equation*}
+		      M(X) = \left[\begin{array}{c}
+				      I \\
+				      X
+			      \end{array}\right] =
+		      \begin{bmatrix}
+			      1          &            &        &            \\
+			                 & 1          &        &            \\
+			                 &            & \ddots &            \\
+			                 &            &        & 1          \\
+			      x_{1(k+1)} & x_{2(k+1)} & \cdots & x_{k(k+1)} \\
+			      \vdots     & \vdots     & \vdots & \vdots     \\
+			      x_{1n}     & x_{2n}     & \cdots & x_{kn}
+		      \end{bmatrix},
+	      \end{equation*}
+	      and the columnspan with respect to $w$ of $P\cdot M(X)$. This lies in
+	      $U_w$ iff the reduced column echelon form of $P\cdot M(X)$ is some
+	      $M(Y)$, i.e. iff the pivots of $P\cdot M(X)$ are the first $k$ rows.
+	      Hence if $N_P(X)$ denotes the first $k$ rows of $P\cdot M(X)$, the
+	      intersection $U_v\cap U_w$ under $U_v\cong\A^{k\times(n-k)}_A$ is the
+	      distinguished open set $D(\det N_P(X))$. We then glue the two schemes
+	      $D(\det N_P(X))$ and $D(\det N_{P^{-1}}(Y))$ representing $U_v\cap U_w$
+	      along the isomorphism
+	      \begin{equation*}
+		      A[(y_{ji}),1/\det N_{P^{-1}}(Y)] \to A[(x_{ji}),1/\det N_P(X)]
+	      \end{equation*}
+	      given by
+	      \begin{align*}
+		      M(Y) & \mapsto P\cdot M(X)N_P(X)^{-1},
+	      \end{align*}
+	      since right multiplication by $N_P(X)^{-1}$ puts $P\cdot M(X)$ into
+	      reduced column echelon form. Note that when $P=I$ this map is the
+	      identity on $U_v$, so the next exercise actually proves that it is an
+	      isomorphism.
+
+	\item Suppose we have a third basis $u$, with $w=Qu$. The triple overlap is
+	      given by the three rings
+	      \begin{align*}
+		       & R_v = A[(x_{ji}),1/\det N_P(X),1/\det N_{QP}(X)]                   \\
+		       & R_w = A[(y_{ji}),1/\det N_{P^{-1}}(Y),1/\det N_Q(Y)]               \\
+		       & R_u = A[(z_{ji}),1/\det N_{P^{-1}Q^{-1}}(Z),1/\det N_{Q^{-1}}(Z)],
+	      \end{align*}
+	      with maps
+	      \begin{align*}
+		      R_w & \to R_v; & M(Y) & \mapsto P\cdot M(X)N_P(X)^{-1}      \\
+		      R_u & \to R_w; & M(Z) & \mapsto Q\cdot M(Y)N_Q(Y)^{-1}      \\
+		      R_u & \to R_v; & M(Z) & \mapsto QP\cdot M(X)N_{QP}(X)^{-1}.
+	      \end{align*}
+	      Hence it suffices to show
+	      \begin{equation*}
+		      QP\cdot M(X)N_{QP}(X)^{-1} = Q\cdot M(Y)N_Q(Y)^{-1}
+	      \end{equation*}
+	      given $M(Y)=P\cdot M(X)N_P(X)^{-1}$. By substitution, this is equivalent
+	      to $N_{QP}(X)=N_Q(Y)N_P(X)$. Decompose $P$ with a $k\times k$ top left
+	      corner as follows:
+	      \begin{equation*}
+		      P =
+		      \left[\begin{array}{c|c}
+				      P_{11} & P_{12} \\
+				      \hline
+				      P_{21} & P_{22}
+			      \end{array}\right].
+	      \end{equation*}
+	      Then $N_P(X)=P_{11}+P_{12}X$ and $Y=(P_{21}+P_{22}X)N_P(X)^{-1}$, so
+	      \begin{align*}
+		      N_Q(Y)N_P(X)
+		       & = \bigl[Q_{11} + Q_{12}(P_{21}+P_{22}X)N_P(X)^{-1}\bigr]N_P(X) \\
+		       & = Q_{11}(P_{11}+P_{12}X) + Q_{12}(P_{21}+P_{22}X)              \\
+		       & = (Q_{11}P_{11} + Q_{12}P_{21}) + (Q_{11}P_{12}+Q_{12}P_{22})X \\
+		       & = (QP)_{11} + (QP)_{12}X                                       \\
+		       & = N_{QP}(X)
+	      \end{align*}
+	      as required. This verifies the cocycle condition, so the maps are indeed
+	      isomorphisms and we can glue the $U_v$ to get the structure of an
+	      $A$-scheme on $G(k,n)$.
+\end{enumerate}
+
+\chapter{Useful classes of morphisms}
+
+\begin{enumerate}[label=\textbf{7.1.\Alph*.}]
 	\item
 \end{enumerate}
 
