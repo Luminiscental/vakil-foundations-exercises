@@ -29,6 +29,7 @@
 \newcommand{\rad}[1]{\sqrt{#1}} % radical of an ideal
 \newcommand{\closure}[1]{\overline{#1}} % (algebraic / topological) closure 
 \newcommand{\shMod}[1]{\widetilde{#1}} % module sheaf
+\newcommand{\intClosure}[1]{\widetilde{#1}} % integral closure
 
 % names / symbols
 \newcommand{\opp}{{\mathrm{opp}}} % opposite label
@@ -4987,12 +4988,12 @@
 				            plot ({\x},{\x*\x})
 				            node[above=3pt] {$[(y-x^2)]$};
 
-				            \fill[gray!!80] (1,1) circle[radius=5pt];
+				            \fill[gray] (1,1) circle[radius=5pt];
 				            \draw (1,1)
 				            circle[radius=5pt]
 				            node[right=7pt] {$[(x-1,y-1)]$};
 
-				            \fill[gray!!80] (2,2) circle[radius=5pt];
+				            \fill[gray] (2,2) circle[radius=5pt];
 				            \draw (2,2)
 				            circle[radius=5pt]
 				            node[right=7pt] {$[(x-2,y-2)]$};
@@ -6257,7 +6258,272 @@
 \chapter{Useful classes of morphisms}
 
 \begin{enumerate}[label=\textbf{7.1.\Alph*.}]
+	\item Suppose $\pi=\tau\circ\rho$ is an open embedding onto $U\subseteq Y$.
+	      If $V\subseteq Y$ is open, and $W=\pi^{-1}(V)$, then
+	      $\pi|_W=\tau|_{U\cap V}\circ\rho|_W$. Now the restriction of the
+	      isomorphism $\rho$ to $W$ is again an isomorphism from $W$ to
+	      $\rho(W)=U\cap V$, and the restriction of the inclusion $\tau$ to
+	      $U\cap V$ is again an inclusion $U\cap V\to Y$, so $\pi|_W$ is again an
+	      open embedding.
+
+	      Now suppose $\pi'=\tau'\circ\rho'$ is an open embedding from $Y$ onto
+	      $V\subseteq Z$, so we have
+	      \begin{equation*}
+		      (X,\O_X)
+		      \xrightarrow{\rho} (U,\O_Y|_U)
+		      \xhookrightarrow{\tau} (Y,\O_Y)
+		      \xrightarrow{\rho'} (V,\O_Z|_V)
+		      \xhookrightarrow{\tau'} (Z,\O_Z).
+	      \end{equation*}
+	      It is a basic property of inclusions that $(\cdot)\circ\tau=(\cdot)|_U$,
+	      and $\rho'|_U$ is an isomorphism onto $\rho'(U)$ followed by the
+	      inclusion of $\rho'(U)$ into $V$, so we have
+	      \begin{equation*}
+		      (X,\O_X)
+		      \xrightarrow\sim (U,\O_Y|_Y)
+		      \xrightarrow\sim (\rho'(U),\O_Z|_{\rho'(U)})
+		      \hookrightarrow (V,\O_Z|_V)
+		      \hookrightarrow (Z,\O_Z).
+	      \end{equation*}
+	      Since isomorphisms and inclusions are closed under composition, it
+	      follows that $\pi'\circ\pi$ is an open embedding.
+
+	\item If $i:U\to Z$ is an open embedding, and $\rho:Y\to Z$ an arbitrary
+	      morphism, consider the open subscheme $W=\rho^{-1}(U)\subseteq Y$.
+	      By definition the following squares commutes:
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &W \ar[r,hook] \ar[d,"\rho|_W"] &Y \ar[d,"\rho"] \\
+			      &U \ar[r,hook,"i"] &Z
+		      \end{tikzcd}
+	      \end{equation*}
+	      Now suppose we have morphisms $\alpha:A\to U$ and $\beta:A\to Y$ such
+	      that $i\circ\alpha=\rho\circ\beta$. Then
+	      $A=\alpha^{-1}(U)=\beta^{-1}(W)$, so $\beta$ factors through $W$ and
+	      $\alpha$ is the composition with $\rho|_W$. This verifies the universal
+	      property of the fibered product, and property (iii) holds since the open
+	      embedding $i$ was lifted to an open inclusion $W\subseteq Y$.
+
+	\item If $U\subseteq X$ is an affine open subscheme, then $\pi|_U$ gives an
+	      isomorphism of it onto the open subscheme $\pi(U)\subseteq Y$. Then
+	      $U\cong\pi(U)$ is affine, and hence Noetherian if $Y$ is locally
+	      Noetherian. Therefore $X$ is locally Noetherian whenever $Y$ is. If $Y$
+	      is Noetherian, then the open subset $\pi(X)$ is quasicompact, and hence
+	      $X\cong\pi(X)$ is quasicompact. Therefore $X$ is Noetherian whenever $Y$
+	      is.
+
+	      By 3.6.G(b), it is possible for $Y$ to be quasicompact (even affine)
+	      while $X$ is not quasicompact.
+\end{enumerate}
+
+\begin{enumerate}[label=\textbf{7.2.\Alph*.}]
+	\item Since $(b_1,\ldots,b_n)=1$ in $B$, $(\phi(b_1),\ldots,\phi(b_n))=1$ in
+	      $\phi(B)$. Also the image of $B_{b_i}\to A_{\phi(b_i)}$ is
+	      $\phi(B)_{\phi(b_i)}\subseteq A_{\phi(b_i)}$, since
+	      $B_{b_i}\to\phi(B)_{\phi(b_i)}$ is surjective (as $B\to\phi(B)$ was). By
+	      definition $\phi$ is integral iff $\phi(B)\to A$ is, so we are reduced
+	      to the case of $B\subseteq A$.
+
+	      Now $a\in A$ satisfies integral equations in $A_{b_i}$ over $B_{b_i}$
+	      for each $i$, and multiplying these equations by powers of $a$ we can
+	      assume that they are all of degree $m$. Say
+	      \begin{equation*}
+		      (a/1)^m = \sum_{j=0}^{m-1}(c_{ij}/b_i^t)(a/1)^j
+	      \end{equation*}
+	      where $c_{ij}\in B$, and $t$ is chosen large enough to work for all $i$
+	      and $j$. Then by increasing $t$ even further, we can guarantee
+	      \begin{equation*}
+		      b_i^ta^m = \sum_{j=0}^{m-1}c_{ij}a^j.
+	      \end{equation*}
+	      Now $(b_1^t,\ldots,b_n^t)=1$ in $B$, so we can write $1=\sum f_ib_i^t$
+	      with $f_i\in B$. Then $a$ is integral over $B$, since
+	      \begin{equation*}
+		      a^m = \sum_{i=1}^nf_ib_i^ta^m =
+		      \sum_{i=1}^n\sum_{j=0}^{m-1}f_ic_{ij}a^j.
+	      \end{equation*}
+
 	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item If $a\in A$ satisfies a monic polynomial $P(x)\in B[x]$, then
+		            $a/1\in\phi(T)^{-1}A$ also satisfies $P(x)/1\in T^{-1}B[x]$,
+		            which is again a monic polynomial if $0\notin T$. Also
+		            $a+\phi(J)A\in A/\phi(J)A$ satisfies $P(x)+J[x]\in(B/J)[x]$,
+		            which is again a monic polynomial if $1\notin J$. Moreover
+		            $a+I\in A/I$ still satisfies $P(x)$. Now the identity $\Z\to\Z$
+		            is clearly integral, but if we localize the codomain to get
+		            $\Z\hookrightarrow\Q$ it is no longer integral, since $\Z$ is
+		            integrally closed.
+
+		      \item By (a) localization of $B$ preserves integrality, and since
+		            localization is exact it preserves inclusion. Again by (a)
+		            localization of $A$ does not preserve integrality in general,
+		            and of course quotienting $A$ does not preserve inclusion in
+		            general (e.g. $\Z\subseteq\Z$ but $\Z\nsubseteq\Z/(2)$).
+
+		      \item The kernel of $B\to A\to A/I$ is precisely the intersection of
+		            $I$ with $B$, which is $J$. Hence $B/J\to A/JA\to A/I$ is an
+		            injection, so $B/J\to A/JA$ must be an injection. By (a) it is
+		            also integral.
+	      \end{enumerate}
+
+	\item Firstly, if $B\to A$ and $C\to B$ are finite algebras, then $C\to A$
+	      is a finite algebra; finite generating sets $X$ and $Y$ for $A$ and $B$
+	      give a finite generating set $X\cdot Y=\{xy:x\in X,y\in Y\}$ for $A$
+	      over $C$.
+
+	      Now if $a\in A$ satisfies $a^{m+1}=\sum_{j=0}^mb_ja^j$, then $C[b_0]$ is
+	      finite over $C$ since $b_0$ is integral over $C$, and $C[b_0,b_1]$ is
+	      finite over $C[b_0]$ since $b_1$ is integral over $C[b_0]$. Continuing
+	      inductively we get that $C[b_0,\ldots,b_m]$ is finite over $C$. But
+	      $C[b_0,\ldots,b_m,a]$ is finite over $C[b_0,\ldots,b_m]$ with generators
+	      $1,a,\ldots,a^m$, so $C[b_0,\ldots,b_m,a]$ is finite over $C$. Hence $a$
+	      is integral over $C$.
+
+	\item If $a_1,\ldots,a_n\in A$ are integral over $B$, then the same argument
+	      as in 7.2.C shows that $B[a_1,\ldots,a_n]$ is finite over $B$. Hence any
+	      polynomial over $B$ in the $a_i$'s is integral over $B$.
+
+	\item Note that we are considering the case $B\subseteq A$ already (integral
+	      \emph{extension}). When $A$ is a field, we must have $\p=0$, so the
+	      theorem statement is that $B$ has no non-zero prime ideals, i.e. $B$ is
+	      a field. We prove this as follows: Suppose $b\in B$ is non-zero, so
+	      $1/b\in A$. Then $(1/b)^m=\sum_{j=0}^{m-1}c_j(1/b)^j$ for some
+	      $c_j\in B$, so $1/b=\sum_{j=0}^{m-1}c_jb^{m-1-j}\in B$.
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item It suffices to show the case $n=m+1$, and then inductively
+		            grow the chain one prime at a time. Moreover the primes before
+		            $\p_m$ and $\q_m$ are irrelevant, so we can assume $m=1$, $n=2$.
+		            Replacing $A$ and $B$ with $A/\p_1$ and $B/\q_1$ lets us assume
+		            $\p_1=\q_1=0$, preserving integrality by 7.2.B. Then the fact
+		            that $\p_1$ lies over $\q_1$ means $A\to B$ is injective, and
+		            the existence of a prime lying over $\q_2$ is the content of the
+		            Lying Over Theorem.
+
+		      \item ~
+		            \begin{center}
+			            \begin{tikzpicture}
+				            \coordinate (P1) at (0,1.4);
+				            \coordinate (P2) at (-0.4,1.8);
+				            \coordinate (P3) at (-0.15,1.7);
+
+				            \fill[gray!25] (P1) circle[radius=32pt];
+				            \fill[gray!50] (P2) circle[radius=14pt];
+				            \fill[gray!100] (P3) circle[radius=4pt];
+
+				            \draw (P1)
+				            node[below right] {\tiny $[\p_1]$}
+				            node[circle,fill,inner sep=1pt] {};
+				            \draw (P2)
+				            node[above left] {\tiny $[\p_2]$}
+				            node[circle,fill,inner sep=1pt] {};
+				            \draw (P3)
+				            node[above right] {\tiny $[\p_3]$}
+				            node[circle,fill,inner sep=1pt] {};
+
+				            \draw
+				            plot[smooth]
+				            coordinates {(-2,2) (P2) (P3) (P1) (2,1.4)}
+				            node[right=7pt] {$\Spec A$};
+
+				            \coordinate (Q1) at (0,-1.4);
+				            \coordinate (Q2) at (0.6,-1.3);
+				            \coordinate (Q3) at (0.9,-1.45);
+
+				            \fill[gray!25] (Q1) circle[radius=32pt];
+				            \fill[gray!50] (Q2) circle[radius=14pt];
+				            \fill[gray!100] (Q3) circle[radius=4pt];
+
+				            \draw (Q1)
+				            node[below left] {\tiny $[\q_1]$}
+				            node[circle,fill,inner sep=1pt] {};
+				            \draw (Q2)
+				            node[above] {\tiny $[\q_2]$}
+				            node[circle,fill,inner sep=1pt] {};
+				            \draw (Q3)
+				            node[below right] {\tiny $[\q_3]$}
+				            node[circle,fill,inner sep=1pt] {};
+
+				            \draw
+				            plot[smooth]
+				            coordinates {(-2,-2) (-1,-1.5) (Q1) (Q2) (Q3) (2,-1.5)}
+				            node[right=7pt] {$\Spec B$};
+
+				            \draw[->] (0,0.5) -- (0,-0.5);
+			            \end{tikzpicture}
+		            \end{center}
+	      \end{enumerate}
+
+	\item The map $N\to M/IM$ is surjective iff $N+IM=M$, i.e. $I(M/N)=M/N$. But
+	      then $M/N=0$ by Nakayama's lemma, since $M/N$ is finitely-generated.
+
+	\item Let $N=(f_1,\ldots,f_n)\subseteq M$. The assumption is that
+	      $N\to M/\m M$ is surjective, so $M=N$ by 7.2.G.
+
+	\item Let $m_1,\ldots,m_n$ be generators for $M$ as an $S$-module. Then
+	      $rm_i=\sum_js_{ij}m_j$ for some $s_{ij}\in S$, and the same argument as
+	      in Nakayama's lemma shows that $p(r)M=0$, where $p(x)$ is the
+	      characteristic polynomial of $(s_{ij})$. But $p(x)\in S[x]$ is monic,
+	      and $p(r)=0$ since $M$ is faithful, so $r$ is integral over $S$.
+
+	\item Suppose $x\in K(A)$ satisfies an equation $x^m=\sum_{j=0}^{m-1}a_jx^j$
+	      where $a_j\in\intClosure A$. Since each $a_j$ is integral over $A$, we
+	      get that $A[a_0,\ldots,a_{m-1}]$ is finite over $A$. But $x$ is integral
+	      over $A[a_0,\ldots,a_{m-1}]$, so $A[a_0,\ldots,a_{m-1},x]$ is also
+	      finite over $A$ and hence $x\in\intClosure A$.
+\end{enumerate}
+
+\begin{enumerate}[label=\textbf{7.3.\Alph*.}]
+	\item If $A\xrightarrow\phi B\xrightarrow\psi C$ are quasicompact, and
+	      $U\subseteq C$ is a quasicompact open set, then $\psi^{-1}(U)$ is a
+	      quasicompact open set, so $\phi^{-1}(\psi^{-1}(U))$ is a quasicompact
+	      open set. Hence $\psi\circ\phi$ is quasicompact.
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item Open subsets of Noetherian spaces are quasicompact.
+		      \item Open subsets of quasiseparated spaces are quasiseparated.
+	      \end{enumerate}
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item We check that the condition of having quasicompact preimage
+		            under $\pi$ is affine-local.
+
+		            Suppose $U\subseteq Y$ is an affine open set with $\pi^{-1}(U)$
+		            quasicompact, and suppose $D(f)\subseteq U$ is a distinguished
+		            open set. Take a finite cover of $\pi^{-1}(U)$ by affine open
+		            sets $V_j$. The preimage $\pi^{-1}(D(f))$ is the non-vanishing
+		            locus of $\pi^\sharp f\in\Gamma(\pi^{-1}(U_i),\O_X)$, and hence
+		            $\pi^{-1}(D(f))\cap V_j=D((\pi^\sharp f)|_{V_j})$ is
+		            distinguished in $V_j$. Then $\pi^{-1}(D(f))$ is a finite union
+		            of affine open sets, and therefore is quasicompact.
+
+		            If instead $U$ has a finite cover by distinguished open sets
+		            whose preimages are quasicompact, then $\pi^{-1}(U)$ is a finite
+		            union of quasicompact open subsets, and hence is also
+		            quasicompact.
+
+		            Hence $\pi$ is quasicompact by the Affine Communication Lemma.
+
+		      \item Note that open subsets of quasiseparated spaces are again
+		            quasiseparated. Moreover, anything with a finite cover by open
+		            quasiseparated subsets is again quasiseparated. Hence $\pi$ is
+		            quasiseparated by the Affine Communication Lemma.
+	      \end{enumerate}
+
+	\item Affine schemes are quasicompact and quasiseparated.
+
+	\item Restriction gives a map $\Gamma(X,\O_X)\to\Gamma(X_s,\O_X)$, and the
+	      image of $s$ is invertible since $s$ is invertible in every stalk of
+	      $X_s$.
+
+	\item We can assume the cover is given by distinguished open sets, and so
+	      the complement of $Z$ in each covering set is also a distinguished open
+	      set. Then the intersection of $Y$ with these affine open sets is affine,
+	      so applying 7.3.4 to the inclusion $Y\hookrightarrow\Spec A$ shows that
+	      $Y$ is affine.
 \end{enumerate}
 
 \end{document}
