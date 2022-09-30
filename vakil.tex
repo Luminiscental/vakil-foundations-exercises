@@ -6524,6 +6524,291 @@
 	      set. Then the intersection of $Y$ with these affine open sets is affine,
 	      so applying 7.3.4 to the inclusion $Y\hookrightarrow\Spec A$ shows that
 	      $Y$ is affine.
+
+	\item We check that ``$\pi^{-1}(\Spec A)$ is the spectrum of a finite
+	      $A$-algebra'' is affine-local; suppose $(f_1,\ldots,f_n)=1$ in $A$. If
+	      $\pi^{-1}(\Spec A)=\Spec B$ with $B$ finite over $A$, then
+	      $\pi^{-1}(\Spec A_{f_i})=\Spec B_{g_i}$ where $g_i$ is the image of
+	      $f_i$ in $B$. Moreover $B_{g_i}$ is finite over $A_{f_i}$, by the same
+	      generating set as for $A$ over $B$. Conversely, suppose
+	      $\pi^{-1}(\Spec A_{f_i})$ is the spectrum of a finite
+	      $A_{f_i}$-algebra. By 7.3.4, we get that $\pi^{-1}(\Spec A)=\Spec B$
+	      is affine. Then $\pi^{-1}(\Spec A_{f_i})=\Spec B_{g_i}$ where $g_i$ is
+	      the image of $f_i$ in $B$, and by assumption $B_{g_i}$ is finite over
+	      $A_{f_i}$. We may assume we have a finite generating set of the form
+	      $\{b_{ij}/1\}_j$ for $B_{g_i}$ as an $A_{f_i}$-module. Then any
+	      $b\in B$ has
+	      \begin{equation*}
+		      g_i^Nb = \sum_ja_jb_{ij}
+	      \end{equation*}
+	      for each $i$, with $a_j\in A$, by taking $N$ large enough. Then since
+	      $1=\sum_ie_if_i^N$ with $e_i\in A$, we get
+	      \begin{equation*}
+		      b = \sum_{i,j}(e_ia_j)b_{ij}.
+	      \end{equation*}
+	      Hence $\{b_{ij}\}$ gives a finite generating set for $B$ as an
+	      $A$-module.
+
+	\item It suffices to prove the case where $X=\Spec A$, since otherwise $X$
+	      is covered by such sets, and hence is a discrete set---possibly
+	      infinite, but otherwise as described. To be finite over $k$ it must be
+	      a finite set, since $\Gamma(X)$ is the direct product of all the
+	      stalks.
+
+	      Now if $A$ is a finite $k$-algebra, then every prime in $A$ is maximal
+	      by 3.2.G. But $\Spec A$ is a finite union of irreducible components,
+	      which are the closures of generic points. Since all the points are
+	      closed, this shows that $\Spec A$ is a finite union of closed points,
+	      and hence is a finite discrete set. The residue field at a point
+	      $[\m]$ is $A/\m$, which is finite over $k$ since $A$ is.
+
+	\item This holds since a composite of finite algebras is finite (see the
+	      first sentence in the solution to 7.2.C).
+
+	\item The multiplication maps $S_n\otimes S_m\to S_{n+m}$ are just the
+	      maps $R\otimes R\to R$, $A\otimes R\to R$, $A\otimes A\to A$ given by
+	      the ring and algebra structures. If $x$ denotes the element of $S_1$
+	      given by $1\in R$, then $(x)\supseteq S_{\ge2}$ since $S_{n+1}=xS_n$
+	      for $n\ge1$, and therefore $\rad{(x)}\supseteq S_+$. Hence
+	      $\Proj S_\bullet\cong\Spec((S_\bullet)_x)_0$, and it suffices to show
+	      that $((S_\bullet)_x)_0\cong R$. But
+	      \begin{align*}
+		      ((S_\bullet)_x)_0
+		       & = \sum_{n\ge0}S_n/x^n &  &                                          \\
+		       & = \sum_{n\ge1}S_n/x^n &  & \text{since $S_0=xS_0/x\subseteq S_1/x$} \\
+		       & = S_1/x               &  & \text{since $S_n=x^{n-1}S_1$},
+	      \end{align*}
+	      so the obvious injection $R\to((S_\bullet)_x)_0$ given by
+	      $r\mapsto r/x$ is surjective.
+
+	      Now if $r_1,\ldots,r_n$ generate $R$ as an $A$-module, then they
+	      generate $S_1$ as an $S_0$-module, and hence they generate all of
+	      $S_\bullet$ as an $A$-algebra by multiplication with $x$ as above. So
+	      in this case $S_\bullet$ is a finitely generated graded $A$-algebra,
+	      and $\Spec R\cong\Proj S_\bullet$ is projective over $A$.
+
+	\item Since $\pi$ is affine, we can restrict to the preimage of an affine
+	      neighbourhood of $q\in Y$, and assume $X=\Spec A$, $Y=\Spec B$. Then
+	      we can restrict to the preimage of the closure of $q=[\q]$, which is
+	      the underlying set map for the induced morphism
+	      $\Spec A/I\to\Spec B/\q$ where $I=A\q$, which is again finite using
+	      the images of generators for $A$ over $B$. The localized map
+	      $\Spec S^{-1}(A/I)\to\Spec S^{-1}(B/\q)$ where $S=(B/\q)^*$
+	      corresponds to restricting to $\{[\q]\}$ and its fibre for the
+	      underlying sets, and remains finite by again using images of
+	      generators for $A$ over $B$. But $S^{-1}(B/\q)=K(B/\q)$ is a field, so
+	      by 7.3.H we get that $\Spec S^{-1}(A/I)$ has finitely many points as
+	      required.
+
+	\item It is injective on points, so the fibres are certainly finite. It is
+	      affine, since the preimage $\A^1_\C\setminus\{0\}=D(x)$ of $\A^1_\C$
+	      is affine. However the pullback map $\C[x]\subseteq\C[x,1/x]$ is not
+	      a finite extension, since a finite set cannot generate elements with
+	      arbitrarily large degree in $1/x$.
+
+	\item It suffices to check locally, so consider an integral morphism
+	      $\pi:\Spec A\to\Spec B$ and a closed set $V(I)\subseteq\Spec A$. Then
+	      if $J=(\pi^\sharp)^{-1}(I)$ we have $\pi(V(I))\subseteq V(J)$, and the
+	      map $B/J\to A/I$ is injective by construction, and integral by 7.2.B.
+	      Hence $\Spec A/I\to\Spec B/J$ is surjective by Lying Over, so
+	      $\pi(V(I))=V(J)$ is closed.
+
+	\item Since the elements integral over $C$ form a $C$-subalgebra of
+	      $A\otimes_BC$, it suffices to consider elementary tensors $a\otimes c$.
+	      Now $a$ is integral over $B$, so we have $a^m=\sum_{j=0}^{m-1}b_ja^j$
+	      for some $b_j\in B$. Then
+	      \begin{equation*}
+		      (a\otimes c)^m
+		      = c^m\cdot(a\otimes 1)^m
+		      = c^m\sum_{j=0}^{m-1}b_j(a\otimes 1)^j
+		      = \sum_{j=0}^{m-1}b_jc^{m-j}(a\otimes c)^j,
+	      \end{equation*}
+	      so $a\otimes c$ is integral over $C$ as required.
+
+	\item The property that $\pi^{-1}(\Spec B)$ is locally finite type over
+	      $B$ is affine-local:
+	      \begin{itemize}
+		      \item If $\pi^{-1}(\Spec B)=\cup_i\Spec A_i$ with $A_i$ finitely
+		            generated over $B$, and $f\in B$, then
+		            $\pi^{-1}(\Spec B_f)=\cup_i\Spec A_{f_i}$ where $f_i\in A_i$
+		            is the image  of $f$, and $(A_i)_{f_i}$ is finitely generated
+		            over $B_f$ by the same generators as for $A_i$ over $B$.
+
+		      \item If $(f_1,\ldots,f_n)=1$ in $B$, and
+		            $\pi^{-1}(\Spec B_{f_i})=\cup_j\Spec A_{ij}$ with $A_{ij}$
+		            finitely generated over $B_{f_i}$, then
+		            $\pi^{-1}(\Spec B)=\cup_{ij}\Spec A_{ij}$, and $A_{ij}$ is
+		            finitely generated over $B$ by adjoining $1/f_i$ to a
+		            generating set over $B_{f_i}$.
+	      \end{itemize}
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item For a finite morphism, the preimage of $\Spec B$ is affine
+		            and finite over $B$, which certainly counts as a union of
+		            affines finitely generated over $B$.
+
+		      \item From (a) and 7.2.2, it suffices to show that an integral
+		            morphism of finite type is finite. Since integral morphisms
+		            are affine, it suffices to show that if $B$ is a finitely
+		            generated integral $A$-algebra, then $B$ is finite over $A$.
+		            But this is implicit in the solution 7.2.D; if
+		            $b_1,\ldots,b_n$ generate $B$ as an $A$-algebra, then
+		            $A[b_1,\ldots,b_{i+1}]$ is finite over $A[b_1,\ldots,b_i]$ by
+		            the proof of 7.2.1, and hence $B$ is finite over $A$ by 7.2.C.
+	      \end{enumerate}
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item An open subset of $\Spec A$ is covered by affine open sets
+		            $\Spec A_f$, and $A_f=A[1/f]$ is finitely generated over $A$.
+		            Hence open embeddings are locally of finite type. If $A$ is
+		            Noetherian, then there is a finite subcover by 3.6.T. Hence
+		            open embeddings into locally Noetherian schemes are of finite
+		            type.
+
+		      \item This is immediate from 7.2.C.
+
+		      \item We have $Y=\cup_i\Spec A_i$ with $A_i$ Noetherian, and
+		            $\pi^{-1}(\Spec A_i)=\Spec B_i$ with $B_i$ finitely generated
+		            over $A_i$, so $B_i$ is Noetherian by the Hilbert Basis
+		            Theorem, and hence $X=\cup_i\Spec B_i$ is locally Noetherian.
+		            If finitely many $A_i$'s suffice, then finitely many $B_i$'s
+		            suffice, so $X$ is Noetherian whenever $Y$ is.
+	      \end{enumerate}
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item Let $\psi:k[x_1,\ldots,x_n]\to k[x_1,\ldots,x_n]$ be given
+		            by $f\mapsto f^p$. This is a ring homomorphism, since the
+		            characteristic is $p$, and $\Spec\psi$ is the identity on
+		            points since $f^p\in\p$ iff $f\in\p$. Now $\psi^r=\phi^r$,
+		            since $k$ is the splitting field of $x^{p^r}-x$ over $\F_p$,
+		            so $F^r=\Spec\psi^r$ is also the identity on points. However
+		            $F^r$ is not the identity morphism, since $\phi^r$ is not the
+		            identity.
+
+		      \item Since $F^r$ is the identity on points, $F$ is a bijection on
+		            points, but it cannot be an isomorphism since $\phi$ is not
+		            surjective.
+
+		      \item Since $K=\colimit\F_{p^n}$ with the inclusions
+		            $\F_{p^n}\subseteq\F_{p^{nk}}$, any $f\in K[x_1,\ldots,x_n]$
+		            has coefficients coming from $\F^{p^{N_f}}$ for some large
+		            $N_f$. If $\phi=F^\sharp$ is the pullback on global functions,
+		            then $\phi^{N_f}(f)=f^{p^{N_f}}$, so $F$ is bijective:
+		            \begin{itemize}
+			            \item it is injective since
+			                  $\p=\{f:f^{N_f}\in\p\}=\{f:\phi^{N_f-1}(f)\in\phi^{-1}(\p)\}$.
+
+			            \item it is surjective by Lying Over, since
+			                  $f^{p^{N_f}}-\phi^{N_f}(f)=0$ makes $f$ integral over
+			                  $\im\phi$.
+		            \end{itemize}
+		            However no power of $F$ is the identity on points, since
+		            $F^N$ does not fix the closed points with coordinates in
+		            $\F_{p^{2N}}\setminus\F_{p^N}$.
+	      \end{enumerate}
+
+	\item The restriction to a distinguished open set $D(g)\subseteq\Spec A$
+	      is the map $A\to A_g$ given by $f\mapsto f^p/1$, which is the same as
+	      the composite of $f\mapsto f^p$ on $A_g$ with the canonical map
+	      $A\to A_g$. By 5.3.1, this is enough to conclude that the morphisms
+	      glue.
+
+	\item Suppose $\Spec B=\cup_f\Spec B_f$. If we have
+	      $\pi^{-1}(\Spec B)=\cup_i\Spec A_i$ with $A_i$ finitely presented over
+	      $B$, then $\pi^{-1}(\Spec B_f)=\cup_i\Spec(A_i)_f$, and $(A_i)_f$ is
+	      finitely presented over $B_f$ by exactness of localization:
+	      \begin{align*}
+		      \bigl(B[x_1,\ldots,x_n]/(r_1,\ldots,r_m)\bigr)_f
+		       & \cong B[x_1,\ldots,x_n]_f/(r_1,\ldots,r_m)_f    \\
+		       & \cong B_f[x_1,\ldots,x_n]/(r_1/1,\ldots,r_m/1).
+	      \end{align*}
+	      (Here $(A_i)_f$ denotes localization at the image of $f$ in $A_i$.)
+
+	      Conversely if $\pi^{-1}(\Spec B_f)=\cup_i\Spec A^{(f)}_i$ with
+	      $A^{(f)}_i$ finitely presented over $B_f$, then
+	      $\pi^{-1}(\Spec B)=\cup_{i,f}\Spec A^{(f)}_i$, and $A^{(f)}_i$ is
+	      finitely presented over $B$; we can assume the relations over $B_f$
+	      have coefficients in $B$ since $f$ is a unit, and then we get
+	      \begin{align*}
+		      A^{(f)}_i
+		       & \cong B_f[x_1,\ldots,x_n]/(r_1,\ldots,r_m)       \\
+		       & \cong B[x_1,\ldots,x_n,z]/(r_1,\ldots,r_m,zf-1).
+	      \end{align*}
+
+	\item We show that being locally of finite presentation is affine-local on
+	      the source by showing that finite-presentation of $B$-algebras is
+	      affine-local; suppose $(f_1,\ldots,f_r)=1$ in a $B$-algebra $A$.
+	      \begin{itemize}
+		      \item If $A$ is finitely presented, then $A_{f_i}$ is finitely
+		            presented by adjoining a generator $z$ with the relation
+		            $zs_i=1$ where $s_i$ is a polynomial expressing $f_i\in A$.
+
+		      \item If each $A_{f_i}$ is finitely presented, then $A$ is
+		            finitely generated by 5.3.3. Say $a_1,\ldots,a_n\in A$
+		            generate $A$ over $B$. Adjoining $1/f_i$ gives a generating
+		            set for $A_{f_i}$, so from the lemma below we get a finite
+		            presentation
+		            \begin{equation*}
+			            A_{f_i} \cong
+			            B[x_1,\ldots,x_n,z]/(r^{(i)}_1,\ldots,r^{(i)}_m)
+		            \end{equation*}
+		            where $x_j\mapsto a_j/1$ and $z\mapsto 1/f_i$. Taking a
+		            polynomial expression $f_i=s_i(a_1,\ldots,a_n)$, we have
+		            $zs_i-1\in(r^{(i)}_1,\ldots,r^{(i)}_m)$, so
+		            \begin{align*}
+			            (r^{(i)}_1,\ldots,r^{(i)}_m)
+			             & \supseteq (s_i^Nr^{(i)}_1,\ldots,s_i^Nr^{(i)}_m,zs_i-1),              \\
+			             & \supseteq (z^Ns_i^Nr^{(i)}_1,\ldots,z^Ns_i^Nr^{(i)}_m,zs_i-1)         \\
+			             & = (r^{(i)}_1,\ldots,r^{(i)}_m,zs_i-1) = (r^{(i)}_1,\ldots,r^{(i)}_m).
+		            \end{align*}
+		            Hence $(r^{(i)}_1,\ldots,r^{(i)}_m)=(s_i^Nr^{(i)}_1,\ldots,s_i^Nr^{(i)}_m,zs_i-1)$,
+		            and by elimination we can get relations of the form
+		            $(r^{(i)}_1,\ldots,r^{(i)}_m,zs_i-1)$ with
+		            $r^{(i)}_k\in B[x_1,\ldots,x_n]$. Using an even larger value
+		            for $N$, we can ensure $r^{(i)}_k(a_1,\ldots,a_n)=0$ in $A$,
+		            since the relation in $A_{f_i}$ becomes an equality after
+		            multiplication by some power of $f_i$. Moreover we can get
+		            this to hold uniformly in $i$, so
+		            \begin{align*}
+			            A_{f_i}
+			             & \cong B[x_1,\ldots,x_n,z]/(\{r^{(i)}_k\}_k,zs_i-1)                   \\
+			             & \cong B[x_1,\ldots,x_n,z]/(\{r^{(j)}_k\}_{jk},zs_i-1)                \\
+			             & \cong \bigl(B[x_1,\ldots,x_n]/(\{r^{(j)}_k\}_{jk})\bigr)[z]/(zs_i-1) \\
+			             & \cong \bigl(B[x_1,\ldots,x_n]/(\{r^{(j)}_k\}_{jk})\bigr)_{s_i}.
+		            \end{align*}
+		            If $S=B[x_1,\ldots,x_n]/(\{r^{(j)}_k\}_{jk})$, then the
+		            surjection $S\to A$ becomes an isomorphism when localizing at
+		            each $s_i\in S$. Since $(f_1,\ldots,f_r)=1$ in $A$, we can add
+		            a relation ensuring $(s_1,\ldots,s_n)=1$ in $S$. Then $S\to A$
+		            is an isomorphism, since it is an isomorphism locally, so $A$
+		            is finitely presented.
+	      \end{itemize}
+
+	      \textbf{Lemma:} If $B\to A$ is a finitely presented algebra, and
+	      $\phi:B[x_1,\ldots,x_n]\to A$ is a surjection of $B$-algebras, then
+	      $\ker\phi$ is finitely generated.
+
+	      \textbf{Proof:} Suppose $A=B[y_1,\ldots,y_m]/(r_1,\ldots,r_k)$. By
+	      surjectivity there is some $p_i\in\phi^{-1}(y_i)$, and then
+	      $r_1(p_1,\ldots,p_m),\ldots,r_n(p_1,\ldots,p_m)$ generate $\ker\phi$.
+
+	\item Since the notion is affine-local on the target, and distinguished
+	      open sets form a base, it suffices to observe that
+	      $A_f\cong A[z]/(zf-1)$ is finitely presented over $A$.
+
+	\item It suffices to show that a composition of two finitely presented
+	      algebras is finitely presented. Say
+	      $B=A[x_1,\ldots,x_n]/(r_1,\ldots,r_j)$ and
+	      $C=B[y_1,\ldots,y_m]/(s_1,\ldots,s_k)$. Then $s_i(y_1,\ldots,y_m)$ is
+	      given by some $S_i\in A[x_1,\ldots,x_n,y_1,\ldots,y_m]$ by expanding
+	      the coefficients using the presentation of $B$, and hence
+	      \begin{equation*}
+		      C=A[x_1,\ldots,x_n,y_1,\ldots,y_m]/(r_1,\ldots,r_j,S_1,\ldots,S_k)
+	      \end{equation*}
+	      is finitely presented.
 \end{enumerate}
 
 \end{document}
