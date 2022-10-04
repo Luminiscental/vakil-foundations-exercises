@@ -4501,22 +4501,17 @@
 		            $\Proj k[x_0,\ldots,x_n]/I$ is a projective $k$-variety.
 	      \end{enumerate}
 
-	\item The closed points of affine open subsets $\Spec A$ are precisely those
-	      with residue field a finite extension of $k$ by the Nullstellensatz (see
-	      3.6.J), since $A$ is finitely generated over $k$. So we have
+	\item Note that since we have a cover by affine open sets, a point is closed
+	      iff it is closed in every affine open neighbourhood. Now 3.6.J(a) gives
 	      \begin{align*}
-		      \{\text{globally closed points}\}
-		       & \subseteq \{\text{points that are closed in every affine open
-		      neighbourhood}\}                                                 \\
-		       & = \{\text{points with residue field finite over $k$}\},
+		      \text{$p$ closed in an affine open neighbourhood}
+		       & \iff \text{$\kappa(p)$ finite over $k$}                    \\
+		       & \iff \text{$p$ closed in every affine open neighbourhood},
 	      \end{align*}
-	      and it suffices to show the reverse inclusion; if a point is closed in
-	      every affine open neighbourhood, then it is closed globally. If $p$ is
-	      closed in every affine open neighbourhood, and $q\in\closure{\{p\}}$,
-	      then take an affine open neighbourhood $q\in U$. By 3.6.N we have
-	      $p\in U$, and by assumption the closure of $p$ in $U$ is $\{p\}$. Hence
-	      $\{p\}=F\cap U$ for some closed set $F$, so $q=p$ since
-	      $q\in\closure{\{p\}}\cap U$ and $F\supseteq\closure{\{p\}}$.
+	      so the closed points are precisely those with residue field finite over
+	      $k$. Hence closedness is actually a local property in this scenario.
+	      From 3.6.J(a) we have that the closed points are dense in each affine
+	      open set, and it follows that they are dense globally.
 
 	\item $\star\star$ skipped.
 
@@ -6549,12 +6544,8 @@
 	      Hence $\{b_{ij}\}$ gives a finite generating set for $B$ as an
 	      $A$-module.
 
-	\item It suffices to prove the case where $X=\Spec A$, since otherwise $X$
-	      is covered by such sets, and hence is a discrete set---possibly
-	      infinite, but otherwise as described. To be finite over $k$ it must be
-	      a finite set, since $\Gamma(X)$ is the direct product of all the
-	      stalks.
-
+	\item It suffices to prove the affine case, as then $X$ has an open cover
+	      by discrete sets, so $X$ is discrete, and discrete schemes are affine.
 	      Now if $A$ is a finite $k$-algebra, then every prime in $A$ is maximal
 	      by 3.2.G. But $\Spec A$ is a finite union of irreducible components,
 	      which are the closures of generic points. Since all the points are
@@ -6779,12 +6770,12 @@
 			             & \cong \bigl(B[x_1,\ldots,x_n]/(\{r^{(j)}_k\}_{jk})\bigr)[z]/(zs_i-1) \\
 			             & \cong \bigl(B[x_1,\ldots,x_n]/(\{r^{(j)}_k\}_{jk})\bigr)_{s_i}.
 		            \end{align*}
-		            If $S=B[x_1,\ldots,x_n]/(\{r^{(j)}_k\}_{jk})$, then the
-		            surjection $S\to A$ becomes an isomorphism when localizing at
-		            each $s_i\in S$. Since $(f_1,\ldots,f_r)=1$ in $A$, we can add
-		            a relation ensuring $(s_1,\ldots,s_n)=1$ in $S$. Then $S\to A$
-		            is an isomorphism, since it is an isomorphism locally, so $A$
-		            is finitely presented.
+		            If $S=B[x_1,\ldots,x_n]/(\{r^{(j)}_k\}_{jk})$, this means
+		            the surjection $S\to A$ becomes an isomorphism when localizing
+		            at each $s_i\in S$. Since $(f_1,\ldots,f_r)=1$ in $A$, we
+		            can add a relation ensuring $(s_1,\ldots,s_n)=1$ in $S$.
+		            Then $S\to A$ is an isomorphism, since it is an isomorphism
+		            locally, so $A$ is finitely presented.
 	      \end{itemize}
 
 	      \textbf{Lemma:} If $B\to A$ is a finitely presented algebra, and
@@ -6809,6 +6800,91 @@
 		      C=A[x_1,\ldots,x_n,y_1,\ldots,y_m]/(r_1,\ldots,r_j,S_1,\ldots,S_k)
 	      \end{equation*}
 	      is finitely presented.
+\end{enumerate}
+
+\begin{enumerate}[label=\textbf{7.4.\Alph*.}]
+	\item Firstly, note that (i) and (iii) ensure the presence of open and
+	      closed sets, so (ii) ensures the presence of locally closed sets. Then
+	      since finite unions are the complements of finite intersections of
+	      complements, we must have every finite union of locally closed sets. In
+	      fact these give the whole family:
+	      \begin{itemize}
+		      \item Open sets are locally closed, so (i) is satisfied.
+
+		      \item A finite intersection of finite unions of locally closed sets
+		            is a finite union of finite intersections of locally closed
+		            sets, and each intersection is locally closed since openness and
+		            closedness are preserved by finite intersections, so (ii) is
+		            satisfied.
+
+		      \item The complement of a finite union of locally closed sets is a
+		            finite union of locally closed sets:
+		            \begin{equation*}
+			            \left(\bigcup_{i=1}^nU_i\cap F_i\right)^c
+			            = \bigcup_{I\subseteq\{1,\ldots,n\}}
+			            \left[\bigcap_{i\in I}U_i^c\cap\bigcap_{i\notin I}F_i^c\right].
+		            \end{equation*}
+	      \end{itemize}
+	      Moreover any finite union of locally closed sets is also a
+	      finite disjoint union of locally closed sets:
+	      \begin{equation*}
+		      \bigcup_{i=1}^n(U_i\cap F_i)
+		      = \coprod_{\substack{I,J\subseteq\{1,\ldots,n\} \\
+				      I\cap J\ne\emptyset}}\left[
+			      \bigcap_{i\in I}U_i
+			      \cap\bigcap_{j\in J}F_j
+			      \cap\bigcap_{i\notin I}U_i^c
+			      \cap\bigcap_{j\notin J}F_j^c
+			      \right].
+	      \end{equation*}
+	      Hence we have
+	      \begin{align*}
+		      \{\text{constructible sets}\}
+		       & = \{\text{finite unions of locally closed sets}\}           \\
+		       & = \{\text{finite disjoint unions of locally closed sets}\}.
+	      \end{align*}
+
+	\item By 7.4.A, the generic point forms a constructible set iff it forms a
+	      locally closed set. Since it is dense, this is iff it forms an open set.
+	      But its complement is not closed, since no non-zero ideal is contained
+	      in every non-zero prime (no non-zero polynomial has infinitely many
+	      irreducible factors).
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item Clearly closed sets are stable under specialization. Suppose
+		            $Z\subseteq X$ is a constructible set in a Noetherian space $X$,
+		            and $Z$ is stable under specialization. By 7.4.A we have a
+		            finite union $Z=\cup_i(U_i\cap F_i)$ with $U_i$ open and $F_i$
+		            closed. Since $X$ is Noetherian we may assume $F_i$ is
+		            irreducible, and since $X$ is a scheme there is a generic point
+		            $g_i\in F_i$. Moreover we can assume $U_i\cap F_i\ne\emptyset$,
+		            so $g_i\in U_i$. Then $F_i\subseteq Z$ since $Z$ is stable under
+		            specialization, so $Z=\cup_iF_i$ is closed.
+
+		      \item Its complement is again constructible, so by (a) it is open
+		            iff its complement is stable under specialization. This is
+		            equivalent to being stable under generization by contraposition.
+	      \end{enumerate}
+
+	\item For the affine case $X=\Spec A$, it suffices to show that all the
+	      generators are integral. If not, we get an inclusion $k[x]\to A$, i.e. a
+	      dominant map $\Spec A\to\A^1_k$. Since $\Spec A$ is finite, the image of
+	      this map is a finite dense set. Removing closed points preserves
+	      constructibility, but must result in the non-constructible set $\{[0]\}$,
+	      contradicting Chevalley's Theorem.
+
+	      For general $X$, we have an open cover by affines, which are then finite
+	      over $k$, and hence discrete by 7.3.H. Then $X$ is discrete, so $X$ is
+	      already affine.
+
+	\item By 5.1.E fibres over closed points contain closed points, so
+	      surjectivity implies surjectivity on closed points. For the converse, it
+	      suffices to show that non-empty constructible sets have closed points,
+	      by applying Chevalley's Theorem to the complement of the image. We can
+	      restrict to locally closed sets, and further to closed subsets of affine
+	      (in particular, quasicompact) open subschemes. These have closed points
+	      by 5.1.E, which are closed in the original scheme by 5.3.F.
 \end{enumerate}
 
 \end{document}
