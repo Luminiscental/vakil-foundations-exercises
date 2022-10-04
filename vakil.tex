@@ -3076,9 +3076,9 @@
 
 	\item The closed sets are $V(0)=\A^1_k$, $V(1)=\emptyset$, and intersections
 	      of sets of the form $V(f)$ for non-constant $f\in k[x]$. The latter
-	      consists of $[(0)]$ together with the closed points at which $f$
-	      vanishes, i.e. the irreducible factors of $f$. Hence the closed sets in
-	      $\A^1_k$ are the finite sets containing $[(0)]$, and $\A^1_k$.
+	      consists of the closed points at which $f$ vanishes, i.e. the
+	      irreducible factors of $f$. Hence the closed sets in $\A^1_k$ are the
+	      finite sets not containing $[(0)]$, and $\A^1_k$.
 
 	      In other words, we have the cofinite topology on
 	      $\A^1_k\setminus[(0)]=\{\text{Galois orbits in $\closure k$}\}$,
@@ -3102,9 +3102,8 @@
 		            by 3.2.J. Similarly, $\Spec S^{-1}B$ is the open set
 		            $\Spec B\setminus V(f)$ for $S=\{1,f,f^2,\ldots\}$. For
 		            arbitrary $S$ we may not get an open or closed set, since the
-		            point $[(0)]\in\Spec\Z$ is neither closed nor open (it is a
-		            dense point), but it is the image of
-		            $\Spec\bigl((\Z\setminus0)^{-1}\Z\bigr)=\Spec\Q=\{[(0)]\}$.
+		            point $[(0)]\in\Spec\A^1_k$ is neither closed nor open, but
+		            it is the image of $\Spec k(x)$.
 
 		      \item The inclusion maps are continuous, since they are induced by
 		            ring homomorphisms, and closed mappings onto their images,
@@ -3341,11 +3340,11 @@
 		            Now given $D(f)\ne\emptyset$ in $\Spec A$, there is a maximal
 		            ideal $\p_f$ of $A_f$. Then $(A/\p)_f\cong A_f/\p_f$ is a
 		            field, which is finite over $k$ by the Nullstellensatz
-		            (adjoining $1/f$ to a finite generating set for $A$). Hence we
-		            see that $\p$ is maximal, and hence gives a closed point of
-		            $\Spec A$ which lies in $D(f)$ since $f\notin\p$. This shows
-		            that the closed points are dense, since the distinguished open
-		            sets form a base.
+		            (adjoining $1/f$ to a finite generating set for $A$). Then
+		            $\Frac(A/\p)=(A/\p)_f$ and we see that $[\p]$ is a closed
+		            point from above. Hence $D(f)$ contains a closed point, so
+		            the closed points are dense since the distinguished open
+		            sets are a base.
 
 		      \item In the example of 3.4.K there is only one closed point, but
 		            the space has two points, so the closed points are not dense.
