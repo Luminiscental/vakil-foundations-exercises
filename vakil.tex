@@ -6884,6 +6884,61 @@
 	      restrict to locally closed sets, and further to closed subsets of affine
 	      (in particular, quasicompact) open subschemes. These have closed points
 	      by 5.1.E, which are closed in the original scheme by 5.3.F.
+
+	\item Suppose $M$ is a finitely-generated $B$ module. If $m_1,\ldots,m_n$
+	      is a generating set, we can take $m_1,\ldots,m_r$ to be a basis
+	      for $M_{(0)}$ over $K(B)$. Then let $f$ be the product of the
+	      denominators used to express $m_{r+1},\ldots,m_n$ as linear
+	      combinations of $m_1,\ldots,m_r$. By construction $m_1,\ldots,m_r$
+	      generate $M_f$ over $B_f$, and they are linearly independent so $M_f$
+	      is a free $B_f$-module.
+
+	\item Firstly, if $A$  satisfies ($\dagger$) then so does $A/I$ for any
+	      ideal $I$, since $A/I$-modules are just $A$-modules annhilated by $I$.
+	      Now any finitely-generated $B$-algebra is of the form
+	      $B[x_1,\ldots,x_n]/I$, and if we prove that ($\dagger$) transfers from
+	      $A$ to $A[T]$ we would get that $B[x_1,\ldots,x_n]$ satisfies
+	      ($\dagger$) from 7.4.A and induction, and hence the quotient
+	      $B[x_1,\ldots,x_n]/I$ also satisfies ($\dagger$).
+
+	\item We have $TM_{n-1}\subseteq M_n$ so this map is well-defined, and it
+	      is a surjection since $M_{n+1}=M_n+TM_n$.
+
+	\item We have an ascending chain of submodules
+	      $\ker\psi_1\subseteq\ker(\psi_2\psi_1)\subseteq\cdots\subseteq M_1$,
+	      which stabilizes since $M_1$ is finitely-generated over $A$. Hence for
+	      $n\gg0$ we get $\ker(\psi_n\cdots\psi_1)=\ker(\psi_{n-1}\cdots\psi_1)$,
+	      so $\psi_n$ is injective since $\psi_{n-1}\cdots\psi_1$ is surjective.
+
+	\item By assumption there is an $f_i$ with $(M_{i+1}/M_i)_{f_i}$ free over
+	      $B_{f_i}$, and if $f_i\divides f$ then $(M_{i+1}/M_i)_f$ is free over
+	      $B_f$ by exactness of localization. Hence we can take $f$ to be the
+	      product of the $f_i$'s for the values of $i$ before $\psi_i$ becomes
+	      an isomorphism.
+
+	\item We can take $\phi_1$ to be the identity on $M_1$, choose
+	      isomorphisms $p_n:M_n\oplus M_{n+1}/M_n\to M_{n+1}$ extending
+	      $M_n\hookrightarrow M_{n+1}$, and define
+	      $\phi_{n+1}=p_n\circ(\phi_n\oplus\id)$. Then the $\phi_n$'s give a
+	      commuting diagram,
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &\cdots \ar[r,hook]
+			      &\oplus_{i=0}^{n-1}M_{i+1}/M_i \ar[r,hook] \ar[d,"\phi_n"]
+			      &\oplus_{i=0}^{n}M_{i+1}/M_i \ar[r,hook] \ar[d,"\phi_{n+1}"]
+			      &\cdots \\
+			      &\cdots \ar[r,hook]
+			      &M_n \ar[r,hook]
+			      &M_{n+1} \ar[r,hook]
+			      &\cdots
+		      \end{tikzcd}
+	      \end{equation*}
+	      and hence we get a map $\phi=\colimit\phi_n$ from
+	      $\colimit\oplus_{i=0}^{n-1}M_{i+1}/M_i=\oplus_{i=0}^\infty M_{i+1}/M_i$
+	      to $\colimit M_n=M$. Moreover $\phi$ is an isomorphism, since filtered
+	      colimits are exact and each $\phi_n$ is an isomorphism.
+
+	\item
 \end{enumerate}
 
 \end{document}
