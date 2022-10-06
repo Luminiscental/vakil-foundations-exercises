@@ -6938,7 +6938,66 @@
 	      to $\colimit M_n=M$. Moreover $\phi$ is an isomorphism, since filtered
 	      colimits are exact and each $\phi_n$ is an isomorphism.
 
-	\item
+	\item Since $Y$ is irreducible, any non-empty open set is dense. Hence we
+	      can restrict to a non-empty affine open subscheme $\Spec B\subseteq Y$
+	      without loss of generality. Moreover we have a finite cover
+	      $X=\cup_i\Spec A_i$ since $X$ is Noetherian, and can hence restrict to
+	      the case where $X$ is also affine; if $U_i\subseteq Y$ is dense and
+	      doesn't meet the image of $\Spec A_i$ then $\cap_iU_i$ is dense (a
+	      finite intersection of dense open sets) and doesn't meet the image of
+	      $X$.
+
+	      So suppose $\pi:\Spec A\to\Spec B$ is a finite type morphism of
+	      Noetherian schemes, with $\Spec B$ irreducible. This induces a
+	      morphism $\Spec A/\nilrad(A)\to\Spec B/\nilrad(B)$ with the same
+	      underlying topological map, so we may assume $A$ and $B$ are reduced.
+	      Then $B$ is integral, so by the Generic Freeness Lemma we have an
+	      $f\in B^*$ with $A_f$ free as a $B_f$-module. If $A_f=0$, then
+	      $\pi^\sharp f^N=0$ for some $N$, and then
+	      $\pi^{-1}(D(f))=D(\pi^\sharp f)=\emptyset$ so $D(f)$ is disjoint from
+	      the image of $\pi$. Otherwise, we have $A_f=(B_f)^{\oplus r}$ for some
+	      $r>0$, and if $[\p]\in D(f)=\Spec B_f$ then $S^{-1}A=(B_\p)^{\oplus r}$
+	      where $S$ is the image of $B\setminus\p$. Then $\p_\p^{\oplus r}$
+	      gives a proper ideal in $S^{-1}A$, which is contained in some maximal
+	      ideal, and hence we get a prime lying over $\p$. Therefore $D(f)$ is
+	      contained in the image of $\pi$. In either case we have
+	      $D(f)\ne\emptyset$ since $B$ is integral and $f\ne0$, so $D(f)$ is
+	      dense since $\Spec B$ is irreducible. Hence we are done.
+
+	\item From 7.4.A it suffices to show that the image of a locally closed
+	      set is constructible. Now if $U\cap F\subseteq X$ is such a set, we
+	      have the structure of a scheme on $F$ by gluing together
+	      $\Spec A/I(F\cap\Spec A)$ for affine open sets $\Spec A\subseteq X$.
+	      Then the composite $F\to X\to Y$ is again a finite type map of
+	      Noetherian schemes, and so is its restriction to the open subscheme
+	      $U\cap F$. Applying the assumption to this map gives that the image of
+	      $U\cap F$ in $Y$ is constructible.
+
+	      \item{} [This exercise is not actually used in the argument.] We have
+	      \begin{equation*}
+		      \im(\pi) = \bigcup_{\Spec B\subseteq Y}\im\bigl(\pi^{-1}(\Spec B)\to\Spec B\bigr)
+	      \end{equation*}
+	      and
+	      \begin{equation*}
+		      \im(\pi) = \bigcup_{\Spec A\subseteq X}\im\bigl(\Spec A\to\pi(\Spec A)\bigr)
+	      \end{equation*}
+	      for any collection of open sets $\Spec B$ (resp. $\Spec A$) that cover
+	      $Y$ (resp. $X$). Since $X$ and $Y$ are Noetherian we can take finite
+	      such covers, and since finite unions of constructible sets are
+	      constructible this reduces Chevalley's Theorem to the case where $X$
+	      and $Y$ are affine.
+
+	\item If $\im\pi$ is not constructible, let $Z\subseteq Y$ be the minimal
+	      closed set such that $Z\cap\im\pi$ is not constructible, which exists
+	      since $Y$ is Noetherian. Note that $Z$ is irreducible, since its
+	      irreducible components can't all have constructible intersection with
+	      $\im\pi$, and whichever doesn't must equal $Z$. As in 7.4.M, we can
+	      give $Z$ the structure of a reduced scheme so that $\pi^{-1}(Z)\to Z$
+	      is a finite type morphism of Noetherian schemes. By 7.4.L we get a
+	      dense open subset $U\subseteq Z$, either contained in the image or
+	      disjoint from it. Then $U\cap\im\pi$ is constructible (either empty or
+	      open), so $(Z\setminus U)\cap\im\pi$ must be non-constructible. This
+	      contradicts minimality of $Z$.
 \end{enumerate}
 
 \end{document}
