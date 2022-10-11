@@ -43,6 +43,8 @@
 \newcommand{\ndivides}{\mathrel{\nmid}} % non-divisibility relation
 \newcommand{\limit}{\varprojlim} % categorical limit
 \newcommand{\colimit}{\varinjlim} % categorical colimit
+\newcommand{\tsum}{{\textstyle\sum}} % small sum
+\newcommand{\tprod}{{\textstyle\prod}} % small prod
 
 % letter variants
 \newcommand{\m}{\mathfrak{m}}
@@ -7077,6 +7079,226 @@
 		      $X\to D_A(x_i)$}\}                                     \\
 		       & = \Mor(X,\Spec B)\times\Mor(X,\P^n_A).
 	      \end{align*}
+\end{enumerate}
+
+\chapter{Closed embeddings and related notions}
+
+\begin{enumerate}[label=\textbf{8.1.\Alph*.}]
+	\item If $B\to A$ is surjective, then $\Spec A\to\Spec B$ is a topological
+	      embedding onto the closed set $V(I)$ where $I=\ker(B\to A)$. Hence the
+	      result follows from the following:
+
+	      \textbf{Lemma:} If a topological space $Y$ has an open cover
+	      $Y=\cup_iU_i$, and a continuous map $f:X\to Y$ is such that
+	      $f^{-1}(U_i)\to U_i$ is a homeomorphism onto a closed image for each
+	      $i$, then $f$ is a homeomorphism onto a closed image.
+
+	      \textbf{Proof:} Let $Z_i\subseteq U_i$ be $f(X)\cap U_i$, with
+	      $g_i:Z_i\to f^{-1}(U_i)$ the inverse for $f^{-1}(U_i)\to Z_i$. The
+	      $g_i$'s considered as functions to $X$ agree on the overlaps of the open
+	      cover $f(X)=\cup_iZ_i$, since they are all inverses to $f$, so by gluing
+	      we get $g:f(X)\to X$ restricting to $g_i$ on $Z_i$. Then $f\circ g$ and
+	      $g\circ f$ are locally (and hence globally) the identity, so $f$ is a
+	      homeomorphism onto $f(X)$. Moreover $f(X)$ is closed, since
+	      $Y\setminus f(X)=\cup_i(U_i\setminus Z_i)$ is open.
+
+	\item If $B\to A$ is surjective, then $A$ is a cyclic $B$-module (generated
+	      by 1) and hence is finite over $B$.
+
+	\item If $C\to B\to A$ is a composite of two surjections, then $C\to A$ is
+	      again a surjection.
+
+	\item We show that ``$\pi^{-1}(\Spec B)$ is the spectrum of a quotient of
+	      $B$'' is affine-local. Suppose $(f_1,\ldots,f_n)=1$ in $B$.
+	      \begin{itemize}
+		      \item If $\pi^{-1}(\Spec B)=\Spec A$ with $B\to A$ surjective, then
+		            $\pi^{-1}(D(f_i))=\Spec A_{\pi^\sharp f_i}$ and
+		            $B_{f_i}\to A_{\pi^\sharp f_i}$ is surjective since localization
+		            is right-exact.
+
+		      \item If $\pi^{-1}(D(f_i))=\Spec A^{(i)}$ with $B_{f_i}\to A^{(i)}$
+		            surjective, then by 7.3.4 we have $\pi^{-1}(\Spec B)=\Spec A$
+		            for some $A$, so $A^{(i)}=\Spec A_{\pi^\sharp f_i}$. Then for
+		            any $a\in A$ we can find $b_i\in B$ with
+		            \begin{equation*}
+			            \pi^\sharp f_i^N\cdot a = \pi^\sharp b_i
+		            \end{equation*}
+		            for some large value of $N$, and taking $1=\sum_ie_if_i^N$ gives
+		            \begin{equation*}
+			            a = \sum_i\pi^\sharp(e_ib_i) = \pi^\sharp\sum_ie_ib_i
+		            \end{equation*}
+		            so $B\to A$ is surjective.
+	      \end{itemize}
+
+	\item This is immediate from 8.1.D.
+
+	\item The only closed subschemes of $\Spec A$ are the obvious ones
+	      $\Spec A/I\to\Spec A$, so the ideal sheaf must be induced by a global
+	      ideal $I\subseteq A$. Then if $\I(X)=0$ we get $I=0$, so
+	      $\I(\{\eta\})=0$. Hence the given sheaf cannot come from a closed
+	      subscheme.
+
+	\item If $U$ is the preimage of $\Spec B$, then we have exact sequences
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &0 \ar[r] &I(B) \ar[d] \ar[r] &B \ar[r] \ar[d] &\O_X(U) \ar[d] \\
+			      &0 \ar[r] &I(B_f) \ar[r] &B_f \ar[r] &\O_X(U_f)
+		      \end{tikzcd}
+	      \end{equation*}
+	      and we can localize the top sequence:
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &0 \ar[r] &I(B)_f \ar[d] \ar[r] &B_f \ar[r] \ar[d] &\O_X(U)_f \ar[d] \\
+			      &0 \ar[r] &I(B_f) \ar[r] &B_f \ar[r] &\O_X(U_f)
+		      \end{tikzcd}
+	      \end{equation*}
+	      For a closed embedding $U$ is affine, so the arrow on the right is an
+	      isomorphism. Clearly the arrow in the middle is an isomorphism, so we
+	      then get that $I(B)_f\to I(B_f)$ is an isomorphism (``kernel of the same
+	      map'', or just a diagram chase). Note that by the Qcqs Lemma the sheaf
+	      $\I_{X/Y}$ has this property for any qcqs morphism $X\to Y$.
+
+	\item To avoid confusion, assume we have ideals $I(U)$ for affine open
+	      subsets $U\subseteq Y$, with the natural map $I(U)_f\to I(U_f)$ for
+	      $f\in\Gamma(U)$ an isomorphism. Let $X_U$ be the closed subscheme
+	      $\Spec\Gamma(U)/I(U)$ of $U$. By assumption
+	      $\Gamma(U)_f/I(U)_f\to\Gamma(U)_f/I(U_f)$ is an isomorphism, so we have
+	      $X_{U_f}\xrightarrow\sim(X_U)_f$. Moreover the restriction to the
+	      preimage of $(X_U)_{fg}\subseteq(X_U)_f$ is the localization
+	      $(X_{U_f})_g\xrightarrow\sim(X_U)_{fg}$, which composes to give the
+	      original isomorphism
+	      $X_{U_{fg}}=X_{(U_f)_g}\xrightarrow\sim(X_{U_f})_g\xrightarrow\sim(X_U)_{fg}$.
+	      If $V$ is another affine open subset of $Y$, then by 5.3.1 we have
+	      $U\cap V=\cup_iD_i$ with $D_i=U_{f_i}=V_{g_i}$ distinguished in both $U$
+	      and $V$, and we get isomorphisms between the preimages in $X_U$ and
+	      $X_V$:
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &(X_U)_{f_i}
+			      &X_{U_{f_i}} = X_{D_i} = X_{V_{g_i}}
+			      \ar[l,swap,"\sim"] \ar[r,"\sim"]
+			      &(X_V)_{g_i}
+		      \end{tikzcd}
+	      \end{equation*}
+	      As discussed above, these isomorphisms commute with restriction to
+	      distinguished subsets $D_k\subseteq D_i$, and we can assume any
+	      intersection $D_i\cap D_j$ is covered by such subsets using 5.3.1 again,
+	      so this shows that the isomorphisms glue to give an isomorphism between
+	      the preimages of $U\cap V$ in $X_U$ and $X_V$. We can cover a triple
+	      overlap $U\cap V\cap W=\cup_iD_i$ by simultaneously distinguished sets
+	      using 5.3.1, so it suffices to check the cocycle condition on
+	      $D=U_f=V_g=W_h$. But the composite isomorphism
+	      $(X_U)_f\cong(X_V)_g\cong(X_W)_h$ is given by
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &\Gamma(U)_f/I(U)_f \ar[d,"\psi_U^{-1}"]
+			      &
+			      &\Gamma(W)_h/I(W)_h \\
+			      &\Gamma(U_f)/I(U_f) = \Gamma(V_g)/I(V_g) \ar[r,"\psi_V"]
+			      &\Gamma(V)_g/I(V)_g \ar[r,"\psi_V^{-1}"]
+			      &\Gamma(V_g)/I(V_g) = \Gamma(W_h)/I(W_h) \ar[u,"\psi_W"]
+		      \end{tikzcd}
+	      \end{equation*}
+	      which is just the original isomorphism $(X_U)_f\cong(X_W)_h$ by
+	      cancellation of $\psi_V$. Hence by 4.4.A we get a scheme $X$ by gluing
+	      together the $X_U$'s. Recalling the closed embeddings
+	      $X_U\hookrightarrow U$, each $X_U$ is naturally a $Y$-scheme, and the
+	      gluing isomorphisms are morphisms of $Y$-schemes so $X$ gets an induced
+	      morphism $X\to Y$. This is locally given by $X_U\hookrightarrow U$, so
+	      by 8.1.D it is a closed embedding, and by construction it gives rise to
+	      the ideals $I(U)$ as required.
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item For affine open $U\subseteq Y$ take $I(U)$ to be the ideal
+		            generated by $s|_U$. For $f\in\Gamma(U)$, the localization
+		            $I(U)_f$ is the ideal generated by the image of $s|_U$ in
+		            $\Gamma(U_f)$, which is just $I(U_f)$ so the condition from
+		            8.1.H is satisfied. Hence we get a closed subscheme
+		            $V(s)\hookrightarrow Y$.
+
+		      \item If $u\in\Gamma(Y)$ is invertible, then $u|_U$ is invertible
+		            for each affine open $U\subseteq Y$, so the ideal generated by
+		            $s|_U$ is the same as the ideal generated by
+		            $(su)|_U=s|_U\cdot u|_U$. Hence $V(s)=V(us)$.
+
+		      \item For affine open $U\subseteq Y$ take $I(U)$ to be the ideal
+		            generated by $\{s|_U:s\in S\}$. For $f\in\Gamma(U)$, the
+		            localization $I(U)_f$ is generated by the images of $s|_U$ in
+		            $\Gamma(U_f)$, so again the condition from 8.1.H is satisfied.
+		            Hence we get a closed subscheme $V(S)\hookrightarrow Y$.
+	      \end{enumerate}
+
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item Suppose we have closed subschemes $X_i\hookrightarrow Y$ for
+		            each $i\in\I$, with vanishing ideals $I_i(U)$ for affine open
+		            sets $U\subseteq Y$. Consider the ideals
+		            $I^\cap(U)=\cap_iI_i(U)$ and $I^\Sigma(U)=\sum_iI_i(U)$. For
+		            $f\in\Gamma(U)$ we have $I_i(U)_f\cong I_i(U_f)$, and since
+		            localization commutes with finite intersections and arbitrary
+		            sums this gives that $I^\cap$ defines a closed subscheme when
+		            $\I$ is finite, the union $\cup_iX_i$, and $I^\Sigma$ defines a
+		            closed subscheme for arbitrary $\I$, the intersection
+		            $\cap_iX_i$.
+
+		            \textbf{Lemma:} Localization commutes with finite intersections
+		            and arbitrary sums of submodules.
+
+		            \textbf{Proof:} If $N_i\subseteq M$ is a collection of
+		            submodules we have
+		            \begin{align*}
+			            \cap_iN_i  & = \ker(M\to\tprod_iM/N_i) \\
+			            \tsum_iN_i & = \im(\oplus_iN_i\to M),
+		            \end{align*}
+		            so this follows from 1.3.F and exactness of localization.
+
+		      \item By definition $V(y-x^2)\cap V(y)=V((y-x^2)+(y))=V(x^2,y)$.
+		            This is the point $(0,0)$ with non-reducedness observing the
+		            first derivative with respect to $x$, coming from the fact that
+		            $y=x^2$ and $y=0$ share their tangent at the origin, but are
+		            distinct at to higher orders. The scheme-theoretic union is
+		            $V((y-x^2)\cap(y))=V(y^2-x^2y)$.
+
+		      \item It suffices to check the intersections with affine open
+		            neighbourhoods, and then this follows from the fact that
+		            \begin{align*}
+			            V(I_1\cap I_2) & = V(I_1\cdot I_2)=V(I_1)\cup V(I_2) \\
+			            V(\tsum_iI_i)  & = \cap_iV(I_i)
+		            \end{align*}
+		            as sets in an affine scheme $\Spec A$.
+
+		      \item By definition $V(y^2-x^2)\cap V(y)=V(y^2-x^2,y)=V(x^2,y)$, so
+		            we get the point $(0,0)$ with non-reducedness observing the
+		            first derivative with respect to $x$, coming from the fact that
+		            $y^2=x^2$ observes all first-order derivatives at the origin,
+		            and $y=0$ observes the first derivative with respect to $x$.
+		            \begin{equation*}
+			            \vcenter{\hbox{\begin{tikzpicture}
+						            \draw[dashed,->] (-1,0) -- (1,0);
+						            \draw[dashed,->] (0,-1) -- (0,1);
+						            \draw[thick] (-1,-1) -- (1,1);
+						            \draw[thick] (-1,1) -- (1,-1);
+					            \end{tikzpicture}}}
+			            \cap
+			            \vcenter{\hbox{\begin{tikzpicture}
+						            \draw[dashed,->] (-1,0) -- (1,0);
+						            \draw[dashed,->] (0,-1) -- (0,1);
+						            \draw[thick] (-1,0) -- (1,0);
+					            \end{tikzpicture}}}
+			            =
+			            \vcenter{\hbox{\begin{tikzpicture}
+						            \draw[dashed,->] (-1,0) -- (1,0);
+						            \draw[dashed,->] (0,-1) -- (0,1);
+						            \fill[gray] (-0.3,-0.05) -- (0.3,-0.05) -- (0.3,0.05) -- (-0.3,0.05);
+						            \fill (0,0) circle[radius=2pt];
+					            \end{tikzpicture}}}
+		            \end{equation*}
+		            Then intersection with $V(y)$ doesn't distribute over the union
+		            $V(y^2-x^2)=V(y-x)\cup V(y+x)$, since $V(y)\cap V(y\pm x)=V(x,y)$.
+	      \end{enumerate}
+
+	\item
 \end{enumerate}
 
 \end{document}
