@@ -7298,7 +7298,82 @@
 		            $V(y^2-x^2)=V(y-x)\cup V(y+x)$, since $V(y)\cap V(y\pm x)=V(x,y)$.
 	      \end{enumerate}
 
-	\item
+	\item Assume $\pi:X\to Y$ is a topological embedding onto a closed set,
+	      and $\pi^\sharp:\O_Y\to\pi_*\O_X$ is surjective (on stalks). If
+	      $\Spec B\subseteq Y$ is open and $U=\pi^{-1}(\Spec B)$, then we get
+	      $B\to B/I\to\Gamma(U)$, i.e. $U\to\Spec B/I\to\Spec B$, with
+	      $\phi:U\to\Spec B/I$ inducing an injection of global functions by
+	      construction. Now for $D(f)\subseteq\Spec B/I$ we have the following
+	      diagram:
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &B/I \ar[d] \ar[r,hook]
+			      &\Gamma(U) \ar[d] \\
+			      &(B/I)_f \ar[d,equal] \ar[r,hook]
+			      &\Gamma(U)_{\phi^\sharp f} \ar[d] \\
+			      &\Gamma(D(f)) \ar[r]
+			      &\Gamma(U_{\phi^\sharp f})
+		      \end{tikzcd}
+	      \end{equation*}
+	      Since $\phi$ is a homeomorphism onto a closed subset of $\Spec B/I$
+	      we get that $U$ is qcqs, and hence
+	      $\Gamma(U)_{\phi^\sharp f}\to\Gamma(U_{\phi^\sharp f})$ is an
+	      isomorphism by the Qcqs Lemma. Therefore
+	      $\Gamma(D(f))\to\Gamma(U_{\phi^\sharp f})$ is injective, so the sheaf
+	      epimorphism $\O_{\Spec B/I}\to\phi_*\O_U$ is in fact an isomorphism.
+	      In particular both sheaves have the same support, so $\phi$ is
+	      surjective, i.e. a homeomorphism onto $\Spec B/I$. Then $\phi$ is an
+	      isomorphism of schemes, and hence $\pi$ is a closed embedding in our
+	      sense.
+
+	      Conversely if $\pi:X\to Y$ is a closed embedding in our sense, then
+	      it is a homeomorphism onto a closed subset of $Y$ by 8.1.A, and the
+	      induced map $\pi^\sharp:\O_Y\to\pi_*\O_X$ is surjective on stalks
+	      since $\O_{\Spec B}\to\O_{\Spec B/I}$ is surjective on stalks.
+
+	\item Open embeddings are locally of finite type, and closed embeddings
+	      are finite.
+
+	\item Interpret (i) as saying that we have an open embedding
+	      $U\subseteq X$ and a closed embedding $K\to X$, with a closed
+	      embedding $V\to U$ and an open embedding $V\to K$ making
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &V \ar[r,hook] \ar[d,hook] &K \ar[d,hook] \\
+			      &U \ar[r,hook] &X
+		      \end{tikzcd}
+	      \end{equation*}
+	      a fibered product. (In particular $V=K\cap U$ on the level of sets.)
+	      \begin{itemize}
+		      \item (i) trivially implies (ii) and (iii).
+
+		      \item (ii) implies (i): If $V\to K\to X$ is an open embedding
+		            followed by a closed embedding, then the image of $V$ in $K$
+		            is the preimage of some open set $U\subseteq X$, and the same
+		            argument as in 7.1.B shows that the following is a fibered
+		            product:
+		            \begin{equation*}
+			            \begin{tikzcd}
+				            &V \ar[d] \ar[r,hook] &K \ar[d,hook] \\
+				            &U \ar[r,hook] &X
+			            \end{tikzcd}
+		            \end{equation*}
+		            Then $V\to U$ is a closed embedding, since affine open
+		            subschemes of $U$ correspond to affine open subschemes of $X$,
+		            with preimage in $V$ the same as the preimage in $K$.
+	      \end{itemize}
+
+	\item For a composition of locally closed embeddings, we have
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &V_1 \ar[r,"\text{cl}"] &U_1 \ar[r,"\text{op}"] \ar[dr,dashed,"\text{cl}"]
+			      &V_2 \ar[r,"\text{cl}"] &U_2 \ar[r,"\text{op}"] &X \\
+			      & & &W \ar[ur,dashed,"\text{op}"]&
+		      \end{tikzcd}
+	      \end{equation*}
+	      where the dashed morphisms exist from 8.1.M. Then $V_1\to W$ is a
+	      closed embedding, and $W\to X$ is an open embedding, so $V_1\to X$ is
+	      a locally closed embedding.
 \end{enumerate}
 
 \end{document}
