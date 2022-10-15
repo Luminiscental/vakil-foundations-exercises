@@ -7376,4 +7376,103 @@
 	      a locally closed embedding.
 \end{enumerate}
 
+\begin{enumerate}[label=\textbf{8.2.\Alph*.}]
+	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item The preimage of the underlying space under the map
+		            $\A^4_k\to\P^3_k$ is $V(wz-xy,x^2-xy,y^2-xz)\subseteq\A^3_k$,
+		            which is irreducible by 3.6.F. Since $\A^4_k\to\P^3_k$ is
+		            surjective, this implies irreducibility of the subscheme in
+		            $\P^3_k$.
+
+		      \item From 3.6.F the map
+		            $k[w,x,y,z]/(wz-xy,x^2-wy,y^2-xz)\to k[a,b]$ given by
+		            $w\mapsto b^3$, $x\mapsto ab^2$, $y\mapsto a^2b$, $z\mapsto a^3$
+		            is an isomorphism. Since this is a graded map, it induces an
+		            isomorphism
+		            $\Proj k[w,x,y,z]/(wz-xy,x^2-wy,y^2-xz)\cong\Proj k[a,b]$.
+	      \end{enumerate}
+
+	\item The image of $S_+$ is all of $R_+$ by surjectivity, and
+	      $V(R_+)=\emptyset$ so the domain of the induced map is all of
+	      $\Proj R_\bullet$. Since each map
+	      $((S_\bullet)_f)_0\to((R_\bullet)_{\phi(f)})_0$ is surjective (where
+	      $\phi:S_\bullet\to R_\bullet$), by 8.1.D this is a closed embedding by.
+
+	\item By 6.4.G and 6.4.D we may assume $S_\bullet$ is generated in degree 1,
+	      say by $x_1,\ldots,x_n$. Consider the sheaf of ideals $\I$ of $X$ over
+	      $\Proj S_\bullet$. For each distinguished set
+	      $D(x_i)\subseteq\Proj S_\bullet$, construct the homogeneous ideal
+	      \begin{equation*}
+		      I(x_i) = \bigoplus_{d\ge0}\{g\in S_d:g/x_i^d\in\I(D(x_i))\}.
+	      \end{equation*}
+	      Taking $I=I(x_1)\cap\cdots\cap I(x_n)$, we have the closed subscheme
+	      $\Proj S_\bullet/I\to\Proj S_\bullet$, with associated sheaf of ideals
+	      $\J$ given by localizing and restricting $I$. By construction
+	      $\I\subseteq\J$, and we want to show $\I=\J$. On $D(x_i)$ we have
+	      \begin{equation*}
+		      \I(D(x_i)) = (I_{x_i})_0 \subseteq \J(D(x_i)) = I(x_i)_0,
+	      \end{equation*}
+	      so it is enough to show $I_{x_i}=I(x_i)_{x_i}$ for each $i$, since the
+	      $D(x_i)$'s cover $\Proj S_\bullet$. As localization commutes with finite
+	      intersections, we aim to show $I(x_i)_{x_i}\subseteq I(x_j)_{x_i}$. So
+	      take a homogeneous element $f\in I(x_i)$. Then
+	      \begin{equation*}
+		      f/x_i^{\deg f}\in\I(D(x_ix_j))=\I(D(x_j))_{x_i/x_j}
+	      \end{equation*}
+	      so $(f/x_i^{\deg f})(x_i/x_j)^N$ equals an element of $\I(D(x_j))$ over
+	      $D(x_ix_j)$ for $N\gg0$, and increasing $N$ makes the equality hold over
+	      $D(x_j)$ so $fx_i^{N-\deg f}/x_j^N\in\I(D(x_j))$. Hence
+	      $fx_i^N\in I(x_j)$, so $f\in I(x_j)_{x_i}$.
+
+	\item Since $V\hookrightarrow W$ is a split monomorphism (vector spaces are
+	      free), the map $\Sym^\bullet W^\dual\to\Sym^\bullet V^\dual$ is a split
+	      epimorphism. In particular it factors through a graded isomorphism
+	      $\Sym^\bullet W^\dual/I\to\Sym^\bullet V^\dual$. Hence $\P V\to\P W$
+	      factors through an isomorphism $\P V\cong\Proj\Sym^\bullet W^\dual/I$,
+	      so $\P V\to\P W$ is a closed embedding.
+
+	\item We have two closed subschemes $V(f)$ and $\ell=V(l_1,\ldots,l_{n-1})$,
+	      where $l_1,\ldots,l_{n-1}$ are linearly independent homogeneous linear
+	      polynomials. The intersection is given by
+	      \begin{equation*}
+		      V(l_1,\ldots,l_{n-1},f)
+		      = \Proj k[x_0,\ldots,x_n]/(l_1,\ldots,l_{n-1},f),
+	      \end{equation*}
+	      and by row reduction on the matrix of coefficients of the $l_i$'s we can
+	      get generators for $(l_1,\ldots,l_{n-1})$ of the form
+	      $x_i-a_ix_{j_1}-b_ix_{j_2}$ for $i\ne j_1,j_2$, where $j_1\ne j_2$. Then
+	      \begin{equation*}
+		      k[x_{j_1},x_{j_2}]\to
+		      k[x_0,\ldots,x_n]/(l_1,\ldots,l_{n-1})
+	      \end{equation*}
+	      is an isomorphism of graded rings, and hence $V(l_1,\ldots,l_{n-1},f)$
+	      is isomorphic to a degree $d$ hypersurface in $\P^1_k$; the image of $f$
+	      in $k[x_{j_1},x_{j_2}]$ is non-zero since $\ell\not\subseteq X$. So we
+	      have reduced to the case $n=1$.
+
+	      For $V(f)\subseteq\P^1_k$, take an irreducible factorization
+	      $f=g_1^{m_1}\cdots g_r^{m_r}$ with $(g_i)\ne(g_j)$ for $i\ne j$. Then
+	      $(g_1^{m_1})\cap\cdots\cap(g_r^{m_r})=(g_1^{m_1}\cdots g_r^{m_r})=(f)$
+	      since the ideals are co-maximal, and hence
+	      \begin{equation*}
+		      V(f)=V(g_1^{m_1})\cup\cdots\cup V(g_r^{m_r}).
+	      \end{equation*}
+	      Now each $V(g_i^{m_i})$ consists of a single point, since the
+	      characterization of points in $\A^2_k$ shows that the only homogeneous
+	      prime strictly containing $(g_i)$ is the irrelevant ideal. Any
+	      single-point closed subscheme of $\P^1_k$ is of this form (they all come
+	      from closed points of the two copies of $\A^1_k$), and we can define the
+	      ``multiplicity'' of such a single-point closed subscheme as
+	      $m_i\deg g_i$, which is uniquely determined by the defining ideal
+	      $(g_i^{m_i})$. Then $V(f)$ consists of $d$ points when counted with
+	      multiplicity, since $m_1\deg g_1+\cdots+m_r\deg g_r=\deg f=d$.
+
+	\item From 3.6.F the map descends to
+	      $k[w,x,y,z]/(wz-xy,x^2-wy,y^2-xz)\cong k[s,t]$, so $\P^1_k\to\P^3_k$
+	      factors as $\P^1_k\cong V(wz-xy,x^2-wy,y^2-xz)\hookrightarrow\P^3_k$.
+
+	\item
+\end{enumerate}
+
 \end{document}
