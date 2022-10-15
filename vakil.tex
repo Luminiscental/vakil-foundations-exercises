@@ -11,6 +11,7 @@
 \usepackage[margin=1in]{geometry}
 
 \usepackage{mathtools}
+\usepackage{commath} % \dod, \dpd, ...
 \usepackage{enumitem} % enumeration label options
 \usepackage{mathrsfs} % mathscr
 \usepackage{amsfonts} % mathbb
@@ -7388,9 +7389,10 @@
 		      \item From 3.6.F the map
 		            $k[w,x,y,z]/(wz-xy,x^2-wy,y^2-xz)\to k[a,b]$ given by
 		            $w\mapsto b^3$, $x\mapsto ab^2$, $y\mapsto a^2b$, $z\mapsto a^3$
-		            is an isomorphism. Since this is a graded map, it induces an
-		            isomorphism
-		            $\Proj k[w,x,y,z]/(wz-xy,x^2-wy,y^2-xz)\cong\Proj k[a,b]$.
+		            is an injection. Since this is a graded map we get
+		            $\Proj k[w,x,y,z]/(wz-xy,x^2-wy,y^2-xz)\cong\Proj k[a^3,a^2b,ab^2,b^3]$,
+		            while $\Proj k[a^3,a^2b,ab^2,b^3]\cong\Proj k[a,b]=\P^1_k$
+		            by 6.4.D.
 	      \end{enumerate}
 
 	\item The image of $S_+$ is all of $R_+$ by surjectivity, and
@@ -7468,11 +7470,133 @@
 	      $(g_i^{m_i})$. Then $V(f)$ consists of $d$ points when counted with
 	      multiplicity, since $m_1\deg g_1+\cdots+m_r\deg g_r=\deg f=d$.
 
-	\item From 3.6.F the map descends to
-	      $k[w,x,y,z]/(wz-xy,x^2-wy,y^2-xz)\cong k[s,t]$, so $\P^1_k\to\P^3_k$
-	      factors as $\P^1_k\cong V(wz-xy,x^2-wy,y^2-xz)\hookrightarrow\P^3_k$.
+	\item From 3.6.F the map factors as
+	      \begin{equation*}
+		      k[w,x,y,z]
+		      \to k[w,x,y,z]/(wz-xy,x^2-wy,y^2-xz)
+		      \xrightarrow\sim k[s^3,s^2t,st^2,t^3]
+		      \hookrightarrow k[s,t],
+	      \end{equation*}
+	      so by 6.4.D we get
+	      \begin{equation*}
+		      \P^3_k
+		      \hookleftarrow V(wz-xy,x^2-wy,y^2-xz)
+		      \xleftarrow\sim \P^1_k
+		      \xleftarrow\sim \P^1_k.
+	      \end{equation*}
+
+	\item Let $x_0,\ldots,x_n\in S_1$ generate $S_\bullet$ over $A=S_0$. Then
+	      the graded map $A[t_0,\ldots,t_n]\to S_\bullet$ given by
+	      $t_i\mapsto x_i$ is a surjection, inducing an isomorphism of graded
+	      rings $S_\bullet\cong A[t_0,\ldots,t_n]/I$ where $I$ is the kernel of
+	      the map, which is homogeneous since the map is graded. Hence the induced
+	      map $\Proj S_\bullet\to\P^n_A$ is a closed embedding.
+
+	\item Let $I\subseteq k[x_0,\ldots,x_n]$ be the ideal cutting out
+	      $\Proj S_\bullet$ in $\P^n_k$ and $\Spec S_\bullet$ in $\A^{n+1}_k$. By
+	      4.5.O, the closed points of $\Proj S_\bullet$ are those
+	      $[a_0,\ldots,a_n]\in\P^n_k$ on which every homogeneous element of $I$
+	      vanishes. Since $I$ is homogeneous this is iff every element of $I$
+	      vanishes at $(a_0,\ldots,a_n)\in\A^{n+1}_k$, so we see that the closed
+	      points of $\Spec S_\bullet$ are precisely the representatives of closed
+	      points $[a_0,\ldots,a_n]$ in $\Proj S_\bullet$, together with
+	      $(0,\ldots,0)$ if $I\ne(1)$ since non-constant homogeneous polynomials
+	      vanish at $(0,\ldots,0)$. Hence $(\Spec S_\bullet)^\cl$ consists of
+	      lines through the origin which correspond to $(\Proj S_\bullet)^\cl$.
+
+	\item From 3.6.F(b) with $n=2$ the map $k[u,v,w]\to k[x,y]$ where
+	      $u\mapsto x^2$, $v\mapsto xy$, $w\mapsto y^2$ factors as
+	      \begin{equation*}
+		      k[u,v,w]
+		      \to k[u,v,w]/(uw-v^2)
+		      \xrightarrow\sim k[x^2,xy,y^2]
+		      \hookrightarrow k[x,y].
+	      \end{equation*}
+
+	\item This follows from 3.6.F(b).
+
+	\item The monomials $x_0^{e_0}\cdots x_n^{e_n}$ of degree $d$ are determined
+	      by the exponents satisfying $e_0+\cdots+e_n=d$, which are in turn
+	      determined by the incremented partial sums
+	      \begin{equation*}
+		      0<e_0+1<e_0+e_1+2<\cdots<e_0+\cdots+e_{n-1}+n<d+n+1.
+	      \end{equation*}
+	      Hence $N$ is given by choice of $n$ numbers from 1 to $d+n$, i.e.
+	      \begin{equation*}
+		      N = \binom{d+n}{n} = \binom{n+d}{d}.
+	      \end{equation*}
+
+	\item We are interested in the kernel of the map
+	      $k[y_0,\ldots,y_5]\to k[x_0,x_1,x_2]$ given by
+	      \begin{equation*}
+		      y_0 \mapsto x_0^2,\qquad
+		      y_1 \mapsto x_0x_1,\qquad
+		      y_2 \mapsto x_1^2,\qquad
+		      y_3 \mapsto x_1x_2,\qquad
+		      y_4 \mapsto x_2^2,\qquad
+		      y_5 \mapsto x_2x_0.
+	      \end{equation*}
+	      It contains $(y_0y_2-y_1^2,y_2y_4-y_3^2,y_4y_0-y_5^2)$ and
+	      $(y_1y_3-y_5y_2,y_3y_5-y_1y_4,y_5y_1-y_3y_0)$ by inspection, and these
+	      6 generators are linearly independent: they each have unique monomials.
 
 	\item
+	      \begin{enumerate}[label=(\alph*)]
+		      \item The assignment $[c,d]\mapsto[a_0c,b_0c,a_0d,b_0d]$ defines a
+		            morphism $\P^1\to\P^3$ since $a_0$ and $b_0$ are not both zero,
+		            and it factors through the line $V(b_0w-a_0x,b_0y-a_0z)$.
+		            Moreover this line factors through $X$ since
+		            $(wz-xy)\subseteq(b_0w-a_0x,b_0y-a_0z)$;
+		            $(a_0x/b_0)(b_0y/a_0)-xy=0$. Taking
+		            $[c,d]\mapsto[a_0c,a_0d,b_0c,b_0d]$ gives another line
+		            $V(b_0w-a_0y,b_0x-a_0z)\subseteq X$.
+
+		      \item The $k$-valued points are those with residue field $k$, i.e.
+		            those of the form $[p,q,r,s]\in X$. Such a point lies on the
+		            line $V(b_0w-a_0x,b_0y-a_0z)$ iff $b_0p-a_0q=b_0r-a_0s=0$, i.e.
+		            $[a_0,b_0]$ equals whichever of $[p,q]$, $[r,s]$ is well-defined.
+		            Similarly, the point lies on the line $V(b_0w-a_0y,b_0x-a_0z)$
+		            iff $b_0p-a_0r=b_0q-a_0s=0$, i.e. $[a_0,b_0]$ equals whichever
+		            of $[p,r]$, $[q,s]$ is well-defined. Note that $[p,q]=[r,s]$ and
+		            $[p,r]=[q,s]$ in the cases where both are defined since
+		            $[p,q,r,s]\in X$. This shows that exactly one line from each
+		            ruling passes through the point.
+
+		      \item For a line $\ell\subseteq X$ take a $k$-valued point
+		            $p\in\ell$. Let $T$ be a plane containing $p$, and $H$ a plane
+		            not containing $p$. By 8.2.E in $\P^3$ the intersection
+		            $\ell\cap H$ is a single point, and by 8.2.E in $H\cong\P^2$
+		            this point (together with $p$) determines $\ell$. Now $T\cap H$
+		            and $X\cap H$ are hypersurfaces of degree 1 and 2 in $H$, since
+		            by irreducibility neither $T$ nor $X$ contains $H$. Assuming
+		            $T\cap H\not\subseteq X$, then 8.2.E in $H$ gives that
+		            $X\cap T\cap H$ has at most 2 points, so there are at most 2
+		            possibilities for $\ell\cap H\subseteq X\cap T\cap H$. Then
+		            there are at most 2 lines $\ell\subseteq X$ through $p$, so
+		            since the two rulings give distinct lines through $p$ we are
+		            done.
+
+		            \textbf{Lemma:} Given a $k$-valued point $q\in\P^3$, and a line
+		            $L$ not containing $q$, there is a unique plane $P$ containing
+		            $L$ and $q$.
+
+		            \textbf{Proof:} If $L=V(l_1,l_2)$ then such a $P$ must be given
+		            by $V(\lambda l_1+\mu l_2)$ for $(\lambda,\mu)\in k^2$ not both
+		            zero. Evaluating $\lambda l_1+\mu l_2$ at $q$ gives a $k$-linear
+		            functional on $k^2$, which is non-zero since $q\notin L$ and
+		            hence has 1-dimensional kernel. Therefore there is a unique up
+		            to scale choice with $q\in P$.
+
+		            \textbf{Lemma:} We can choose $T$ and $H$ so that
+		            $T\cap H\not\subseteq X$.
+
+		            \textbf{Proof:} Take a line $L$ not contained in $X$ and not
+		            containing $p$, such as $V(w,z)$ or $V(x,y)$. Then there is a
+		            unique plane $T$ containing $L$ and $p$, and some $k$-valued
+		            point $q$ not on $T$ for linear dimension reasons. If $H$ is the
+		            unique plane through $L$ and $q$, then
+		            $T\cap H=L\not\subseteq X$ and $p\in T\setminus H$.
+	      \end{enumerate}
 \end{enumerate}
 
 \end{document}
