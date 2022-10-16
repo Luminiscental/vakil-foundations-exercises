@@ -37,6 +37,7 @@
 \newcommand{\pre}{{\mathrm{pre}}} % presheaf label
 \newcommand{\sh}{{\mathrm{sh}}} % sheafification label
 \newcommand{\cl}{{\mathrm{cl}}} % closed points label
+\renewcommand{\set}{{\mathrm{set}}} % set label
 \newcommand{\dual}{\vee} % dual label
 \newcommand{\id}{{\mathrm{id}}} % identity map
 \newcommand{\res}{{\mathrm{res}}} % restriction map
@@ -7643,6 +7644,62 @@
 		      S_\bullet[T,1/T]_0 = \oplus_{d\ge0}S_d/T^d \cong S_\bullet.
 	      \end{equation*}
 	      (This is the other choice of action for a given grading in 6.6.S(b).)
+\end{enumerate}
+
+\begin{enumerate}[label=\textbf{8.3.\Alph*.}]
+	\item If $X$ is reduced, then by 8.3.4 we can compute the scheme-theoretic
+	      image affine-locally, and the ideals cutting it out in affine sets are
+	      radical since $X$ is reduced, so it is reduced.
+
+	\item Since 8.3.4 applies, the scheme-theoretic image is covered by affine
+	      open subsets which are the scheme-theoretic images of the maps
+	      $\pi^{-1}(\Spec B)\to\Spec B$ for $\Spec B\subseteq Y$. Since associated
+	      points are determined locally, this reduces to the case where $Y$ is
+	      affine. Then taking a finite cover $X=\cup_i\Spec A_i$, the
+	      scheme-theoretic image of $\pi$ is the union of the scheme-theoretic
+	      images for each $\Spec A_i\to Y$. Scheme-theoretic unions result in
+	      unions of the associated points since
+	      $R/(\cap_iI_i)\subseteq\prod_iR/I_i$, so this reduces to the case where
+	      $X$ is affine. If $\pi:\Spec A\to\Spec B$ we can replace $B$ with
+	      $B/\ker\pi^\sharp$ and assume further that $\pi^\sharp$ is an inclusion.
+
+	      If $\p=\Ann_B(f)$ is an associated prime for $B$, localizing at $\p$
+	      lets us assume $\p$ is maximal (preserving the Noetherian property, the
+	      fact that $\pi^\sharp$ is an inclusion, and associated primes). Then
+	      since
+	      \begin{equation*}
+		      \pi(\Supp_{\Spec A}(f))\subseteq\Supp_{\Spec B}(f)=\{[\p]\},
+	      \end{equation*}
+	      it suffices to find an associated point in $\Supp_{\Spec A}(f)$, which
+	      is possible since $f\ne0$.
+
+	\item Let $F\hookrightarrow X$ be the scheme-theoretic closure of
+	      $\pi:V\to X$, where by 8.3.4 we have
+	      \begin{equation*}
+		      \I_{F/X}=\ker(\O_X\to\pi_*\O_V).
+	      \end{equation*}
+	      Then $\O_X/\I_{F/X}\cong\pi_*\O_V$ gives a factoring $i:V\to F$ of $\pi$
+	      which induces an isomorphism $\O_F\cong i_*\O_V$. By assumption $i$ is a
+	      topological embedding onto an open subset of $F$, and hence this is an
+	      open embedding.
+
+	\item From 8.3.B, it suffices to observe that open embeddings (e.g. of $X$
+	      into the scheme-theoretic closure) map associated points to associated
+	      points, which is clear since associated points are defined locally.
+
+	\item Note that the last two definitions are equivalent, since
+	      $\I_{Z/Y}\to\O_Y\to\rho_*\O_W$ is zero iff it is zero in every stalk,
+	      iff $Z\supseteq\Supp\rho_*\O_W=X^\set$. Note that $W$ is reduced, so by
+	      8.3.4 this scheme-theoretic image is given by $\ker(\O_Y\to\rho_*\O_W)$,
+	      which is the same sheaf of ideals as the first definition.
+
+	\item By 8.3.4 the scheme-theoretic image of $\rho:W\to Y$ is the closure of
+	      the set-theoretic image $X^\set$, which is nothing more than $X^\set$ if
+	      $X^\set$ is closed. Since $I(\cdot)$ produces radical ideals, $X$ is
+	      reduced.
+
+	\item Because of the definition in terms of $I(\cdot)$, this follows from
+	      $I(\Spec B)=\nilrad(B)$, seen in e.g. 3.7.D.
 \end{enumerate}
 
 \end{document}
