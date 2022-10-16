@@ -7597,6 +7597,52 @@
 		            unique plane through $L$ and $q$, then
 		            $T\cap H=L\not\subseteq X$ and $p\in T\setminus H$.
 	      \end{enumerate}
+
+	\item Let $S_\bullet=k[x_0,x_1]$ with weights $(m,n)$. If $k$ is the least
+	      common multiple of $m$ and $n$, then the monomials of degree $lk$ are
+	      the monomials of degree $l$ in $x_0^{lk/m}$ and $x_1^{lk/n}$: if
+	      $lk=am+bn$ then $m$ divides $bn$ and $n$ divides $am$, so $bn=n_1k$
+	      and $am=n_2k$ where necessarily $n_1+n_2=l$. Hence $S_{k\bullet}$ is
+	      given by $k[x_0^{k/m},x_1^{k/n}]$ so $\P(m,n)\cong\P^1$ by 6.4.D.
+
+	      If $S_\bullet=k[x_0,x_1,x_2]$ with weights $(1,1,2)$, the monomials of
+	      degree $2n$ are the monomials of degree $n$ in
+	      $x_0^2,x_0x_1,x_1^2,x_2$: if $x_0^ax_1^bx_2^c$ has degree $2n$ then
+	      $a+b$ is even, so after potentially pulling out a factor of $x_0x_1$
+	      we get that $a$ and $b$ are even. Hence $S_{2\bullet}$ is given by
+	      $k[x_0^2,x_0x_1,x_1^2,x_2]$, which is isomorphic to
+	      $k[u,v,w,x_2]/(uw-v^2)$ by 8.2.I.
+
+	\item Note that $S_\bullet/S_+=k$, so $[S_+]$ is a closed point, and in
+	      the case of $\A^{n+1}$ over $\P^n$ it is the origin.
+
+	      Now $\Spec S_\bullet\setminus V(S_+)$ is covered by the distinguished
+	      sets $D(f)$ for $f\in S_+$, and since $S_+$ is homogeneous we can
+	      restrict to those where $f$ is homogeneous; if $f\notin\p$ then $\p$
+	      cannot contain every homogeneous part of $f$. Then there are natural
+	      morphisms $D(f)\to D_{\Proj}(f)\subseteq\Proj S_\bullet$ given by the
+	      inclusions $((S_\bullet)_f)_0\hookrightarrow(S_\bullet)_f$, and the
+	      following diagram commutes:
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &D(f) \ar[r] &D_{\Proj}(f) \\
+			      &D(fg) \ar[u,hook] \ar[r] &D_{\Proj}(fg) \ar[u,hook]
+		      \end{tikzcd}
+	      \end{equation*}
+	      Hence these glue to give a natural morphism
+	      $\Spec S_\bullet\setminus V(S_+)\to\Proj S_\bullet$.
+
+	\item The fact that $k$ was a field was not used in 8.2.O apart from the
+	      initial sentence.
+
+	\item Since $S_\bullet\cong S_\bullet[T]/(T)$, the closed subscheme cut
+	      out by $(T)$ is isomorphic to $\Proj S_\bullet$. The complement is the
+	      distinguished set $D(T)\cong\Spec S_\bullet[T,1/T]_0$, which is
+	      isomorphic to $\Spec S_\bullet$:
+	      \begin{equation*}
+		      S_\bullet[T,1/T]_0 = \oplus_{d\ge0}S_d/T^d \cong S_\bullet.
+	      \end{equation*}
+	      (This is the other choice of action for a given grading in 6.6.S(b).)
 \end{enumerate}
 
 \end{document}
