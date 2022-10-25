@@ -93,11 +93,11 @@
 
 % TODO: before starting chapter 18, cover the starred content 1.6.10 / 1.6.H ('d)
 
-% TODO: cover section 1.7 before first using spectral sequences
-
 % TODO: before starting chapter 23, cover the exercise 2.7.G ('a)
 
 % TODO: analytification exercises ('b) ('c)
+
+% TODO: spectral sequences proof; section 1.7.7
 
 \maketitle
 
@@ -1535,6 +1535,180 @@
 	      transition maps, we can find a pre-image $a_n\in A_n$ of this element.
 	      Define $b_n=\beta_n-a_n$, so that by construction $b_n$ maps to
 	      $b_{n-1}$, and also to $c_n-0=c_n$ in $C_n$.
+\end{enumerate}
+
+\begin{enumerate}[label=\textbf{1.7.\Alph*.}]
+	\item We have $E^{0,0}_\infty=E^{0,0}_2$ since the complex at $E^{0,0}_2$ is
+	      $E^{1,-2}_2\to E^{0,0}_2\to E^{-1,2}_2$, and $E^{1,-2}=E^{-1,2}=0$. Also
+	      $E^{0,0}_2=\ker d_\uparrow\cap\ker d_\rightarrow$, which is the same as
+	      $H^0(E^\bullet)=\ker(d_\uparrow\oplus d_\rightarrow)$.
+
+	      We also have $E^{0,1}_\infty=E^{0,1}_2$, and
+	      $E^{1,0}_\infty=\ker d^{1,0}_2$, so the filtration for $H^1(E^\bullet)$
+	      gives an exact sequence
+	      \begin{equation*}
+		      0\to E^{0,1}_2\to H^1(E^\bullet)\to\ker d^{1,0}_2\to0,
+	      \end{equation*}
+	      or equivalently
+	      \begin{equation*}
+		      0\to E^{0,1}_2\to H^1(E^\bullet)\xrightarrow{d^{1,0}_2}E^{0,2}_2.
+	      \end{equation*}
+	      Now $E^{0,2}_\infty=E^{0,2}_2/\im d^{1,0}_2$, and the filtration for
+	      $H^2(E^\bullet)$ gives $E^{0,2}_\infty\hookrightarrow H^2(E^\bullet)$,
+	      so we can extend this exact sequence to get
+	      \begin{equation*}
+		      0\to E^{0,1}_2\to H^1(E^\bullet)\xrightarrow{d^{1,0}_2}E^{0,2}_2
+		      \to H^2(E^\bullet).
+	      \end{equation*}
+
+	\item The rightward-oriented pages stabilize at $E^{p,q}_1=0$ since the rows
+	      are exact. With upward orientation, the first page
+	      $E^{\bullet,\bullet}_1$ is
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      & &0 \ar[r] &\coker a \ar[r] &\coker b \ar[r] &\coker c \ar[r] &A' \ar[r] &\cdots \\
+			      &\cdots \ar[r] &W \ar[r] &\ker a \ar[r] &\ker b \ar[r] &\ker c \ar[r] &0
+		      \end{tikzcd}
+	      \end{equation*}
+	      and the second page is
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      & &0 \ar[drr] &?? \ar[drr] &? \ar[drr] &? \ar[drr] &? &\cdots \\
+			      &\cdots &? &? &? &?? &0 &~
+		      \end{tikzcd}
+	      \end{equation*}
+	      where the single question marks have stabilized, and the double question
+	      marks will stabilize on the third page. Since the horizontal page is
+	      zero, this implies that the single question marks are zero, and the
+	      double question marks are isomorphic. Hence
+	      \begin{equation*}
+		      \cdots\to W\to\ker a\to\ker b\to\ker c
+	      \end{equation*}
+	      and
+	      \begin{equation*}
+		      \coker a\to\coker b\to\coker c\to A'\to\cdots
+	      \end{equation*}
+	      are exact, and $\ker(\coker a\to\coker b)\cong\coker(\ker b\to\ker c)$
+	      so that we get a combined exact sequence
+	      \begin{align*}
+		      \cdots\to W\to & \ker a\to\ker b\to\ker c                       \\
+		      \to            & \coker a\to\coker b\to\coker c\to A'\to\cdots.
+	      \end{align*}
+
+	\item The rightward pages look the same, and if we only require $\alpha$ and
+	      $\epsilon$ to be epic and monic respectively,
+	      $\prescript{}{\uparrow}E^{\bullet,\bullet}_1$ is as follows:
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &0 \ar[r] &0 \ar[r] &? \ar[r] &0 \ar[r] &? \\
+			      &? \ar[r] &0 \ar[r] &? \ar[r] &0 \ar[r] &0 \\
+		      \end{tikzcd}
+	      \end{equation*}
+	      The spectral sequence still converges at this step, and hence the middle
+	      two question marks are zero by comparing with the rightward pages.
+	      Therefore $\gamma$ is an isomorphism.
+
+	\item Again the rightward pages look the same, and now for
+	      $\prescript{}{\uparrow}E^{\bullet,\bullet}_1$ we have
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &0 \ar[r] &?? \ar[r] &?? \ar[r] &?? \ar[r] &?? \\
+			      &?? \ar[r] &0 \ar[r] &? \ar[r] &0 \ar[r] &?? \\
+		      \end{tikzcd}
+	      \end{equation*}
+	      where the single question mark has converged, and hence is zero by
+	      comparing with the rightward pages. It follows that $\ker\gamma=0$.
+	      The dual statement is that if $\beta$ and $\delta$ are epic, with
+	      $\epsilon$ monic, then $\gamma$ is epic.
+
+	\item Assume $\mu$ makes the square \emph{anti-}commute. We then get a
+	      double complex as follows:
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &\cdots \ar[r] &B^{-1} \ar[r] &B^0 \ar[r] &B^1 \ar[r] &\cdots \\
+			      &\cdots \ar[r] &A^{-1} \ar[u,"\mu_{-1}"] \ar[r] &A^0 \ar[u,"\mu_0"] \ar[r] &A^1 \ar[r] \ar[u,"\mu_1"] &\cdots
+		      \end{tikzcd}
+	      \end{equation*}
+	      If we take $A^0$ as the origin, then
+	      \begin{equation*}
+		      E^{i,j} = \begin{dcases*}
+			      B^i & if $j=1$  \\
+			      A^i & if $j=0$,
+		      \end{dcases*}
+	      \end{equation*}
+	      and $C^i=B^{i-1}\oplus A^i$. On
+	      $\prescript{}{\rightarrow}E^{\bullet,\bullet}_1$ we have
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &\cdots &H^{i-1}(B^\bullet) &H^i(B^\bullet) &H^{i+1}(B^\bullet) &\cdots \\
+			      &\cdots &H^{i-1}(A^\bullet) \ar[u,"f_{i-1}"] &H^i(A^\bullet) \ar[u,"f_i"] &H^{i+1}(A^\bullet) \ar[u,"f_{i+1}"] &\cdots
+		      \end{tikzcd}
+	      \end{equation*}
+	      so the spectral sequence stabilizes on the second page, and we have a
+	      filtration
+	      \begin{align*}
+		       & E^{k-1,1}_\infty\xhookrightarrow{E^{k,0}_\infty}H^k(C^\bullet) &
+		       & \text{i.e.}                                                    &
+		       & \coker f_{i-1}\xhookrightarrow{\ker f_i}H^i(C^\bullet).
+	      \end{align*}
+	      Hence we have an exact sequence
+	      \begin{equation*}
+		      0\to\coker f_{i-1}\to H^i(C^\bullet)\to\ker f_i\to 0
+	      \end{equation*}
+	      which combines with
+	      \begin{equation*}
+		      0\to\ker f_i\to H^i(A^\bullet)\to H^i(B^\bullet)\to\coker f_i\to0
+	      \end{equation*}
+	      to give a long exact sequence
+	      \begin{equation*}
+		      \cdots\to H^i(C^\bullet)\to H^i(A^\bullet)\to H^i(B^\bullet)
+		      \to H^{i+1}(C^\bullet)\to\cdots
+	      \end{equation*}
+
+	\item A short exact sequence of complexes
+	      $0\to A^\bullet\to B^\bullet\to C^\bullet\to0$ gives a double complex as
+	      follows (after making the morphisms anti-commute):
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &\cdots \ar[r] &C^{i-1} \ar[r] &C^i \ar[r] &C^{i+1} \ar[r] &\cdots \\
+			      &\cdots \ar[r] &B^{i-1} \ar[u] \ar[r] &B^i \ar[u] \ar[r] &B^{i+1} \ar[u] \ar[r] &\cdots \\
+			      &\cdots \ar[r] &A^{i-1} \ar[u] \ar[r] &A^i \ar[u] \ar[r] &A^{i+1} \ar[u] \ar[r] &\cdots
+		      \end{tikzcd}
+	      \end{equation*}
+	      with first rightward page
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      &\cdots &H^{i-1}(C^\bullet) &H^i(C^\bullet) &H^{i+1}(C^\bullet) &\cdots \\
+			      &\cdots &H^{i-1}(B^\bullet) \ar[u,"g_{i-1}"] &H^i(B^\bullet) \ar[u,"g_i"] &H^{i+1}(B^\bullet) \ar[u,"g_{i+1}"] &\cdots \\
+			      &\cdots &H^{i-1}(A^\bullet) \ar[u,"f_{i-1}"] &H^i(A^\bullet) \ar[u,"f_i"] &H^{i+1}(A^\bullet) \ar[u,"f_{i+1}"] &\cdots
+		      \end{tikzcd}
+	      \end{equation*}
+	      while the first upward page is all zero by exactness. The second
+	      rightward page is then
+	      \begin{equation*}
+		      \begin{tikzcd}
+			      & &0 & & & \\
+			      &\cdots &\coker g_{i-1} &\coker g_i &\coker g_{i+1} &\cdots \\
+			      &\cdots &\ker g_{i-1}/\im f_{i-1} &\ker g_i/\im f_i \ar[uul] &\ker g_{i+1}/\im f_{i+1} &\cdots \\
+			      &\cdots &\ker f_{i-1} &\ker f_i \ar[uul] &\ker f_{i+1} \ar[uul] &\cdots \\
+			      & & & &0 \ar[uul] &
+		      \end{tikzcd}
+	      \end{equation*}
+	      so the spectralquence stabilizes on the third page. Since the upwards
+	      pages were zero, it follows that $\ker g_i/\im f_i=0$ (i.e.
+	      $\coker f_i=\ker g_i$) and $\ker f_i=\coker g_{i-1}$, letting us glue
+	      \begin{equation*}
+		      0\to\ker f_i\to H^i(A^\bullet)\to H^i(B^\bullet)\to\coker f_i\to0
+	      \end{equation*}
+	      and
+	      \begin{equation*}
+		      0\to\ker g_{i-1}\to H^{i-1}(B^\bullet)\to H^{i-1}(C^\bullet)\to\coker g_{i-1}\to0
+	      \end{equation*}
+	      into a long exact sequence
+	      \begin{equation*}
+		      \cdots\to H^{i-1}(B^\bullet)\to H^{i-1}(C^\bullet)
+		      \to H^i(A^\bullet)\to H^i(B^\bullet)\to\cdots
+	      \end{equation*}
 \end{enumerate}
 
 \chapter{Sheaves}
@@ -7700,6 +7874,43 @@
 
 	\item Because of the definition in terms of $I(\cdot)$, this follows from
 	      $I(\Spec B)=\nilrad(B)$, seen in e.g. 3.7.D.
+\end{enumerate}
+
+\begin{enumerate}[label=\textbf{8.4.\Alph*.}]
+	\item If $st\in\ker(A\to A_\p)$, then $ust=0$ for some $u\notin\p$. Then
+	      $us=0$ since $t$ is a non-zerodivisor, and hence $s\in\ker(A\to A_\p)$.
+
+	\item If $t$ doesn't vanish at any associated point, then $t$ is a
+	      non-zerodivisor on any affine set by property (C) of associated points.
+	      Hence $V(t)$ is an effective Cartier divisor. Conversely, suppose we
+	      have $X=\cup_i\Spec A_i$, with $V(t)|_{\Spec A_i}=V(t|_{\Spec A_i})$ cut
+	      out by a non-zerodivisor. Since $t|_{\Spec A_i}$ is determined up to
+	      units by the ideal it generates, it must be a non-zerodivisor. Then it
+	      doesn't vanish at any associated point of $\Spec A_i$ by (C) again, so
+	      $t$ doesn't vanish at any associated point of $X$.
+
+	\item Since $V(t)=V(t')$, looking at the global ideal we get $(t)=(t')$ in
+	      $A$. Hence $t$ is a unit multiple of $t'$.
+
+	\item Firstly note that
+	      \begin{equation*}
+		      S^{-1}\bigl(M/(x_1,\ldots,x_{i-1})M\bigr)
+		      = S^{-1}M/(x_1/1,\ldots,x_{i-1}/1)S^{-1}M
+	      \end{equation*}
+	      by exactness of localization, so it suffices to see that localization
+	      preserves non-zerodivisors on a module. But if the multiplication map
+	      $L_x:M\to M$ is injective, then $S^{-1}L_x:S^{-1}M\to S^{-1}M$ is
+	      injective by exactness of localization, and this is clearly the same as
+	      $L_{x/1}$.
+
+	\item If $x$ is a non-zerodivisor on $M$, then so is $x^N$. Now suppose we
+	      have $ym=x^Nn$ for some $n,m\in M$. Since $y$ is a non-zerodivisor on
+	      $M/xM$, it follows that $m=xm_1$ for some $m_1\notin x^{N-1}M$. Since
+	      $x$ is a non-zerodivisor on $M$ we get that $ym_1=x^{N-1}n$, and by
+	      induction we may assume $y$ is a non-zerodivisor on $M/x^{N-1}M$ so
+	      $m_1\in x^{N-1}M$. Hence $m\in x^NM$, which shows that $y$ is a
+	      non-zerodivisor on $M/x^NM$. Of course we have
+	      $(x^N,y)M\subseteq(x,y)M\subsetneq M$.
 \end{enumerate}
 
 \end{document}
